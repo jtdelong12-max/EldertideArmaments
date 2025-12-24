@@ -220,9 +220,11 @@ Check the Nexus Mods posts tab for user-reported mod lists and compatibility exp
 
 ### Current Version Support
 
-- **Patch 7**: ✅ Fully supported
-- **Patch 8**: ✅ Fully supported
+- **Latest BG3 Patches**: ✅ Fully supported (check Nexus for current compatibility)
+- **Previous Patches**: ⚠️ May work but not officially supported
 - **Future Patches**: ⚠️ May require updates
+
+**Note**: Game version information can become outdated quickly. Always check the [Nexus Mods page](https://www.nexusmods.com/baldursgate3/mods/3596) for the latest compatibility information with your specific BG3 patch version.
 
 ### After Game Updates
 

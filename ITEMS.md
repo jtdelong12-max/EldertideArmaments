@@ -98,7 +98,7 @@ A comprehensive guide to all items included in Eldertide Armaments.
 
 ### Ring 9 - Stormlord's Ring
 - **Rarity**: Legendary
-- **Value**: 900 gold (Highest value ring)
+- **Value**: 900 gold
 - **Abilities Unlocked**:
   - Thor's Fury (Shout, lightning)
   - Skybreaker Smite (Target)
@@ -120,7 +120,7 @@ A comprehensive guide to all items included in Eldertide Armaments.
 
 ### Ring 11 - Death's Dominion Ring
 - **Rarity**: Legendary
-- **Value**: 950 gold (Highest value ring)
+- **Value**: 950 gold (Tied highest with Amulet 8)
 - **Abilities Unlocked**:
   - Finger of Death (Projectile, instant death)
   - Ketheric Howl of the Dead (Shout)
@@ -236,7 +236,7 @@ A comprehensive guide to all items included in Eldertide Armaments.
 
 ### Amulet 8 - Witcher's Medallion
 - **Rarity**: Legendary
-- **Value**: 950 gold (Highest value amulet!)
+- **Value**: 950 gold (Tied highest with Ring 11)
 - **Abilities Unlocked**:
   - Hunter's Sense (Shout, detection)
   - Witcher Weapon (Shout, weapon buff + Signs)

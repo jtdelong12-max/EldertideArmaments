@@ -31,6 +31,7 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - BG3 Mod Manager (Recommended)
 - [BG3 Mod Fixer](https://www.nexusmods.com/baldursgate3/mods/141) (For compatibility)
 - [Tutorial Chest Summoning](https://www.nexusmods.com/baldursgate3/mods/457) (Optional - for tutorial chest version)
+- [BG3 Script Extender](https://github.com/Norbyte/bg3se) (Optional - enhances modding capabilities, not required for this mod)
 
 ### Installation Steps
 

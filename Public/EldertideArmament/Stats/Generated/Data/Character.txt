@@ -637,7 +637,7 @@ data "Class" "Fighter"
 data "SpellCastingAbility" "Intelligence"
 data "DefaultBoosts" "ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Constitution)"
 data "ArmorType" "Cloth"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:3:3:1;SpellSlot:1:1:2
+data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:3:3:1;SpellSlot:1:1:2"
 data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;UnlockedSpellSlotLevel1;ExtraAttack;Indomitable;FightingStyle_Dueling"
 data "Proficiency Group" "LightArmor;MediumArmor;HeavyArmor;Shields;SimpleWeapons;MartialWeapons"
 
@@ -653,7 +653,7 @@ data "Wisdom" "10"
 data "Charisma" "10"
 data "Armor" "13"
 data "Vitality" "68"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:2:2:2
+data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:2:2:2"
 data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2;ExtraAttack_2;Indomitable;FightingStyle_Dueling;WarMagic"
 
 new entry "Stats_Githyanki_Fighter_Level_10"
@@ -668,7 +668,7 @@ data "Wisdom" "10"
 data "Charisma" "10"
 data "Armor" "14"
 data "Vitality" "94"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:3:3:2
+data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:3:3:2"
 data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2;ExtraAttack_2;Indomitable;FightingStyle_Dueling;WarMagic"
 
 - - - - - - - - - - - -

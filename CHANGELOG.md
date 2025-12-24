@@ -2,6 +2,19 @@
 
 All notable changes to Eldertide Armaments will be documented in this file.
 
+## [1.6.4] - 2025-12-24
+
+### Fixed
+- Updated for BG3 Hotfix #35 (4.1.1.6995620) compatibility
+- Fixed Hellfire Pact UI corruption in temporary camps by changing summon stack system
+- Fixed Astral Champion's Ring manual dismissal freeze by preventing manual dismissal
+- Fixed typos in Judgment Bolt and Quen spell descriptions
+
+### Changed
+- Hellfire Pact summons now use CONJURE_ELEMENTAL_STACK to prevent UI persistence bugs
+- Astral Champion's Ring (Ethereal Alliance) summons can no longer be manually dismissed and expire at short rest to prevent freeze bug
+- Updated mod version to 36873228391546881
+
 ## [Unreleased]
 
 ### Added

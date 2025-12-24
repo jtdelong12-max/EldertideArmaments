@@ -27,7 +27,7 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - ⚖️ **[Balance Guide](BALANCE.md)** - Understanding item power and design philosophy
 
 ### Requirements
-- Baldur's Gate 3 (Latest Patch)
+- Baldur's Gate 3 Hotfix #35 (4.1.1.6995620 or later)
 - BG3 Mod Manager (Recommended)
 - [BG3 Mod Fixer](https://www.nexusmods.com/baldursgate3/mods/141) (For compatibility)
 - [Tutorial Chest Summoning](https://www.nexusmods.com/baldursgate3/mods/457) (Optional - for tutorial chest version)
@@ -85,6 +85,26 @@ Lore journal pages can be discovered in:
 - Various story-related chests
 
 ## Known Issues & Solutions
+
+### Game Version Compatibility
+**Problem**: Crashes or errors with BG3 Hotfix #35  
+**Solution**:
+- Update to Eldertide Armaments version 1.6.4 or later
+- Version 1.6.3 and earlier are incompatible with Hotfix #35
+
+### Act 2 Yurgir Chest Loot
+**Problem**: Items in chest near Yurgir in Gauntlet of Shar despawn if Yurgir is convinced to kill himself before looting  
+**Workaround**:
+- **Always loot the chest BEFORE triggering Yurgir's dialogue**
+- If already triggered, items may be lost for that playthrough
+- This is a known limitation of quest-related loot in temporary locations
+
+### Astral Champion's Ring (Ethereal Alliance)
+**Issue**: Summons from Ethereal Alliance cannot be manually dismissed  
+**Note**: 
+- This is intentional to prevent game freezes
+- Summons will automatically expire at short rest
+- **Do not attempt to manually dismiss these summons** (was causing severe lag/freeze in v1.6.3)
 
 ### Items Not Appearing
 **Problem**: Items don't spawn in expected locations  

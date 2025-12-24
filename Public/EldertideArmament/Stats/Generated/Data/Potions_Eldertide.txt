@@ -1,0 +1,494 @@
+- - - - - - - - - - - - - - - -
+// Elixir of Eldertide Blast \\
+- - - - - - - - - - - - - - - -
+
+new entry "ELDERTIDE_BLAST"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h95630fdfgace7g4520ga434g03f085b38d04;1"
+data "Description" "ha4d1e5e9gea59g4be0g84f7g2f31bdfc390e;1"
+data "DescriptionParams" "Distance(5)"
+data "Icon" "Icon_PassiveFeature_EldertideBlast"
+data "StackId" "ELDERTIDE_ELIXIR"
+data "StackType" "Overwrite"
+data "Passives" "Passive_ELDER_EldertideBlast"
+data "ApplyEffect" "f1ce7559-a4ea-4a4a-893c-ca289290b21a"
+
+new entry "Passive_ELDER_EldertideBlast"
+type "PassiveData"
+data "DisplayName" "he1e6003egb733g4468gb805g8a7efdc33641;2"
+data "Description" "hbac99a9fg3cf6g4c4fg941dgb61491dfb721;3"
+data "DescriptionParams" "Distance(5)"
+data "ExtraDescription" "hf05ef0cegdf7cg4c43g8c6fg322ae793dbe6;5"
+data "Icon" "Icon_PassiveFeature_EldertideBlast"
+data "Properties" "Highlighted;IsToggled;ToggledDefaultOn;ToggledDefaultAddToHotbar;Temporary"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "SpellId('ELDER_Projectile_FingerOfDeath') or SpellId('ELDER_Projectile_CataclysmBlast') or SpellId('ELDER_Projectile_JudgmentBolt') or SpellId('ELDER_Projectile_ShadowsRetribution') or SpellId('ELDER_Projectile_Annihilation') or SpellId('ELDER_Projectile_RayOfTheInfernalPhoenix') or SpellId('ELDER_Projectile_BewitchingBolt') and HasDamageEffectFlag(DamageFlags.Hit) and not IsMiss()"
+data "StatsFunctors" "Force(5);ApplyStatus(PASSIVE_EFFECT_ELDERTIDE_BLAST,100,0)"
+
+new entry "PASSIVE_EFFECT_ELDERTIDE_BLAST"
+type "StatusData"
+data "StatusType" "EFFECT"
+using "_PASSIVES"
+data "StatusEffect" "541e982b-4f40-4311-9b7e-f1507899b93b"
+
+- - - - - - - - - - - - - - - - -
+// Elixir of Eldertide Rupture \\
+- - - - - - - - - - - - - - - - -
+
+new entry "ELDERTIDE_RUPTURE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h6a26c045g1e48g46f7gbdf7gb8f555db763c;1"
+data "Description" "h9a0ff09cg8d0ag4bbagafceg9515433ea16a;1"
+data "DescriptionParams" "DealDamage(1d6,Slashing)"
+data "Icon" "Icon_PassiveFeature_EldertideRupture"
+data "StackId" "ELDERTIDE_ELIXIR"
+data "StackType" "Overwrite"
+data "Passives" "Passive_ELDER_EldertideRupture"
+data "ApplyEffect" "f1ce7559-a4ea-4a4a-893c-ca289290b21a"
+
+new entry "Passive_ELDER_EldertideRupture"
+type "PassiveData"
+data "DisplayName" "hfc72df1dgbcffg453ag9beag275ca9bfc461;2"
+data "Description" "h6c3ad177g57e0g4bb4gbf5fg149d67053147;3"
+data "DescriptionParams" "DealDamage(1d6,Slashing)"
+data "ExtraDescription" "h5d2d2d58gbf7ag41e9gbd5eg24bb060a707b;5"
+data "Icon" "Icon_PassiveFeature_EldertideRupture"
+data "Properties" "Highlighted;IsToggled;ToggledDefaultOn;ToggledDefaultAddToHotbar;Temporary"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "SpellId('ELDER_Projectile_FingerOfDeath') or SpellId('ELDER_Projectile_CataclysmBlast') or SpellId('ELDER_Projectile_JudgmentBolt') or SpellId('ELDER_Projectile_ShadowsRetribution') or SpellId('ELDER_Projectile_Annihilation') or SpellId('ELDER_Projectile_RayOfTheInfernalPhoenix') or SpellId('ELDER_Projectile_BewitchingBolt') and HasDamageEffectFlag(DamageFlags.Hit) and not IsMiss()"
+data "StatsFunctors" "DealDamage(1d6,Slashing)"
+
+- - - - - - - - - - - - - - - - -
+// Elixir of Eldertide Eruption \\
+- - - - - - - - - - - - - - - - -
+
+new entry "ELDERTIDE_ERUPTION"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hdbcf6fcegbdafg4aeeg9070gcea61a1969b7;1"
+data "Description" "h16119a2cgc98eg402ag8a0fg4a0f8e557859;1"
+data "DescriptionParams" "DealDamage(1d6,Bludgeoning);Distance(6)"
+data "Icon" "Icon_PassiveFeature_EldertideEruption"
+data "StackId" "ELDERTIDE_ELIXIR"
+data "StackType" "Overwrite"
+data "Passives" "Passive_ELDER_EldertideEruption"
+data "ApplyEffect" "f1ce7559-a4ea-4a4a-893c-ca289290b21a"
+
+new entry "Passive_ELDER_EldertideEruption"
+type "PassiveData"
+data "DisplayName" "he1ba06d4g048fg4903gbb0cge44a405ba53d;2"
+data "Description" "hac17a517g7203g44fcg9de8g4e2dfccc7602;3"
+data "DescriptionParams" "DealDamage(1d6,Bludgeoning);Distance(6)"
+data "ExtraDescription" "h15308df6gcb43g4bfeg906fgbec968aa07eb;5"
+data "Icon" "Icon_PassiveFeature_EldertideEruption"
+data "Properties" "Highlighted;IsToggled;ToggledDefaultOn;ToggledDefaultAddToHotbar;Temporary"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "SpellId('ELDER_Projectile_FingerOfDeath') or SpellId('ELDER_Projectile_CataclysmBlast') or SpellId('ELDER_Projectile_JudgmentBolt') or SpellId('ELDER_Projectile_ShadowsRetribution') or SpellId('ELDER_Projectile_Annihilation') or SpellId('ELDER_Projectile_RayOfTheInfernalPhoenix') or SpellId('ELDER_Projectile_BewitchingBolt') and HasDamageEffectFlag(DamageFlags.Hit) and not IsMiss()"
+data "StatsFunctors" "CreateExplosion(ELDER_Projectile_Spell_EldertideExplosion)"
+
+new entry "ELDER_Projectile_Spell_EldertideExplosion"
+type "SpellData"
+data "SpellType" "Projectile"
+data "ExplodeRadius" "6"
+data "ProjectileCount" "1"
+data "SpellProperties" "DealDamage(1d6,Bludgeoning,Magical)"
+data "DisplayName" "h7eea92a7ga087g4367gaf8cg17584e6e74d2;2"
+data "Description" "h9388e065gab2cg4642ga57fg6f0a5cd71b74;2"
+data "Icon" "PassiveFeature_Generic_Explosion"
+data "DescriptionParams" "DealDamage(1d6,Bludgeoning);Distance(6)"
+data "TooltipDamageList" "DealDamage(1d6,Bludgeoning)"
+data "TargetConditions" "not Self() and not Dead() and not Item()"
+data "Trajectories" "be2c3008-49b5-43e2-bcff-3fdbc8fc44ab"
+data "SpellAnimation" "3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;38cdb41c-2eec-4e03-bb31-83cff0346c35,,;85414f5f-b448-4dda-9370-1b6c4b38b561,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,,"
+data "SpellFlags" "IsHarmful;IsSpell"
+data "DamageType" "Bludgeoning"
+
+- - - - - - - - - - - - - - - - -
+// Potion of Terrain Traversal \\
+- - - - - - - - - - - - - - - - -
+
+new entry "TERRAIN_TRAVERSAL"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h9b7d7b56g966cg40f9ga1b1ge5e634c2a8e6;1"
+data "Description" "h088bf8a9gedecg4183gab64g2893dc9fed02;1"
+data "Icon" "PassiveFeature_LandsStride_DifficultTerrain"
+data "SoundStart" "Misc_Status_ElixirOfFreedom_Start"
+data "StackId" "TERRAIN_TRAVERSAL"
+data "Boosts" "StatusImmunity(SG_DifficultTerrain)"
+data "ApplyEffect" "e9e358ee-44c6-415c-b7c5-2ca4e2a94a20"
+
+- - - - - - - - - - - - - - - -
+// Elixir of Unleashed Chaos \\
+- - - - - - - - - - - - - - - -
+
+new entry "UNLEASHED_CHAOS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "he9d4c6d3g5fc1g4f33g902agd922ed8033f3;1"
+data "Description" "ha0e8364egc37eg4762g8446ge9eba69d4a11;1"
+data "Icon" "PassiveFeature_WildMagicSurge"
+data "StackId" "UNLEASHED_CHAOS"
+data "Passives" "Passive_ELDER_UnleashChaos_Unlock"
+data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.TimeOut)):CreateExplosion(ELDER_Projectile_UnleashChaos_Explosion)"
+data "ApplyEffect" "235dfd93-6131-42c9-abcc-cefebec8e059"
+
+new entry "ELDER_Projectile_UnleashChaos_Explosion"
+type "SpellData"
+data "SpellType" "Projectile"
+data "SpellProperties" "DealDamage(LevelMapValue(D6AttackDamage),Lightning,Magical)"
+data "ExplodeRadius" "6"
+data "TargetConditions" "Enemy() and not Dead()"
+data "ProjectileCount" "1"
+data "Trajectories" "4af71ae2-8ee7-422e-adcb-bafbdcdbf489"
+data "Icon" "PassiveFeature_HeartOfTheStorm_Lightning"
+data "DisplayName" "he889d30agdf4cg4245g84a5g2988c13c75f3;1"
+data "Description" "h89f4e173gad03g442dga5c0gb208871ca362;1"
+data "TooltipDamageList" "DealDamage(LevelMapValue(D6AttackDamage),Lightning)"
+data "SpellAnimation" "3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;38cdb41c-2eec-4e03-bb31-83cff0346c35,,;85414f5f-b448-4dda-9370-1b6c4b38b561,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,,"
+data "SpellFlags" "IsHarmful"
+data "DamageType" "Lightning"
+
+new entry "Passive_ELDER_UnleashChaos_Unlock"
+type "PassiveData"
+data "DisplayName" "h29094c49g8960g4465g9a76ge2b2fe47c515;1"
+data "Description" "hceb9bae8gdcaeg403eg9548g000b37717232;1"
+data "Icon" "PassiveFeature_WildMagicSurge"
+data "Boosts" "UnlockInterrupt(ELDER_Interrupt_UnleashChaos)"
+
+new entry "ELDER_Interrupt_UnleashChaos"
+type "InterruptData"
+data "DisplayName" "h324848d1g1216g4ca0g9962g5257b5a65475;1"
+data "Description" "hde558bd9ge0acg4e73g82b6gfbc0767aca07;1"
+data "Icon" "PassiveFeature_WildMagicSurge"
+data "InterruptContext" "OnSpellCast"
+data "InterruptContextScope" "Nearby"
+data "Container" "YesNoDecision"
+data "Conditions" "IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and IsSpell() and not Uninterruptible() and not AnyEntityIsItem()"
+data "Properties" "TriggerRandomCast(OBSERVER_SOURCE,1,0,WildMagicEvil);UseSpell(OBSERVER_SOURCE,ELDER_Target_UnleashChaos,true,true,true)"
+data "Cost" "ReactionActionPoint:1"
+data "InterruptDefaultValue" "Ask;Enabled"
+data "EnableCondition" "not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')"
+data "EnableContext" "OnStatusApplied;OnStatusRemoved"
+
+new entry "ELDER_Target_UnleashChaos"
+type "SpellData"
+data "SpellType" "Target"
+data "TargetRadius" "18"
+data "Icon" "PassiveFeature_WildMagicSurge"
+data "DisplayName" "hf34d6d3fg6a07g4c9cga95ag1b4f1b730d7b;1"
+data "Description" "h9271d5ddgd124g4983ga637ge3ad7eb93759;1"
+data "CastSound" "Spell__Passive_Cast_Sorcerer_Controlled_Chaos"
+data "TargetSound" "Spell_Passive_Impact_Sorcerer_Controlled_Chaos"
+data "CastTextEvent" "Cast"
+data "SpellAnimation" ",,;,,;b04ce010-286c-4eaf-9b7e-dc42aa6c0b8f,,;,,;,,;,,;,,;,,;,,"
+data "VerbalIntent" "Control"
+data "CastEffect" "eb4fbbec-e5bb-4cb0-85a6-7cc88f1ba10a"
+data "BeamEffect" "e39c10ef-45df-41bf-b8ed-8c05de5383d7"
+
+- - - - - - - - - - - - - - - - -
+// Elixir of Obscure Necrosis  \\
+- - - - - - - - - - - - - - - - -
+
+new entry "OBSCURE_NECROSIS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h08e407c9g1b2cg423fgb3b5g11e1218f826a;1"
+data "Description" "h6df608d2g6856g469fgaaadg883181a80f67;1"
+data "DescriptionParams" "DealDamage(2d6,Necrotic)"
+data "Icon" "GenericIcon_DamageType_Necrotic"
+data "SoundLoop" "Spell_Status_GaleNecroticAura"
+data "SoundStop" "Spell_Status_GaleNecroticAura_Stop"
+data "StackId" "TASHA_CONSUMABLES"
+data "StackType" "Overwrite"
+data "Passives" "Passive_ELDER_Obscure_Necrosis"
+data "Boosts" "RollBonus(SkillCheck,2,Stealth)"
+data "ApplyEffect" "235dfd93-6131-42c9-abcc-cefebec8e059"
+data "StatusEffect" "6ee25136-fd13-4dd8-85ca-015dc0c23a8c"
+
+new entry "Passive_ELDER_Obscure_Necrosis"
+type "PassiveData"
+data "DisplayName" "hb1b0d862g173cg423cg8e45g2deff0c3cb7c;1"
+data "Description" "hda818edbgf839g4e47g868eg1cbf3d89421e;1"
+data "DescriptionParams" "DealDamage(2d6, Necrotic)"
+data "Icon" "GenericIcon_DamageType_Necrotic"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "IsMeleeAttack() and not IsMiss() and not HasObscuredState(ObscuredState.Clear)"
+data "StatsFunctors" "DealDamage(2d6,Necrotic)"
+
+- - - - - - - - - - - - - - - - - - - -
+// Elixir of Charismatic Brilliance \\
+- - - - - - - - - - - - - - - - - - - -
+
+new entry "CHARISMATIC_BRILLIANCE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "ha624d9aege922g4092gb573g631109f5dc2c;1"
+data "Description" "h4a922ba6g5ba6g435cga8cag4e852081b25d;1"
+data "Icon" "Icon_PassiveFeature_Charismatic_Brilliance"
+data "StackId" "CHARISMATIC_BRILLIANCE"
+data "Boosts" "ProficiencyBonus(Skill,Persuasion);ProficiencyBonus(Skill,Deception);ProficiencyBonus(Skill,Intimidation);ProficiencyBonus(Skill,Performance);Ability(Charisma,+2)"
+data "ApplyEffect" "e9e358ee-44c6-415c-b7c5-2ca4e2a94a20"
+
+- - - - - - - - - - - - - - - -
+// Quicksilver Strike Elixir \\
+- - - - - - - - - - - - - - - -
+
+new entry "QUICKSILVER_STRIKE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h467ce645gfd65g4f38g9f26gb9ecba67d71c;1"
+data "Description" "h03a26b96ge55fg4e9bg8eaag00f7d695b39c;1"
+data "Icon" "PassiveFeature_MageSlayer_Advantage"
+data "StackId" "QUICKSILVER_STRIKE"
+data "Boosts" "RollBonus(Attack,2);RollBonus(SavingThrow,2,Dexterity);RollBonus(RawAbility,2,Dexterity);ActionResource(Movement,9,0)"
+data "ApplyEffect" "e9e358ee-44c6-415c-b7c5-2ca4e2a94a20"
+
+- - - - - - - - - - - - - - - -
+// Potion of Critical Favour \\
+- - - - - - - - - - - - - - - -
+
+new entry "CRITICAL_FAVOUR"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hfdbf4e28gb11dg41ffg92f6g431efc624aab;1"
+data "Description" "h78083e2fg0ee8g440eg8dd4gbf798c6cfeeb;1"
+data "Icon" "PassiveFeature_PeaceBreaker"
+data "StackId" "CRITICAL_FAVOUR"
+data "Boosts" "RollBonus(Attack,1d4);ReduceCriticalAttackThreshold(1)"
+data "ApplyEffect" "e9e358ee-44c6-415c-b7c5-2ca4e2a94a20"
+
+- - - - - - - - - - - - - - - - - - -
+// Potion of Prismatic Deflection \\
+- - - - - - - - - - - - - - - - - - -
+
+new entry "PRISMATIC_DEFLECTION"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h86e147edg2c21g4dc7g8fa6g999f51357966;1"
+data "Description" "h791ba7b1ge2b8g48e6gbaa2g256aea78a1fd;1"
+data "Icon" "PassiveFeature_ShieldMaster_Dodge"
+data "SoundLoop" "Misc_Status_ArcaneAcuity_MO"
+data "SoundStop" "Misc_Status_ArcaneAcuity_MO_Stop"
+data "StackId" "TASHA_CONSUMABLES"
+data "StackType" "Overwrite"
+data "Passives" "Passive_ELDER_Radiant_Deflection;Passive_ELDER_Lightning_Deflection;Passive_ELDER_Necrotic_Deflection;Passive_ELDER_Cold_Deflection;Passive_ELDER_Fire_Deflection"
+data "Boosts" "AC(2)"
+data "ApplyEffect" "38edf085-8ed3-4380-92b0-a5ed03be0a7e"
+data "StatusEffect" "a522953e-74e1-447e-88c8-323d549c801f"
+
+new entry "Passive_ELDER_Radiant_Deflection"
+type "PassiveData"
+data "DisplayName" "h5cefb53ag395bg432fg81d2g7e03a5a33cc0;1"
+data "Description" "hcc0ba500g9ca8g495agaf0cg4096ff798e56;1"
+data "DescriptionParams" "DealDamage(1d6,Radiant)"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnDamaged"
+data "Conditions" "IsAttack() and HasDamageDoneForType(DamageType.Radiant)"
+data "StatsFunctors" "DealDamage(SWAP,1d6,Radiant,Magical)"
+
+new entry "Passive_ELDER_Lightning_Deflection"
+type "PassiveData"
+data "DisplayName" "h0b67a638g27eeg45f5ga673gc2b2daf925d0;1"
+data "Description" "h9b6d8669g7793g4987g8fb6g99273d23243e;1"
+data "DescriptionParams" "DealDamage(1d6,Lightning)"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnDamaged"
+data "Conditions" "IsAttack() and HasDamageDoneForType(DamageType.Lightning)"
+data "StatsFunctors" "DealDamage(SWAP,1d6,Lightning,Magical)"
+
+new entry "Passive_ELDER_Necrotic_Deflection"
+type "PassiveData"
+data "DisplayName" "hd0fbbb65g0a8bg4ca5g86c5g4643bba237a3;1"
+data "Description" "h69360588gec54g4bb6g8bb3gf05bbd0f9316;1"
+data "DescriptionParams" "DealDamage(1d6,Necrotic)"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnDamaged"
+data "Conditions" "IsAttack() and HasDamageDoneForType(DamageType.Necrotic)"
+data "StatsFunctors" "DealDamage(SWAP,1d6,Necrotic,Magical)"
+
+new entry "Passive_ELDER_Cold_Deflection"
+type "PassiveData"
+data "DisplayName" "h46a81c27g50e0g4639gab11g2a4653e512a2;1"
+data "Description" "hc353480agdb77g482bgbfbdg6526f29fb579;1"
+data "DescriptionParams" "DealDamage(1d6,Cold)"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnDamaged"
+data "Conditions" "IsAttack() and HasDamageDoneForType(DamageType.Cold)"
+data "StatsFunctors" "DealDamage(SWAP,1d6,Cold,Magical)"
+
+new entry "Passive_ELDER_Fire_Deflection"
+type "PassiveData"
+data "DisplayName" "h9a2256d3gb19eg4145gbe2agc4edb76bb48c;1"
+data "Description" "h3a429e4bg1d85g4725gb53fg01f177a1747b;1"
+data "DescriptionParams" "DealDamage(1d6,Fire)"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnDamaged"
+data "Conditions" "IsAttack() and HasDamageDoneForType(DamageType.Fire)"
+data "StatsFunctors" "DealDamage(SWAP,1d6,Fire,Magical)"
+
+- - - - - - - - - - - - -
+// Potion of Balefire \\
+- - - - - - - - - - - - -
+
+new entry "BALEFIRE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h1a0eeeb0gdbdcg4865g8b5ag0b46b93fe195;1"
+data "Description" "h6f6b7e4dg0989g4e6eg919dg398495061a84;1"
+data "DescriptionParams" "DealDamage(LevelMapValue(ElementalSwordBoost),Fire)"
+data "SoundStart" "Action_Cast_Dipped_Fire"
+data "SoundStop" "Action_Prepare_Dipped_Fire_Loop_Stop"
+data "Icon" "Status_Burning"
+data "StackId" "BALEFIRE"
+data "OnApplyFunctors" "ApplyEquipmentStatus(MeleeMainHand,ARMS_OF_BALEFIRE,100,10)" 
+data "ApplyEffect" "bbb99263-a1fb-4665-a59a-e1db168b5657"
+data "StatusEffect" "7e898362-511a-46aa-a047-8d15e63d9d2e"
+
+new entry "ARMS_OF_BALEFIRE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h90c1d907gb402g4ceagbcf6g69d4feecb4a5;1"
+data "Description" "ha0b66a06ga55eg4ceeg9020g36a728f598e1;1"
+data "Icon" "Action_DippedFire_Melee"
+data "SoundStart" "Action_Cast_Dipped_Fire"
+data "SoundStop" "Action_Prepare_Dipped_Fire_Loop_Stop"
+data "StackId" "ARMS_OF_BALEFIRE"
+data "StatusPropertyFlags" "DisableOverhead"
+data "Boosts" "WeaponDamage(LevelMapValue(ElementalSwordBoost),Fire);WeaponProperty(Unstowable)"
+data "StatusEffect" "44d77ebf-fc9e-407d-b20f-257019351f2a"
+
+- - - - - - - - - - - - - -
+// Lifewarden Elixer \\
+- - - - - - - - - - - - - -
+
+new entry "LIFEWARDEN"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h77bb2e4bgae17g48e1gb91cgdddd500c5462;1"
+data "Description" "h00b7a350gb84cg45d9g8393gb8a509c2d3ca;1"
+data "DescriptionParams" "RegainHitPoints(1d4)"
+data "Icon" "PassiveFeature_DivineHealth"
+data "StackId" "LIFEWARDEN"
+data "TickType" "StartTurn"
+data "TickFunctors" "RegainHitPoints(1d4)"
+data "Boosts" "Advantage(SavingThrow, Constitution)"
+data "OnApplyFunctors" "RegainHitPoints(4d4);RemoveStatus(BURNING)"
+data "ApplyEffect" "895f1e20-0d18-4bdc-bd3b-a381b660a6f4"
+
+- - - - - - - - - - - - -
+// Elixer of Dawnshade \\
+- - - - - - - - - - - - -
+
+new entry "ELIXIR_OF_DAWNSHADE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hb384da3cg7db8g43e7ga49egb4b35afd0cf9;2"
+data "Description" "hf2ecc743gdd92g4f14g9d57gb34612b5b473;2"
+data "Icon" "PassiveFeature_BeguilingDefenses"
+data "SoundLoop" "Spell_Status_Buff_MO"
+data "StackId" "TASHA_CONSUMABLES"
+data "StackType" "Overwrite"
+data "Boosts" "StatusImmunity(SG_Frightened);Resistance(Radiant, Resistant);Resistance(Necrotic, Resistant)"
+data "ApplyEffect" "e9e358ee-44c6-415c-b7c5-2ca4e2a94a20"
+
+- - - - - - - - - - - - -
+// Elixer of the Gods \\
+- - - - - - - - - - - - -
+
+new entry "ELIXIR_OF_THE_GODS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "he29ebe10g9b47g464eg83b3gc2ace50d31a0;2"
+data "Description" "h9d1b07b3gd80dg4993g9654gbc6fa6d50382;2"
+data "DescriptionParams" "20"
+data "Icon" "PassiveFeature_WarPriest"
+data "StackId" "TASHA_CONSUMABLES"
+data "StackType" "Overwrite"
+data "Boosts" "AbilityOverrideMinimum(Strength,20);AbilityOverrideMinimum(Dexterity,20);AbilityOverrideMinimum(Constitution,20);AbilityOverrideMinimum(Intelligence,20);AbilityOverrideMinimum(Charisma,20);AbilityOverrideMinimum(Wisdom,20)"
+data "ApplyEffect" "235dfd93-6131-42c9-abcc-cefebec8e059"
+
+- - - - - - - - - - - - - - - - -
+// Elixir of the Thunder Giant \\
+- - - - - - - - - - - - - - - - -
+
+new entry "ELIXIR_OF_THE_THUNDER_GIANT"
+type "StatusData"
+data "StatusType" "BOOST"
+using "ENLARGE"
+data "DisplayName" "h6b8bc7c6g9e68g45degbf6bged9960f93a93;2"
+data "Description" "h118ee3c0gcb54g4a12gac45g9b8c8fdf8356;2"
+data "DescriptionParams" "DealDamage(1d4, Thunder);Distance(3)"
+data "StackId" "TASHA_CONSUMABLES"
+data "StackType" "Overwrite"
+data "Boosts" "Advantage(Ability, Strength);Advantage(SavingThrow, Strength);CharacterWeaponDamage(1d4);ObjectSize(+1);ScaleMultiplier(1.33);CharacterUnarmedDamage(1d4);Resistance(Slashing, Resistant);Resistance(Piercing, Resistant);Resistance(Bludgeoning, Resistant)"
+data "Passives" "Passive_ELDER_GiantThunderDamage;EnlargeWeightMedium;EnlargeWeightLarge"
+data "OnApplyFunctors" "ApplyStatus(ELIXIR_OF_THE_THUNDER_GIANT_TEMP_HP, 100, -1)"
+data "OnRemoveFunctors" "RemoveStatus(ELIXIR_OF_THE_THUNDER_GIANT_TEMP_HP)"
+data "ApplyEffect" "e9e358ee-44c6-415c-b7c5-2ca4e2a94a20"
+data "StatusEffect" "ead75c6a-806e-4db7-8d51-f06beca00fe2"
+
+new entry "ELIXIR_OF_THE_THUNDER_GIANT_TEMP_HP"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h748a3626g0884g4f9dg936fgbce0acc364a3;1"
+data "Description" "h571ae7d4g7affg41b6gb73ag40a099e476d9;1"
+data "DescriptionParams" "RegainHitPoints(MaxHP/4)"
+data "Icon" "statIcons_MAG_TemporaryHP"
+data "SoundLoop" "Spell_Status_Buff_MO"
+data "StackId" "TEMPORARY_HP"
+data "StackPriority" "1"
+data "Boosts" "TemporaryHP(MaxHP/4)"
+data "RemoveConditions" "not HasTemporaryHP()"
+data "RemoveEvents" "OnDamage"
+data "StatusEffect" "46164338-624c-4059-bb80-f79f8b7867a9"
+
+new entry "Passive_ELDER_GiantThunderDamage"
+type "PassiveData"
+data "DisplayName" "hc895c21dg37b0g4606g9eaeg5f6381daa7e5;2"
+data "Description" "h8d52c2b0gb70fg4dd1g8af9g97282b195315;2"
+data "DescriptionParams" "DealDamage(1d4, Thunder);Distance(3)"
+data "Icon" "unknown"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "IsWeaponAttack() or IsUnarmedAttack()"
+data "StatsFunctors" "PROJECTILE:CreateExplosion(ELDER_Projectile_GiantThunderExplosion)"
+
+new entry "ELDER_Projectile_GiantThunderExplosion"
+type "SpellData"
+data "SpellType" "Projectile"
+data "SpellProperties" "DealDamage(1d4,Thunder,Magical)"
+data "AreaRadius" "3"
+data "ExplodeRadius" "3"
+data "TargetConditions" "not Self() and not Dead()"
+data "Trajectories" "0be6e4d7-55fe-4ee0-8acc-94fc3b474817,78f998fb-2bb4-c8bd-c170-fcd899abc905,a62c27e3-86c0-db69-8f04-0ea3074cae7a"
+data "Icon" "PassiveFeature_Generic_Explosion"
+data "SpellFlags" "IsTrap;IsHarmful"
+data "TargetEffect" "b460b24b-23e4-4f8f-a533-4d82512bedeb"
+
+- - - - - - - - - - - - - - -
+// Potion of the Archmagi \\
+- - - - - - - - - - - - - - -
+
+new entry "POTION_OF_THE_ARCHMAGI"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h34560c5eg86f2g4956g99f3gabfcef476b0a;2"
+data "Description" "h54eea3aega31dg4428ga65agd532b824a72a;2"
+data "Icon" "PassiveFeature_Generic_Magical"
+data "SoundLoop" "Misc_Status_ArcaneAcuity_MO"
+data "SoundStop" "Misc_Status_ArcaneAcuity_MO_Stop"
+data "StackId" "POTION_OF_THE_ARCHMAGI"
+data "Passives" "Passive_ELDER_SpellSaveThrow"
+data "Boosts" "IF(IsSpellAttack()):Advantage(AttackRoll)"
+data "OnApplyFunctors" "RestoreResource(SpellSlot,100%,1);RestoreResource(SpellSlot,100%,2);RestoreResource(SpellSlot,100%,3);RestoreResource(WarlockSpellSlot,100%,1);RestoreResource(WarlockSpellSlot,100%,2);RestoreResource(WarlockSpellSlot,100%,3)"
+data "ApplyEffect" "235dfd93-6131-42c9-abcc-cefebec8e059"
+
+new entry "Passive_ELDER_SpellSaveThrow"
+type "PassiveData"
+data "DisplayName" "h6946d85cg2303g4b05g85ddgc19a50ba6de0;2"
+data "Description" "h025182a9g2a81g4d36g945bga4edee5a61e2;2"
+data "Icon" "PassiveFeature_Generic_Magical"
+data "Boosts" "IF(HasSpellFlag(SpellFlags.Spell)):Advantage(AllSavingThrows)"

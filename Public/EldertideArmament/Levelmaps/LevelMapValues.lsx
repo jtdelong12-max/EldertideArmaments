@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="323"/>
+    <region id="LevelMapValues">
+        <node id="root">
+            <children>
+                <node id="LevelMapSeries"> <!-- Projectile - Amount of targets -->
+                    <attribute id="Level1" type="LSString" value="1"/>
+                    <attribute id="Level5" type="LSString" value="2"/>
+                    <attribute id="Level10" type="LSString" value="3"/>	
+                    <attribute id="Name" type="FixedString" value="NumberOfTargets"/>
+                    <attribute id="UUID" type="guid" value="bf6075c5-4668-40b7-87dc-f531eb29a7a4"/>
+                </node>
+                <node id="LevelMapSeries"> <!-- Thor Fury - Damage -->
+                    <attribute id="Level1" type="LSString" value="2"/>
+                    <attribute id="Level5" type="LSString" value="3"/>
+                    <attribute id="Level9" type="LSString" value="4"/>
+                    <attribute id="Name" type="FixedString" value="FuryDamage"/>
+                    <attribute id="UUID" type="guid" value="f6c2decb-cfa8-4195-a241-96ea34515f0b"/>
+                </node>
+				<node id="LevelMapSeries"> <!-- Boost Sword - Damage -->
+                    <attribute id="Level1" type="LSString" value="1d4"/>
+                    <attribute id="Level5" type="LSString" value="2d4"/>
+                    <attribute id="Level10" type="LSString" value="3d4"/>
+                    <attribute id="Name" type="FixedString" value="ElementalSwordBoost"/>
+                    <attribute id="UUID" type="guid" value="199d5b53-58bf-4159-8a85-6ca851068967"/>
+                </node>
+                <node id="LevelMapSeries"> <!-- D4 Attack - Damage -->
+                    <attribute id="Level1" type="LSString" value="1d4"/>
+                    <attribute id="Level4" type="LSString" value="2d4"/>
+                    <attribute id="Level9" type="LSString" value="3d4"/>
+                    <attribute id="Name" type="FixedString" value="D4AttackDamage"/>
+                    <attribute id="UUID" type="guid" value="cf834e38-de8b-41b1-bde3-d9f96a24c4bf"/>
+                </node>
+                <node id="LevelMapSeries"> <!-- D6 Attack - Damage -->
+                    <attribute id="Level1" type="LSString" value="1d6"/>
+                    <attribute id="Level5" type="LSString" value="2d6"/>
+                    <attribute id="Level9" type="LSString" value="3d6"/>
+                    <attribute id="Name" type="FixedString" value="D6AttackDamage"/>
+                    <attribute id="UUID" type="guid" value="87c0eb86-40b0-497f-abda-8fc48bfd944c"/>
+                </node>
+                <node id="LevelMapSeries"> <!-- D8 Attack - Damage -->
+                    <attribute id="Level1" type="LSString" value="2d8"/>
+                    <attribute id="Level4" type="LSString" value="3d8"/>
+                    <attribute id="Level9" type="LSString" value="4d8"/>
+                    <attribute id="Name" type="FixedString" value="D8AttackDamage"/>
+                    <attribute id="UUID" type="guid" value="ddd434b4-5fac-4dd5-85b9-220c0fbc3faa"/>
+                </node>
+                <node id="LevelMapSeries"> <!-- D10 Attack - Damage -->
+                    <attribute id="Level1" type="LSString" value="1d10"/>
+                    <attribute id="Level3" type="LSString" value="2d10"/>
+                    <attribute id="Level6" type="LSString" value="3d10"/>
+                    <attribute id="Level9" type="LSString" value="4d10"/>
+                    <attribute id="Name" type="FixedString" value="D10AttackDamage"/>
+                    <attribute id="UUID" type="guid" value="6edcfcc8-0d20-412c-87d4-042f1e83e437"/>
+                </node>
+                <!-- Examples -->
+                <!-- <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="2"/>
+                    <attribute id="Level5" type="LSString" value="3"/>
+                    <attribute id="Level9" type="LSString" value="4"/>
+                    <attribute id="Name" type="FixedString" value="StandardProficiencyBonusScale"/>
+                    <attribute id="UUID" type="guid" value="265d62c4-9b82-4ed6-9a86-da675b4ef8fe"/>
+                </node>
+                <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="1d6"/>
+                    <attribute id="Level10" type="LSString" value="1d10"/>
+                    <attribute id="Level5" type="LSString" value="1d8"/>
+                    <attribute id="Name" type="FixedString" value="BardicInspiration"/>
+                    <attribute id="PreferredClassUUID" type="guid" value="92cd50b6-eb1b-4824-8adb-853e90c34c90"/>
+                    <attribute id="UUID" type="guid" value="d627b1c2-d215-476d-a3b1-3ba652d1c0c3"/>
+                </node>
+                <node id="LevelMapSeries">
+                    <attribute id="FallbackValue" type="LSString" value="1d8"/>
+                    <attribute id="Level1" type="LSString" value="1d8"/>
+                    <attribute id="Level10" type="LSString" value="1d10"/>
+                    <attribute id="Name" type="FixedString" value="SuperiorityDie"/>
+                    <attribute id="PreferredClassUUID" type="guid" value="721dfac3-92d4-41f5-b773-b7072a86232f"/>
+                    <attribute id="UUID" type="guid" value="f81e8e9e-ffe0-4173-83d6-7cd8cf718477"/>
+                </node>
+                <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="2"/>
+                    <attribute id="Level9" type="LSString" value="3"/>
+                    <attribute id="Name" type="FixedString" value="RageDamage"/>
+                    <attribute id="PreferredClassUUID" type="guid" value="d8cadb42-0ff9-4049-afaf-e5d78d06a399"/>
+                    <attribute id="UUID" type="guid" value="47925e09-30f6-4549-8252-60ea7f87b7a6"/>
+                </node> -->
+            </children>
+        </node>
+    </region>
+</save>

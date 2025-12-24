@@ -1,0 +1,13 @@
+new spellset "ELDER_CompanionActions"
+add spell "Shout_Dash"
+add spell "Projectile_Jump"
+add spell "Shout_Hide"
+add spell "Shout_Disengage"
+add spell "Target_Help"
+
+new spellset "ELDER_CompanionCatActions"
+add spell "Shout_Dash"
+add spell "Projectile_Jump_Panther"
+add spell "Shout_Hide"
+add spell "Shout_Disengage"
+add spell "Target_Help"

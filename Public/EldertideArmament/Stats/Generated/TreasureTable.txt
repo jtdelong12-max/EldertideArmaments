@@ -1,0 +1,331 @@
+- - - - - - - - - - - - - - - - - - - - -
+// Tutorial Chest and Eldertide Chest \\ 
+- - - - - - - - - - - - - - - - - - - - -
+
+new treasuretable "ELDER_Cache1"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Chronicles_Of_Eldertide_Book",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_1",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_2",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_3",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_4",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_5",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_6",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_7",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_8",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_9",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_10",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_11",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_12",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Ring_13",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_1",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_2",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_3",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_4",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_5",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_6",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_7",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_8",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ELDER_Amulet_9",1,0,0,0,0,0,0,0
+
+new treasuretable "TUT_Chest_Potions"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Cache",1,0,0,0,0,0,0,0
+
+- - - - - - - - - - - - - -
+// Journal Entries Pool \\
+- - - - - - - - - - - - - -
+
+new treasuretable "ELDER_Journals"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Journal_Pages_Warlock_01",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Warlock_02",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Warlock_03",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Paladin_01",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Paladin_02",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Paladin_03",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Sorceress_01",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Sorceress_02",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Journal_Pages_Sorceress_03",1,0,0,0,0,0,0,0
+
+- - - - - - - - - - - - - -
+// Consumables Loot Pool \\
+- - - - - - - - - - - - - -
+
+new treasuretable "ELDER_Consumables_Pool"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Elixir_Of_Eldertide_Blast",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_Eldertide_Rupture",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_Eldertide_Eruption",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Potion_Of_Terrain_Traversal",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_Unleashed_Chaos",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_Obscure_Necrosis",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_Charismatic_Brilliance",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Quicksilver_Strike_Elixir",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Potion_Of_Critical_Favour",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Potion_Of_Prismatic_Deflection",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Potion_Of_Balefire",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Lifewarden_Elixir",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_Dawnshade",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_The_Gods",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Elixir_Of_The_Thunder_Giant",1,0,0,0,0,0,0,0
+object category "I_OBJ_ELDER_Potion_Of_The_Archmagi",1,0,0,0,0,0,0,0
+
+- - - - - - - - - - - - - -
+// World Loot Locations \\
+- - - - - - - - - - - - - -
+
+new treasuretable "CRE_Expeditioner_Magic_Trade"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,6;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "CRE_RooftopExploration_Chest"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "CRE_GithQuartermistress_Trade"
+CanMerge 1
+new subtable "0,6;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "DEN_Entrance_Trade"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "DEN_BardChest"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_SocietyOfBrilliance_Hobgoblin"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_MycoVillage_AlchemistDwarf_Trade_Magic" 
+CanMerge 1
+new subtable "0,6;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_KC_GargoyleTrap_Chest"
+CanMerge 1
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_Tower_RingArcana_Chest"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "LOW_SorcerousSundries_Trade_Magic"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "LOW_MurderTribunal_Merchant"
+CanMerge 1
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "LOW_Legendary_Incubus_Treasure"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "LOW_CazadorPalace_DeadGirlChest_Treasure"
+CanMerge 1
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "LOW_CazadorsPlace_Treasure"
+CanMerge 1
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "LOW_DevilsFee_Diabolist_Trade_Magic"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "HAV_HarperQuarterMaster_Magic_Trade"
+CanMerge 1
+new subtable "0,6;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "MOO_BugBearvendor_Trade"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "MOO_InfernalTrader_SpecialStock"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "MOO_KethericCombat_Chest"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "MOO_KethhericPersonalBelonging_Chest"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "GOB_AftermathTrader"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "GOB_Minthara_Chest"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_Circus_Ringmaster_Chest"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_JungleOfChult_Arcanic_Treasure"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_Ironhand_Magic_Merchant"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_Dragon_Legendary_Trident_Treasure"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_Barn_FlamingFistGuard_Supplies"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_OrinsImpersonation_Smith"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_Ironhand_Magic_Merchant"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "SHA_Orthon_Chest"
+CanMerge 1
+new subtable "0,6;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "SHA_HiddenRoom_Magic_Chest"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+
+new treasuretable "SHA_AcademyAltar_Chest"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+
+new treasuretable "SCL_MasonGuild_Chest"
+CanMerge 1
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "SCL_DistilleryAlchemyChest_Treasure"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "SCL_GraveyardNecromancerPreparation_Chest"
+CanMerge 1
+new subtable "0,4;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "FOR_Goblin_OverlookChest"
+CanMerge 1
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "SCL_Supplies_NPC"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "Gold_Stash_Opulent"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
+
+new treasuretable "Gold_Stash_Wealthy"
+CanMerge 1
+new subtable "0,7;1,1"
+object category "T_ELDER_Journals",1,0,0,0,0,0,0,0
+new subtable "0,5;1,1"
+object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0

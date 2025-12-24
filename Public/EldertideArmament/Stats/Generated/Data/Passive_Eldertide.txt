@@ -1,0 +1,331 @@
+- - - - - - - - - - - - - - - -
+// Unarmed Elemental Damage \\
+- - - - - - - - - - - - - - - -
+
+new entry "Passive_ELDER_FlameOfAgni"
+type "PassiveData"
+data "DisplayName" "h1ec79a11g0c09g457bgb5efg6190dcdfcb4a;1"
+data "Description" "h5599a164g2512g4211g912fg0c8c67801dfb;1"
+data "Icon" "Icon_Unarmed_Attack_Fire"
+data "DescriptionParams" "DealDamage(1d4, Fire)"
+data "Boosts" "CharacterUnarmedDamage(1d4, Fire)"
+
+new entry "Passive_ELDER_SkadisGlacialStrike"
+type "PassiveData"
+data "DisplayName" "h10c16bb0gc919g460dg9a71g763644b54895;1"
+data "Description" "h5599a164g2512g4211g912fg0c8c67801dfb;1"
+data "Icon" "Icon_Unarmed_Attack_Cold"
+data "DescriptionParams" "DealDamage(1d4, Cold)"
+data "Boosts" "CharacterUnarmedDamage(1d4, Cold)"
+
+new entry "Passive_ELDER_RasSunfireGrasp"
+type "PassiveData"
+data "DisplayName" "h1c4247b4g99f7g465bg8bb9ge1200105d107;1"
+data "Description" "h5599a164g2512g4211g912fg0c8c67801dfb;1"
+data "Icon" "Icon_Unarmed_Attack_Radiant"
+data "DescriptionParams" "DealDamage(1d4, Radiant)"
+data "Boosts" "CharacterUnarmedDamage(1d4, Radiant)"
+
+new entry "Passive_ELDER_WrathOfTheSkyfather"
+type "PassiveData"
+data "DisplayName" "h84e3d9f2g5d55g49c0g87a6g455818d4d6b5;1"
+data "Description" "h5599a164g2512g4211g912fg0c8c67801dfb;1"
+data "Icon" "Icon_Unarmed_Attack_Lightning"
+data "DescriptionParams" "DealDamage(1d4, Lightning)"
+data "Boosts" "CharacterUnarmedDamage(1d4, Lightning)"
+
+new entry "Passive_ELDER_TlalocsKineticTremor"
+type "PassiveData"
+data "DisplayName" "h8fb6df0fgcba5g4be1gac53gb46d70b8a23c;1"
+data "Description" "h5599a164g2512g4211g912fg0c8c67801dfb;1"
+data "Icon" "Icon_Unarmed_Attack_Force"
+data "DescriptionParams" "DealDamage(1d4, Force)"
+data "Boosts" "CharacterUnarmedDamage(1d4, Force)"
+
+new entry "Passive_ELDER_MercurysMindstrike"
+type "PassiveData"
+data "DisplayName" "he09f027eg1b75g4a6dg92ebg86cec5afe810;1"
+data "Description" "h5599a164g2512g4211g912fg0c8c67801dfb;1"
+data "Icon" "Icon_Unarmed_Attack_Psychic"
+data "DescriptionParams" "DealDamage(1d4, Psychic)"
+data "Boosts" "CharacterUnarmedDamage(1d4, Psychic);"
+
+- - - - - - - - - - - -
+// Base And Stats \\
+- - - - - - - - - - - -
+
+new entry "Passive_ELDER_CelestialWarding"
+type "PassiveData"
+data "DisplayName" "h53964b4ag3119g4c78g83c8gdddf8e255534;1"
+data "Description" "h26fa81d1geadcg42eag9b59g060549cdc605;1"
+data "DescriptionParams" "DealDamage(1d4, Radiant)"
+data "Boosts" "Resistance(Radiant, Resistant);CharacterWeaponDamage(1d4, Radiant);"
+
+new entry "Passive_ELDER_VerdantArmory"
+type "PassiveData"
+data "DisplayName" "hdff836ccgb908g41aeg9c85gc0a54ef18268;1"
+data "Description" "h08fa2b42g4decg4ea2g8a8bg6acdd8f38e5c;1"
+data "Boosts" "Proficiency(MartialWeapons);Proficiency(LightArmor);Proficiency(MediumArmor);"
+
+new entry "Passive_ELDER_AbsoluteWarden"
+type "PassiveData"
+data "DisplayName" "h1a3719c9g1bc7g451ega0dcg186b766cf383;1"
+data "Description" "hd6ddbfb5gc209g4efcg942eg9f77fba2f927;1"
+data "Boosts" "Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(MartialWeapons);"
+
+new entry "Passive_ELDER_Drizzt_Legacy"
+type "PassiveData"
+data "DisplayName" "hbfcca039gb19cg49efg9bb2gc14f75c4ffd1;1"
+data "Description" "h728a3383gfe20g4042gb152g39713db0cafe;1"
+data "Boosts" "Proficiency(Scimitars);Proficiency(Daggers);Proficiency(Longbows);"
+
+new entry "Passive_ELDER_HellsBlessing"
+type "PassiveData"
+data "DisplayName" "h4b0df642gadf6g48e1g8276g36aeed997d26;1"
+data "Description" "h0fff165dg84e4g4934gba74g58c53abf9f67;1"
+data "DescriptionParams" "1"
+data "Boosts" "RollBonus(Attack, 1);SpellSaveDC(1)"
+
+new entry "Passive_ELDER_Attack_Boost"
+type "PassiveData"
+data "DisplayName" "ha86ba7cdg3df6g4d0bg91b3g9c591b6c1ea5;1"
+data "Description" "hf32607bfg5e7ag4b68gaf42gebea3e42d097;1"
+data "Boosts" "RollBonus(Attack, 1d4);"
+
+new entry "Passive_ELDER_Soul_Perception"
+type "PassiveData"
+data "DisplayName" "h6a9eae36g571ag4625g8f6dg04fb8cb10216;2"
+data "Description" "h414f569cg7a22g44acgb069gf003f8ec6b2f;3"
+data "DescriptionParams" "1"
+data "Boosts" "RollBonus(Attack, 1);Initiative(1);Skill(Perception, 1)"
+
+new entry "Passive_ELDER_EmotionImmunity"
+type "PassiveData"
+data "DisplayName" "hd4771205g8981g4b0dga8c1g5098ac82fbf8;1"
+data "Description" "h6429de63g66afg4268gbf88g2dea904cc0b1;1"
+data "Boosts" "StatusImmunity(SG_Frightened);StatusImmunity(SG_Fleeing);StatusImmunity(HIDEOUS_LAUGHTER)"
+
+- - - - - - - - - - - -
+// Other Passives \\
+- - - - - - - - - - - -
+
+new entry "Passive_ELDER_Dark_Vanish"
+type "PassiveData"
+data "DisplayName" "h2164c9edg7d47g4714g8c8egefd3448cafcc;1"
+data "Description" "habb9214cg271ag491dgadc8g6e5c71f44b08;1"
+data "DescriptionParams" "2"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "IsMeleeWeaponAttack() and Enemy() and IsKillingBlow()"
+data "StatsFunctors" "ApplyStatus(SWAP, INVISIBILITY, 100, 2);" 
+
+new entry "Passive_ELDER_Fools_Luck"
+type "PassiveData"
+data "DisplayName" "h4b778ab0g89fag472agae57ga9541c8fce3e;1"
+data "Description" "hb029fb74g7ebdg4f26gbb6cg42e5bc6a1585;2"
+data "Icon" "PassiveFeature_Evasion"
+data "Properties" "Highlighted"
+data "Boosts" "StatusImmunity(SURPRISED);Resistance(Psychic, Resistant);"
+
+new entry "Passive_ELDER_Bleeding_Edge"
+type "PassiveData"
+data "DisplayName" "ha70854b0ge89dg40c4gabe7gce83f5c69968;2"
+data "Description" "h87259758gdfc5g481bgb215g83c1169c50ac;2"
+data "Icon" "PassiveFeature_Generic_Blood"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "IsMeleeWeaponAttack() and not IsMiss()"
+data "StatsFunctors" "ApplyStatus(BLEEDING, 100, 2,,,,not SavingThrow(Ability.Constitution,15))"
+
+new entry "Passive_ELDER_DraconicRetaliation" 
+type "PassiveData"
+data "DisplayName" "h91162e50g4f9cg42d5ga9e1ga57b6654515b;1"
+data "Description" "h5ad9df10gf8e8g4fe0ga33eg7c60804a9b21;1"
+data "Icon" "Icon_DraconicRetaliation"
+data "Properties" "OncePerCombat"
+data "StatsFunctorContext" "OnTurn"
+data "Conditions" "Combat()"
+data "StatsFunctors" "ApplyStatus(DRAGONPLATE,100,1)"
+
+new entry "Passive_ELDER_Mindwarden"
+type "PassiveData"
+data "DisplayName" "hcdd2c978gaa12g4f40g83d9gf114453e73d3;2"
+data "Description" "h74349980g1961g41c9gb13fg7d54e6c0a64d;5"
+data "Icon" "PassiveFeature_ThoughtShield_PsychicResistance"
+data "DescriptionParams" "DealDamage(1d4, Psychic);1"
+data "BoostContext" "OnCreate"
+data "Boosts" "RollBonus(SavingThrow,1, Intelligence);RollBonus(SavingThrow,1, Wisdom);RollBonus(SavingThrow,1, Charisma)"
+data "StatsFunctorContext" "OnAttacked"
+data "Conditions" "IsLastConditionRollSuccess(ConditionRollType.ConditionSavingThrow) and not Self() and Enemy() and Character() and IsSavingThrow() and Combat()"
+data "StatsFunctors" "DealDamage(SWAP, 1d4, Psychic,Magical)"
+
+new entry "Passive_ELDER_Predator_Precision"
+type "PassiveData"
+data "DisplayName" "h9027b76fg4e49g4328g87e3gc91ba006c2f6;1"
+data "Description" "h9fed6f48g6466g4bb7g89cfg1577fcbf76f7;5"
+data "DescriptionParams" "2"
+data "BoostContext" "OnCreate;OnEquip"
+data "Boosts" "IF(not HasMaxHP()):RollBonus(Attack,2)"
+
+new entry "Passive_ELDER_Heal_Selune_Grace"
+type "PassiveData"
+data "DisplayName" "h0df13decga55dg470egb140g8b9dc2c50829;2"
+data "Description" "hc55f4028g4183g4c42g9e2cg3d9183b91d0c;3"
+data "DescriptionParams" "RegainHitPoints(2)"
+
+new entry "Passive_ELDER_Infernal_Defense"
+type "PassiveData"
+data "DisplayName" "ha83b6365g6ff1g4266g996bge9fe3c7611a5;1"
+data "Description" "hb6cc3a06gbe30g4fc9gada9gc8d15a7d9f8e;1"
+data "DescriptionParams" "DealDamage(2d8,Fire)"
+data "Icon" "Spell_Evocation_FireShield_Warm"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnAttacked"
+data "Conditions" "IsMeleeAttack() and HasDamageEffectFlag(DamageFlags.Hit)"
+data "StatsFunctors" "ApplyStatus(PASSIVE_FIRE_SHIELD_WARM,100,0);ApplyStatus(SELF,PASSIVE_FIRE_SHIELD_WARM_ATTACKER,100,0);DealDamage(SWAP,2d8, Fire,Magical)"
+
+- - - - - - - -
+// Githyanki \\
+- - - - - - - -
+
+new entry "Passive_ELDER_Astral_Surge"
+type "PassiveData"
+data "DisplayName" "he3e8ad76g9c2fg4a7ega694geae2b178dde6;1"
+data "Description" "hebb25666g7b46g41edgbd6agbc01795d36b2;1"
+data "DescriptionParams" "RegainHitPoints(2d6)"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "IsMeleeWeaponAttack() and Enemy() and IsKillingBlow()"
+data "StatsFunctors" "ApplyStatus(SELF,PASSIVE_ASTRAL_SURGE_HEAL_VFX,100,0);RegainHitPoints(SELF,2d6)"
+
+- - - - - - - - -
+// Bloodborne \\
+- - - - - - - - -
+
+new entry "Passive_ELDER_Executioner_Movement"
+type "PassiveData"
+data "DisplayName" "h72f19a23g62e9g43a4g8b6dg7d55106b5cd6;1"
+data "Description" "h828cba95g0ac0g4f92g8c8ag7d4f10b5e2c7;1"
+data "StatsFunctorContext" "OnDamage"
+data "StatsFunctors" "IF(IsKillingBlow()):RestoreResource(SELF, Movement, 100%, 0)"
+
+new entry "Passive_ELDER_Tainted_Strike"
+type "PassiveData"
+data "DisplayName" "h65ae56d2ge4e6g4aedgacaegf94a22477694;2"
+data "Description" "hde60770bg4d6dg4365g817bge8640be21b58;2"
+data "DescriptionParams" "DealDamage(1d8,Necrotic)"
+data "Icon" "PassiveFeature_Lifedrinker"
+data "Properties" "Highlighted"
+data "BoostContext" "OnCreate"
+data "Boosts" "IF(IsMeleeWeaponAttack()):CharacterWeaponDamage(1d8,Necrotic,Magical)"
+data "StatsFunctorContext" "OnDamage"
+
+new entry "Passive_ELDER_Bloodborne_Curse"
+type "PassiveData"
+data "DisplayName" "hdfe5e57ageacag4bd8g8985g7e7a54e37774;2"
+data "Description" "h10e47d81gf7fbg498fg9302gcd6d2ae1065c;1"
+data "DescriptionParams" "DealDamage(1d4,Necrotic)"
+data "Properties" "Highlighted"
+data "BoostContext" "OnCreate"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "HasDamageEffectFlag(DamageFlags.Hit)"
+data "StatsFunctors" "IF(not SavingThrow(Ability.Wisdom, SourceSpellDC())):ApplyStatus(BLOODBORNE_CURSE,100,3)"
+
+- - - - - - -
+// Witcher \\
+- - - - - - -
+
+new entry "Passive_ELDER_Quen_Shield"
+type "PassiveData"
+data "DisplayName" "h062baebdg1703g4ae1gb5afga4f6ea22b892;1"
+data "Description" "h48849aebgef79g4a24ga2a6g992d0c238444;1"
+data "DescriptionParams" "DealDamage(1d6,Force)"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnAttacked"
+data "Conditions" "IsMeleeAttack() and HasDamageEffectFlag(DamageFlags.Hit)"
+data "StatsFunctors" "DealDamage(SWAP,1d6,Force,Magical)"
+
+new entry "Passive_ELDER_Witcher_Signs"
+type "PassiveData"
+data "DisplayName" "hd3e36202g9f75g46b6g8917g38482b848eba;2"
+data "Description" "h7da2cc1cg3894g4ee1ga75bga3af814d83df;2"
+data "Icon" "Icon_Passive_Witcher_Signs"
+data "Properties" "Highlighted"
+data "Boosts" "UnlockSpell(ELDER_Zone_Igni);UnlockSpell(ELDER_Zone_Aard);UnlockSpell(ELDER_Shout_Quen);UnlockSpell(ELDER_Target_Yrden_Trap);UnlockSpell(ELDER_Target_Axii)"
+
+new entry "Passive_ELDER_Trials_Fortitude"
+type "PassiveData"
+data "DisplayName" "h970178bdgc7bcg41d9g9644g00adda6508f4;2"
+data "Description" "hdbb25633gf3e7g47f9g848agcceda4a368ab;2"
+data "Icon" "Icon_Passive_Trials_Fortitude"
+data "Properties" "Highlighted"
+data "Boosts" "Initiative(2);Resistance(Poison,Resistant)"
+
+- - - - - - - -
+// Thor Fury \\
+- - - - - - - -
+
+new entry "PassiveThorFury"
+type "PassiveData"
+data "DisplayName" "hda0d1899g1e6fg42ddg8c49g45772b23b6f2;1"
+data "Description" "hebd487acg33afg44c0gb83eg340d2afad113;2"
+data "Properties" "IsHidden"
+data "BoostContext" "OnEquip;OnCreate"
+data "Boosts" "Advantage(Ability, Strength);Advantage(SavingThrow, Strength);Resistance(Lightning, Resistant);Resistance(Thunder, Resistant);Resistance(Slashing, Resistant);Resistance(Piercing, Resistant);Resistance(Bludgeoning, Resistant);IF(IsAttackType(AttackType.MeleeWeaponAttack)):CharacterWeaponDamage(LevelMapValue(FuryDamage),Lightning);EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(FuryDamage),Lightning);CharacterUnarmedDamage(LevelMapValue(FuryDamage),Lightning);FallDamageMultiplier(0.5)"
+
+new entry "ActionsThorFury"
+type "PassiveData"
+data "DisplayName" "h18d47c1bg8391g4c86gb6f7gba7d19a21656;2"
+data "Description" "h03d5988cg7c2fg4cbcgaeb2g8c5e672980fd;5"
+data "Icon" "Action_Barbarian_Rage_EagleTotem"
+data "Properties" "IsHidden"
+data "Boosts" "UnlockSpell(ELDER_Shout_EirsBlessing);UnlockSpell(ELDER_Projectile_MightyDive);UnlockSpell(ELDER_Rush_AsgardianCharge);UnlockSpell(ELDER_Target_Lightning_Punch);UnlockSpell(ELDER_Target_MightOfTheSkies)"
+
+new entry "Passive_ELDER_Unyielding_Tempest"
+type "PassiveData"
+data "DisplayName" "hcbdd1c00g5c78g427agb806g72b427c23110;2"
+data "Description" "hf4860c57gedc7g4523gba67gbd00ab2af346;4"
+data "DescriptionParams" "2"
+data "Boosts" "IF(IsMeleeAttack() and IsWeaponAttack() and HasEnemyWithinRange('SG_Incapacitated', 3, nil, 2, context.Target, context.Source)):Advantage(AttackRoll);"
+
+new entry "Passive_ELDER_Stormlord_Mantle"
+type "PassiveData"
+data "DisplayName" "hd3c537b3g1141g4e40ga2eag2ce308d30161;2"
+data "Description" "he4aa2c59g4cb7g462bgacc6ge268d6768c37;3"
+data "DescriptionParams" "4"
+data "Boosts" "ProficiencyBonus(Skill,Persuasion);ExpertiseBonus(Persuasion);ProficiencyBonus(Skill,Intimidation);ExpertiseBonus(Intimidation)"
+
+new entry "Thor_Fury_NoHeavyArmor_VFX"
+type "PassiveData"
+data "DisplayName" "h1ecbca08g3b59g4779g8baeg6de94cc500dc;1"
+data "Description" "h8d044205g6bddg4ff1gbe10gcfa028dd3fe5;1"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnEquip"
+data "Conditions" "not HasHeavyArmor(context.Source) and HasStatus('SG_Rage', context.Source)"
+data "StatsFunctors" "ApplyStatus(SELF,THOR_FURY_NO_HEAVY_ARMOR_VFX,100,-1)"
+
+- - - - - - - - - - - -
+// Hoarfrost Counter \\
+- - - - - - - - - - - -
+
+new entry "Passive_ELDER_HoarfrostCounter"
+type "PassiveData"
+data "DisplayName" "h8c7f0321gb7d3g4dd4gb8d2ge7c4e2f805b7;1"
+data "Description" "hd26ee961gf8cbg4981g95b7g1210c3fec9f2;2"
+data "DescriptionParams" "DealDamage(5,Cold)"
+data "Icon" "PassiveFeature_ArmorOfAgathys"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnAttacked"
+data "Conditions" "IsMeleeAttack() and HasDamageEffectFlag(DamageFlags.Hit) and not SpellTypeIs(SpellType.Throw)"
+data "StatsFunctors" "ApplyStatus(VFX_HOARFROSTCOUNTER,100,0);ApplyStatus(SELF,VFX_ATTACKER_HOARFROSTCOUNTER,100,0);DealDamage(SWAP,5,Cold,Magical)"
+
+- - - - - - - - - - - -
+// Dreadful Backlash \\
+- - - - - - - - - - - -
+
+new entry "Passive_ELDER_DreadfulBacklash_Unlock"
+type "PassiveData"
+data "DisplayName" "h6b8bcd59g88cbg41bdg81f1g16fa6e301f56;1"
+data "Description" "h3ba517c2gc301g46d6gb46fgcef6a11eee79;1"
+data "DescriptionParams" "DealDamage(2d10,Psychic)"
+data "Icon" "Icon_PassiveFeature_DreadfulBacklash"
+data "Boosts" "UnlockInterrupt(ELDER_Interrupt_DreadfulBacklash)"

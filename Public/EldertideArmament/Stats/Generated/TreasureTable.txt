@@ -1,3 +1,21 @@
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Eldertide Armaments - Treasure Table Configuration
+// 
+// This file defines loot distribution for rings, amulets, potions, and books.
+// 
+// Subtable syntax: "X,Y" where X is minimum and Y is maximum items to drop
+//   "1,1"     = Always drops exactly 1 item (100% chance)
+//   "0,5;1,1" = 50% chance to drop 1 item (0-5 range with 1 guaranteed at midpoint)
+//   "0,7;1,1" = ~70% chance to drop 1 item
+//   "0,4;1,1" = ~40% chance to drop 1 item
+//
+// CanMerge 1 = Allows this table to merge with other mods' treasure tables
+//              This prevents conflicts and ensures compatibility
+//
+// Each item should only spawn ONCE per playthrough in the immersive version.
+// The tutorial chest version provides all items guaranteed.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 - - - - - - - - - - - - - - - - - - - - -
 // Tutorial Chest and Eldertide Chest \\ 
 - - - - - - - - - - - - - - - - - - - - -

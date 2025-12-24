@@ -1,0 +1,61 @@
+# Build artifacts
+*.pak
+*.pak.tmp
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*~
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# BG3 Mod Manager files
+modsettings.lsx.backup
+modsettings.lsx.old
+
+# Test files
+/tmp/
+test/
+tests/
+
+# Compiled LSX files (if you're using source LSF files)
+*.lsf
+
+# Log files
+*.log
+
+# Package manager files
+node_modules/
+package-lock.json
+yarn.lock
+
+# Distribution files
+dist/
+build/
+releases/
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archives (don't commit zips of the mod)
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz

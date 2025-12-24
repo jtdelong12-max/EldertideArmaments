@@ -220,11 +220,18 @@ Check the Nexus Mods posts tab for user-reported mod lists and compatibility exp
 
 ### Current Version Support
 
-- **Latest BG3 Patches**: ✅ Fully supported (check Nexus for current compatibility)
+- **BG3 Hotfix #35 (4.1.1.6995620 / PS5: 4.1.1.7023236)**: ✅ Fully supported (Version 1.6.4+)
+- **BG3 Version 4.0.6.5 and earlier**: ⚠️ Use Eldertide Armaments version 1.6.3 or earlier
 - **Previous Patches**: ⚠️ May work but not officially supported
 - **Future Patches**: ⚠️ May require updates
 
 **Note**: Game version information can become outdated quickly. Always check the [Nexus Mods page](https://www.nexusmods.com/baldursgate3/mods/3596) for the latest compatibility information with your specific BG3 patch version.
+
+**Version 1.6.4 Changes (2025-12-24)**:
+- Updated for BG3 Hotfix #35 compatibility
+- Fixed Hellfire Pact UI corruption bug in temporary camps
+- Fixed Astral Champion's Ring summon dismissal freeze
+- Various localization improvements
 
 ### After Game Updates
 

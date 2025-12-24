@@ -267,11 +267,6 @@ CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_ELDER_Witch_Queen_Alchemy_Book",1,0,0,0,0,0,0,0
 
-new treasuretable "WYR_Ironhand_Magic_Merchant"
-CanMerge 1
-new subtable "0,5;1,1"
-object category "T_ELDER_Consumables_Pool",1,0,0,0,0,0,0,0
-
 new treasuretable "SHA_Orthon_Chest"
 CanMerge 1
 new subtable "0,6;1,1"

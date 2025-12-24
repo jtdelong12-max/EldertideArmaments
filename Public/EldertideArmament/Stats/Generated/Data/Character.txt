@@ -30,7 +30,6 @@ using "Stats_Huginn_Level_4"
 data "Level" "7"
 data "Armor" "14"
 data "Vitality" "32"
-data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;CompanionsBond_Creature"
 
 new entry "Stats_Huginn_Level_10"
 type "Character"
@@ -74,7 +73,6 @@ using "Stats_Aquila_Level_4"
 data "Level" "7"
 data "Armor" "12"
 data "Vitality" "56"
-data "Passives" "AttackOfOpportunity;DarknessRules;PackTactics;ShortResting;CompanionsBond_Creature"
 
 new entry "Stats_Aquila_Level_10"
 type "Character"
@@ -114,7 +112,6 @@ type "Character"
 using "Stats_Guenhwyvar_Level_4"
 data "Level" "7"
 data "Vitality" "57"
-data "Passives" "AttackOfOpportunity;DarknessRules;Darkvision;ShortResting;FelineFall"
 
 new entry "Stats_Guenhwyvar_Level_10"
 type "Character"
@@ -151,8 +148,6 @@ using "Stats_Shapeshift_SaberToothTiger_Level_4"
 data "Strength" "17"
 data "Armor" "14"
 data "Vitality" "55"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
-data "Passives" "FelineFall;AttackOfOpportunity;DarknessRules;Darkvision"
 
 new entry "Stats_Shapeshift_SaberToothTiger_Level_10"
 type "Character"
@@ -160,8 +155,6 @@ using "Stats_Shapeshift_SaberToothTiger_Level_7"
 data "Strength" "18"
 data "Armor" "15"
 data "Vitality" "74"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
-data "Passives" "FelineFall;AttackOfOpportunity;DarknessRules;Darkvision"
 
 - - - - - - - - - - - - - - -
 // Shapeshifter - Owlbear \\
@@ -191,18 +184,13 @@ type "Character"
 using "Stats_Shapeshift_Owlbear_Level_4"
 data "Strength" "19"
 data "Vitality" "59"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
 data "Passives" "Multiattack_Owlbear;AttackOfOpportunity;Darkvision;DarknessRules"
-data "DarkvisionRange" "18"
 
 new entry "Stats_Shapeshift_Owlbear_Level_10"
 type "Character"
 using "Stats_Shapeshift_Owlbear_Level_7"
 data "Constitution" "17"
 data "Vitality" "74"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
-data "Passives" "Multiattack_Owlbear;AttackOfOpportunity;Darkvision;DarknessRules"
-data "DarkvisionRange" "18"
 
 - - - - - - - - - - - - -
 // Shapeshifter - Bear \\
@@ -230,16 +218,12 @@ type "Character"
 using "Stats_Shapeshift_BlackBear_Level_4"
 data "Strength" "19"
 data "Vitality" "61"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
-data "Passives" "AttackOfOpportunity;DarknessRules;WildShape_ExtraAttack"
 
 new entry "Stats_Shapeshift_BlackBear_Level_10"
 type "Character"
 using "Stats_Shapeshift_BlackBear_Level_7"
 data "Constitution" "16"
 data "Vitality" "85"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
-data "Passives" "AttackOfOpportunity;DarknessRules;WildShape_ExtraAttack"
 
 - - - - - - - - - -
 // Male Cambion \\
@@ -653,7 +637,7 @@ data "Class" "Fighter"
 data "SpellCastingAbility" "Intelligence"
 data "DefaultBoosts" "ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Constitution)"
 data "ArmorType" "Cloth"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:3:3:1;SpellSlot:1:1:2
+data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:3:3:1;SpellSlot:1:1:2"
 data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;UnlockedSpellSlotLevel1;ExtraAttack;Indomitable;FightingStyle_Dueling"
 data "Proficiency Group" "LightArmor;MediumArmor;HeavyArmor;Shields;SimpleWeapons;MartialWeapons"
 
@@ -669,7 +653,7 @@ data "Wisdom" "10"
 data "Charisma" "10"
 data "Armor" "13"
 data "Vitality" "68"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:2:2:2
+data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:2:2:2"
 data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2;ExtraAttack_2;Indomitable;FightingStyle_Dueling;WarMagic"
 
 new entry "Stats_Githyanki_Fighter_Level_10"
@@ -684,7 +668,7 @@ data "Wisdom" "10"
 data "Charisma" "10"
 data "Armor" "14"
 data "Vitality" "94"
-data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:3:3:2
+data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:3:3:2"
 data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2;ExtraAttack_2;Indomitable;FightingStyle_Dueling;WarMagic"
 
 - - - - - - - - - - - -

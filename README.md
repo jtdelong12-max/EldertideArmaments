@@ -10,6 +10,8 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - **16 Unique Potions and Elixirs** with special effects
 - **Journal Pages and Books** for lore and immersion
 
+📖 **[View Complete Item List](ITEMS.md)** - Detailed descriptions of all rings, amulets, and consumables
+
 ### Key Highlights
 - Each item has unique visual effects powered by VFX from Vlad's Grimoire
 - Custom spells and abilities exclusive to each piece of equipment
@@ -18,6 +20,11 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - Alternative tutorial chest version for easy testing
 
 ## Installation
+
+### Quick Links
+- 📋 **[Detailed Installation Guide](INSTALLATION.md)** - Step-by-step instructions for all skill levels
+- 🔧 **[Compatibility Guide](COMPATIBILITY.md)** - Mod compatibility and load order information
+- ⚖️ **[Balance Guide](BALANCE.md)** - Understanding item power and design philosophy
 
 ### Requirements
 - Baldur's Gate 3 (Latest Patch)

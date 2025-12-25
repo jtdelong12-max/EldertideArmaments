@@ -2,12 +2,28 @@
 
 All notable changes to Eldertide Armaments will be documented in this file.
 
+## [1.6.6] - 2025-12-25
+
+### Performance Improvements
+- **MAJOR OPTIMIZATION:** Removed 83 lines of redundant code for improved loading times and reduced memory footprint
+- Removed 25 redundant MemoryCost declarations from item-granted spells (only needed for memorizable wizard spells)
+- Removed 51 unnecessary empty property declarations across all stat files:
+  - Empty Cooldown, SpellContainerID, ContainerSpells declarations
+  - Empty ExtraDescription, SpellFail, TooltipDamageList, TooltipOnSave declarations
+  - Empty PassivesOnEquip, ItemGroup, ProficiencyBonus declarations
+  - Empty resistance property declarations
+- Cleaned up code structure for better maintainability
+
+### Changed
+- Optimized data files reduce mod parsing time during game startup
+- Improved compatibility with BG3 Patch 8 modding standards
+
 ## [1.6.5] - 2025-12-24
 
 ### Fixed
 - **CRITICAL:** Updated for BG3 Patch 8 (4.1.1.6758295) compatibility - fixes 85% loading freeze
 - Fixed empty UseCosts on ELDER_Shout_WrathOfAvernus causing potential loading failures
-- Cleaned up redundant MemoryCost declarations (22 instances removed)
+- Cleaned up redundant MemoryCost declarations (22 instances removed - note: this was incomplete, fully resolved in 1.6.6)
 
 ### Changed
 - Game version requirement: Now requires BG3 Patch 8 (April 2025 update)

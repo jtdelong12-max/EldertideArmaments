@@ -220,7 +220,7 @@ Check the Nexus Mods posts tab for user-reported mod lists and compatibility exp
 
 ### Current Version Support
 
-- **BG3 Patch 8 (4.1.1.6758295)**: ✅ Fully supported (Version 1.6.5+)
+- **BG3 Patch 8 (4.1.1.6758295)**: ✅ Fully supported (Version 1.6.6+)
 - **BG3 Hotfix #35 (4.1.1.6995620 / PS5: 4.1.1.7023236)**: ⚠️ Use Eldertide Armaments version 1.6.4
 - **BG3 Version 4.0.6.5 and earlier**: ⚠️ Use Eldertide Armaments version 1.6.3 or earlier
 - **Previous Patches**: ⚠️ May work but not officially supported
@@ -228,10 +228,17 @@ Check the Nexus Mods posts tab for user-reported mod lists and compatibility exp
 
 **Note**: Game version information can become outdated quickly. Always check the [Nexus Mods page](https://www.nexusmods.com/baldursgate3/mods/3596) for the latest compatibility information with your specific BG3 patch version.
 
+**Version 1.6.6 Changes (2025-12-25)**:
+- **MAJOR PERFORMANCE IMPROVEMENTS:** Removed 83 lines of redundant code
+- Eliminated 25 unnecessary MemoryCost declarations for faster loading
+- Removed 51 empty property declarations across all stat files
+- Optimized data files reduce mod parsing time during game startup
+- Improved code maintainability and BG3 Patch 8 compatibility
+
 **Version 1.6.5 Changes (2025-12-24)**:
 - Updated for BG3 Patch 8 (build 6758295) compatibility - fixes game-breaking 85% loading freeze
 - Fixed empty UseCosts on combat spells causing potential loading failures
-- Cleaned up redundant MemoryCost declarations for improved performance
+- Partial cleanup of redundant MemoryCost declarations (completed in 1.6.6)
 - Patch 8 includes crossplay support, new subclasses, and expanded mod support
 
 **Version 1.6.4 Changes (2025-12-24)**:

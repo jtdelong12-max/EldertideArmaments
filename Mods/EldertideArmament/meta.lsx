@@ -22,10 +22,10 @@
                     <attribute id="Tags" type="LSString" value=""/>
                     <attribute id="Type" type="FixedString" value="Add-on"/>
 					<attribute id="UUID" type="FixedString" value="22b848d1-5fff-4f76-a4f8-8461721e6112"/>
-					<attribute id="Version" type="int64" value="36873228391546882"/>
+					<attribute id="Version" type="int64" value="36873234833997824"/>
                     <children>
                         <node id="PublishVersion">
-                            <attribute id="Version" type="int64" value="36873228391546882"/>
+                            <attribute id="Version" type="int64" value="36873234833997824"/>
                         </node>
                         <node id="Scripts"/>
                         <node id="TargetModes">

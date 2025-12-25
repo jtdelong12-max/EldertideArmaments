@@ -31,10 +31,6 @@ data "ValueOverride" "150"
 data "Rarity" "VeryRare"
 data "Weight" "0.5"
 data "Vitality" "25"
-data "BludgeoningResistance" ""
-data "SlashingResistance" ""
-data "FireResistance" ""
-data "RadiantResistance" ""
 
 new entry "OBJ_ELDER_Journal_Pages_Warlock_01"
 type "Object"
@@ -108,10 +104,6 @@ data "ValueOverride" "150"
 data "Rarity" "VeryRare"
 data "Weight" "0.5"
 data "Vitality" "25"
-data "BludgeoningResistance" ""
-data "SlashingResistance" ""
-data "FireResistance" ""
-data "RadiantResistance" ""
 
 - - - - - - -
 // Potions \\

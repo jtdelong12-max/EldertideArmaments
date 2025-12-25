@@ -205,7 +205,12 @@ When reporting issues, please include:
 
 ## Version
 
-Current Version: 1.6.5 (Check meta.lsx for exact version)
+Current Version: 1.6.6 (Check meta.lsx for exact version)
+
+### Recent Updates (v1.6.6 - 2025-12-25)
+- **Major Performance Improvements**: Removed 83 lines of redundant code for faster loading times
+- Optimized data files for improved game startup performance
+- Enhanced BG3 Patch 8 compatibility
 
 ## Links
 

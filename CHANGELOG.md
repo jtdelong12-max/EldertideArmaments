@@ -2,6 +2,21 @@
 
 All notable changes to Eldertide Armaments will be documented in this file.
 
+## [1.6.5] - 2025-12-24
+
+### Fixed
+- **CRITICAL:** Updated for BG3 Patch 8 (4.1.1.6758295) compatibility - fixes 85% loading freeze
+- Fixed empty UseCosts on ELDER_Shout_WrathOfAvernus causing potential loading failures
+- Cleaned up redundant MemoryCost declarations (22 instances removed)
+
+### Changed
+- Game version requirement: Now requires BG3 Patch 8 (April 2025 update)
+- Improved spell definition standards for better compatibility
+- Updated mod version to 36873228391546882
+
+### Known Issues
+- If upgrading from v1.6.4 or earlier, you may need to start a new game or load a save from before the mod was installed
+
 ## [1.6.4] - 2025-12-24
 
 ### Fixed

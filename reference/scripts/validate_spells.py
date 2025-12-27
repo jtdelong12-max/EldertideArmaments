@@ -185,12 +185,13 @@ def validate_use_costs(entry: Dict[str, str], file_path: str) -> List[Validation
     if "UseCosts" in entry:
         costs = entry["UseCosts"]
         
-        # Check for common format issues
-        if "," in costs and ";" not in costs:
+        # Check for malformed costs with commas in wrong places
+        # Pattern: matches something like "Ability:1,Ability" which is wrong
+        if re.search(r'\w+:\d+,\s*\w+(?::|$)', costs):
             errors.append(ValidationError(
                 file_path, entry["_start_line"], entry["_name"],
                 "UseCosts", costs,
-                "UseCosts should use semicolons (;) not commas (,) to separate costs"
+                "UseCosts should use semicolons (;) not commas (,) to separate multiple costs"
             ))
         
         # Validate cost format

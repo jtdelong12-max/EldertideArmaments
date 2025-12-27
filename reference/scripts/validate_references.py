@@ -181,8 +181,9 @@ def validate_status_references(directory: str) -> List[ReferenceError]:
     print("🔍 Finding all status references...")
     # StatusOnEquip
     status_refs = find_references(directory, r'data "StatusOnEquip" "([^"]+)"', "StatusOnEquip")
-    # ApplyStatus calls
-    status_refs.extend(find_references(directory, r'ApplyStatus\([^,]+,([^,)]+)', "ApplyStatus"))
+    # ApplyStatus calls - capture first two parameters to handle both TARGET and direct status names
+    # Format: ApplyStatus(TARGET,STATUS) or ApplyStatus(STATUS,duration,turns)
+    status_refs.extend(find_references(directory, r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?', "ApplyStatus"))
     print(f"   Found {len(status_refs)} status references")
     print()
     

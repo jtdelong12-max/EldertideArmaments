@@ -128,9 +128,6 @@ EldertideArmaments/
   - **README.md** - Usage guide and structure documentation
 - **Audience**: Modders, quality assurance, contributors
 - **Special**: Similar to AI-Allies repository approach for organizing game data
-- **Audience**: Users tracking updates
-- **Length**: ~70 lines
-- **Special**: Version checking guide
 
 ## Cross-References
 
@@ -214,8 +211,6 @@ All documentation files are cross-referenced:
 - ✅ Contributing (Guidelines included)
 - ✅ Version tracking (Changelog)
 - ✅ Validation (Reference data and scripts)
-- ✅ Contributing (Guidelines included)
-- ✅ Version tracking (Changelog)
 
 ## Next Steps
 

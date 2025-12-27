@@ -19,6 +19,10 @@ import re
 from pathlib import Path
 from typing import List, Dict, Tuple
 
+# Configuration constants
+MAX_ABILITY_CAP = 30  # Maximum reasonable ability score cap
+MAX_ABILITY_BONUS = 10  # Maximum reasonable ability bonus
+
 # Valid values from BG3 vanilla data
 VALID_USING_TYPES = {
     "_Ring", "_Amulet", "_Helmet", "_Boots", "_Gloves", "_Armor", 
@@ -193,15 +197,15 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
                     "error"
                 ))
             
-            if cap > 30:
+            if cap > MAX_ABILITY_CAP:
                 errors.append(ValidationError(
                     file_path, entry["_start_line"], entry["_name"],
                     "Boosts", match.group(0),
-                    f"Ability cap {cap} exceeds reasonable maximum (30). Consider balance.",
+                    f"Ability cap {cap} exceeds reasonable maximum ({MAX_ABILITY_CAP}). Consider balance.",
                     "warning"
                 ))
             
-            if bonus > 10:
+            if bonus > MAX_ABILITY_BONUS:
                 errors.append(ValidationError(
                     file_path, entry["_start_line"], entry["_name"],
                     "Boosts", match.group(0),
@@ -252,6 +256,7 @@ def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
     """Validate a single item file."""
     errors = []
     valid_count = 0
+    entry_errors = {}  # Track errors per entry name
     
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -269,18 +274,23 @@ def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         # Find item entry (Armor type)
         if line.startswith('new entry') and 'type "Armor"' in ''.join(lines[i:i+5]):
             entry, next_i = parse_item_entry(lines, i)
+            entry_name = entry.get("_name", "")
             
-            # Run all validations
-            errors.extend(validate_using_clause(entry, file_path))
-            errors.extend(validate_uuid(entry, file_path))
-            errors.extend(validate_object_category(entry, file_path))
-            errors.extend(validate_rarity(entry, file_path))
-            errors.extend(validate_boosts(entry, file_path))
-            errors.extend(validate_value(entry, file_path))
+            # Run all validations and collect errors for this entry
+            entry_errors[entry_name] = []
+            entry_errors[entry_name].extend(validate_using_clause(entry, file_path))
+            entry_errors[entry_name].extend(validate_uuid(entry, file_path))
+            entry_errors[entry_name].extend(validate_object_category(entry, file_path))
+            entry_errors[entry_name].extend(validate_rarity(entry, file_path))
+            entry_errors[entry_name].extend(validate_boosts(entry, file_path))
+            entry_errors[entry_name].extend(validate_value(entry, file_path))
+            
+            # Add entry errors to global list
+            errors.extend(entry_errors[entry_name])
             
             # Count as valid if no errors (warnings OK)
-            entry_errors = [e for e in errors if e.entry_name == entry["_name"] and e.severity == "error"]
-            if not entry_errors:
+            has_errors = any(e.severity == "error" for e in entry_errors[entry_name])
+            if not has_errors:
                 valid_count += 1
             
             i = next_i

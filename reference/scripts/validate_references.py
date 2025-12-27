@@ -47,7 +47,20 @@ def parse_directory_single_pass(directory: str) -> ParsedData:
     data = ParsedData()
     path = Path(directory)
     
-    for file_path in path.rglob("*.txt"):
+    # Collect all files first for progress tracking
+    txt_files = list(path.rglob("*.txt"))
+    total_files = len(txt_files)
+    
+    if total_files == 0:
+        return data
+    
+    print(f"📂 Parsing {total_files} file(s)...")
+    
+    for idx, file_path in enumerate(txt_files, 1):
+        # Show progress every 5 files or for the last file
+        if idx % 5 == 0 or idx == total_files:
+            print(f"   Progress: {idx}/{total_files} files processed...")
+        
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 lines = f.readlines()

@@ -25,7 +25,7 @@ _UUID_PATTERN = re.compile(r'data "RootTemplate" "([^"]+)"')
 _UNLOCK_SPELL_PATTERN = re.compile(r'UnlockSpell\(([^)]+)\)')
 _PASSIVES_ON_EQUIP_PATTERN = re.compile(r'data "PassivesOnEquip" "([^"]+)"')
 _STATUS_ON_EQUIP_PATTERN = re.compile(r'data "StatusOnEquip" "([^"]+)"')
-_APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)')
+_APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?')
 
 class ParsedData:
     """Container for all parsed data from directory."""
@@ -98,8 +98,14 @@ def parse_directory_single_pass(directory: str) -> ParsedData:
                 
                 # Find ApplyStatus references
                 for match in _APPLY_STATUS_PATTERN.finditer(line):
+                    # ApplyStatus can have format: ApplyStatus(STATUS,...) or ApplyStatus(TARGET,STATUS,...)
+                    # Try first parameter
                     status_name = match.group(1)
                     data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
+                    # Try second parameter if it exists
+                    if match.group(2):
+                        status_name = match.group(2)
+                        data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
             
         except Exception:
             continue
@@ -162,11 +168,15 @@ def validate_status_references(parsed_data: ParsedData) -> List[ReferenceError]:
     errors = []
     
     for file_path, line_num, entry_name, status_name in parsed_data.status_refs:
-        if not status_name or status_name in ["SELF", "TARGET", "SOURCE"]:
+        if not status_name or status_name in ["SELF", "TARGET", "SOURCE", "SWAP"]:
             continue
             
         # Clean up the status name (remove quotes, whitespace)
         status_name = status_name.strip().strip('"\'')
+        
+        # Skip if it's a number (duration parameter)
+        if status_name.isdigit():
+            continue
         
         if status_name and status_name not in parsed_data.statuses:
             errors.append(ReferenceError(

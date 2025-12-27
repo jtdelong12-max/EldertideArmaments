@@ -1,0 +1,207 @@
+{
+  "repository": {
+    "name": "EldertideArmaments",
+    "owner": "jtdelong12-max",
+    "type": "BG3-Mod",
+    "compatibility": {
+      "ai_allies": true,
+      "ai_allies_version": "1.0.0"
+    }
+  },
+  "metadata": {
+    "version": "1.6.6",
+    "last_updated": "2025-12-27",
+    "bg3_patch": "Patch 8 (Build 6758295)",
+    "mod_type": "Equipment",
+    "mod_uuid": "22b848d1-5fff-4f76-a4f8-8461721e6112"
+  },
+  "structure": {
+    "reference_data": {
+      "path": "reference/vanilla_data/",
+      "description": "Vanilla BG3 reference examples for validation",
+      "categories": [
+        "spells",
+        "items",
+        "status_effects",
+        "passives",
+        "Gustav"
+      ]
+    },
+    "validation_scripts": {
+      "path": "reference/scripts/",
+      "description": "Automated validation and optimization tools",
+      "scripts": [
+        {
+          "name": "validate_spells.py",
+          "purpose": "Validate spell definitions against BG3 standards",
+          "usage": "python3 validate_spells.py <path>"
+        },
+        {
+          "name": "validate_items.py",
+          "purpose": "Validate item/armor definitions",
+          "usage": "python3 validate_items.py <path>"
+        },
+        {
+          "name": "validate_references.py",
+          "purpose": "Check cross-references between files",
+          "usage": "python3 validate_references.py <path>"
+        },
+        {
+          "name": "optimize_data_files.py",
+          "purpose": "Optimize and clean data files",
+          "usage": "python3 optimize_data_files.py <path>"
+        },
+        {
+          "name": "benchmark_validation.py",
+          "purpose": "Performance testing for validation",
+          "usage": "python3 benchmark_validation.py"
+        }
+      ]
+    },
+    "mod_data": {
+      "path": "Public/EldertideArmament/",
+      "description": "Main mod content and definitions",
+      "components": [
+        {
+          "type": "Items",
+          "path": "Stats/Generated/Data/Armor.txt",
+          "count": 22,
+          "categories": ["rings", "amulets"]
+        },
+        {
+          "type": "Spells",
+          "path": "Stats/Generated/Data/Spells_*.txt",
+          "count": 30,
+          "categories": ["projectile", "target", "zone", "shout"]
+        },
+        {
+          "type": "Passives",
+          "path": "Stats/Generated/Data/Passive_*.txt",
+          "count": 25,
+          "categories": ["combat", "utility", "defensive"]
+        },
+        {
+          "type": "Status Effects",
+          "path": "Stats/Generated/Data/Status_*.txt",
+          "count": 20,
+          "categories": ["buff", "debuff", "condition"]
+        }
+      ]
+    },
+    "documentation": {
+      "path": "./",
+      "files": [
+        {
+          "name": "README.md",
+          "purpose": "Main entry point and overview"
+        },
+        {
+          "name": "INSTALLATION.md",
+          "purpose": "Installation guide and troubleshooting"
+        },
+        {
+          "name": "ITEMS.md",
+          "purpose": "Complete item catalog and descriptions"
+        },
+        {
+          "name": "BALANCE.md",
+          "purpose": "Balance philosophy and design guidelines"
+        },
+        {
+          "name": "COMPATIBILITY.md",
+          "purpose": "Mod compatibility and load order"
+        },
+        {
+          "name": "VALIDATION_GUIDE.md",
+          "purpose": "Reference data and validation tools"
+        },
+        {
+          "name": "AI_ALLIES_COMPATIBILITY.md",
+          "purpose": "AI-Allies integration and compatibility guide"
+        },
+        {
+          "name": "CONTRIBUTING.md",
+          "purpose": "Contribution guidelines"
+        },
+        {
+          "name": "CHANGELOG.md",
+          "purpose": "Version history and changes"
+        },
+        {
+          "name": "DOCUMENTATION.md",
+          "purpose": "Documentation structure overview"
+        }
+      ]
+    }
+  },
+  "naming_conventions": {
+    "prefix": "ELDER_",
+    "patterns": {
+      "items": "ELDER_<Type>_<Name>",
+      "spells": "ELDER_<SpellType>_<Name>",
+      "statuses": "ELDER_<StatusName>",
+      "passives": "Passive_ELDER_<Name>"
+    },
+    "examples": {
+      "item": "ELDER_Ring_AstralChampion",
+      "spell": "ELDER_Projectile_SkywardSoar",
+      "status": "ELDER_DRAGON_HERITAGE_ACTIVE",
+      "passive": "Passive_ELDER_DraconicRetaliation"
+    }
+  },
+  "validation": {
+    "enabled": true,
+    "automated": true,
+    "scripts_available": true,
+    "ci_integration": "supported",
+    "error_reporting": "detailed"
+  },
+  "ai_integration": {
+    "semantic_search": {
+      "enabled": true,
+      "data_structured": true,
+      "documentation_searchable": true
+    },
+    "code_generation": {
+      "templates_available": true,
+      "validation_rules": true,
+      "examples_provided": true
+    },
+    "automated_validation": {
+      "syntax_checking": true,
+      "semantic_checking": true,
+      "cross_reference_checking": true
+    },
+    "knowledge_base": {
+      "vanilla_references": true,
+      "modding_patterns": true,
+      "best_practices": true
+    }
+  },
+  "quality_assurance": {
+    "validation_scripts": true,
+    "reference_data": true,
+    "documentation": "comprehensive",
+    "testing": "manual",
+    "optimization": true
+  },
+  "community": {
+    "nexus_mods": "https://www.nexusmods.com/baldursgate3/mods/3596",
+    "github": "https://github.com/jtdelong12-max/EldertideArmaments",
+    "discord": "BG3 Modding Discord",
+    "contributing": "See CONTRIBUTING.md"
+  },
+  "tags": [
+    "bg3",
+    "baldurs-gate-3",
+    "mod",
+    "equipment",
+    "rings",
+    "amulets",
+    "legendary",
+    "validation",
+    "reference-data",
+    "ai-allies-compatible",
+    "modding-tools"
+  ]
+}

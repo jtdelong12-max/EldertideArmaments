@@ -6,7 +6,7 @@ This directory contains reference data and validation tools for Baldur's Gate 3 
 
 ## Inspiration
 
-This reference structure is inspired by the [AI-Allies](https://github.com/trancethehuman/baldurs-gate-ai-guide) repository approach to organizing and validating Baldur's Gate 3 data. Similar to how AI-Allies organizes wiki knowledge for semantic search, this structure organizes vanilla game data for mod validation.
+This reference structure is inspired by the [AI-Allies](https://github.com/jtdelong12-max/AI-Allies) repository approach to organizing and validating Baldur's Gate 3 data. Similar to how AI-Allies organizes wiki knowledge for semantic search, this structure organizes vanilla game data for mod validation.
 
 ## Directory Structure
 

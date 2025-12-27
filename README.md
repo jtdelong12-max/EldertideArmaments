@@ -27,6 +27,7 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - ⚖️ **[Balance Guide](BALANCE.md)** - Understanding item power and design philosophy
 - 🔍 **[Validation Guide](VALIDATION_GUIDE.md)** - Reference data and validation tools for mod files
 - ⚡ **[Optimization Guide](OPTIMIZATION_GUIDE.md)** - Performance optimizations and best practices
+- 🤖 **[AI-Allies Compatibility](AI_ALLIES_COMPATIBILITY.md)** - Integration with AI-powered modding tools
 
 ### Requirements
 - Baldur's Gate 3 Patch 8 (4.1.1.6758295 or later)
@@ -209,7 +210,25 @@ python3 reference/scripts/validate_references.py Public/EldertideArmament/
 
 📖 **[Full Validation Guide](VALIDATION_GUIDE.md)** - Complete documentation with examples and error solutions
 
-This structure is inspired by the [AI-Allies](https://github.com/trancethehuman/baldurs-gate-ai-guide) repository approach to organizing and validating BG3 data.
+This structure is inspired by the [AI-Allies](https://github.com/jtdelong12-max/AI-Allies) repository approach to organizing and validating BG3 data.
+
+## AI-Allies Integration
+
+This repository is designed to be fully compatible with [AI-Allies](https://github.com/jtdelong12-max/AI-Allies), enabling AI-powered modding workflows:
+
+- **Structured Reference Data**: Organized vanilla BG3 examples for AI training and validation
+- **Automated Validation**: Python scripts for quality assurance and CI/CD integration
+- **Semantic Organization**: Clear patterns and naming conventions for AI understanding
+- **Machine-Readable Metadata**: JSON metadata for tool integration
+
+🤖 **[AI-Allies Compatibility Guide](AI_ALLIES_COMPATIBILITY.md)** - Complete integration documentation and best practices
+
+### Key Benefits
+
+- **AI-Powered Assistance**: Use AI tools to generate, validate, and optimize mod content
+- **Knowledge Base**: Reference data serves as ground truth for AI-powered modding assistants
+- **Automated Workflows**: Integration with CI/CD and validation pipelines
+- **Semantic Search**: Structured documentation enables natural language queries
 
 ## Troubleshooting
 

@@ -1,0 +1,11 @@
+BG3 Version: Patch 8, Hotfix 35
+Version Number: 4.1.1.6995620
+Release Date: December 2024
+Extraction Date: 2025-12-27
+Tools: BG3 Modder's Multitool, LSLib
+Source: https://forums.larian.com/ubbthreads.php?ubb=showflat&Number=959320
+
+COMPATIBILITY NOTES:
+- This mod was developed for and tested with Patch 8
+- Mod focuses on custom weapons and armor
+- Prefix all custom IDs with ET_ to avoid conflicts

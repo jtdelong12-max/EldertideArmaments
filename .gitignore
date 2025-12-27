@@ -59,3 +59,7 @@ $RECYCLE.BIN/
 *.7z
 *.tar
 *.tar.gz
+
+# Reference files are large - extract locally
+reference/vanilla/Data/**/*.txt
+reference/vanilla/Data/**/*.lsx

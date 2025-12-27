@@ -1,0 +1,3 @@
+# This directory contains extracted BG3 reference files
+# Files are excluded from git via .gitignore due to size
+# Extract files locally using BG3 Modder's Multitool

@@ -302,6 +302,9 @@ def main():
     
     valid_count, errors = validate_directory(target)
     
+    # Collect unique entry names in a single pass
+    error_entry_names = set(e.entry_name for e in errors)
+    
     # Print detailed errors
     if errors:
         print("=" * 70)
@@ -316,7 +319,7 @@ def main():
     print("VALIDATION SUMMARY")
     print("=" * 70)
     print(f"✅ Valid spells: {valid_count}")
-    print(f"❌ Spells with errors: {len(set(e.entry_name for e in errors))}")
+    print(f"❌ Spells with errors: {len(error_entry_names)}")
     print(f"⚠️  Total errors: {len(errors)}")
     print()
     

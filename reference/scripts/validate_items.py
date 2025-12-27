@@ -333,8 +333,14 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         total_valid += valid
         all_errors.extend(errors)
         
-        error_count = len([e for e in errors if e.severity == "error"])
-        warning_count = len([e for e in errors if e.severity == "warning"])
+        # Count errors and warnings in a single pass
+        error_count = 0
+        warning_count = 0
+        for e in errors:
+            if e.severity == "error":
+                error_count += 1
+            else:
+                warning_count += 1
         
         if error_count > 0:
             print(f"   ❌ Found {error_count} error(s)")
@@ -364,9 +370,19 @@ def main():
     
     valid_count, all_errors = validate_directory(target)
     
-    # Separate errors and warnings
-    errors = [e for e in all_errors if e.severity == "error"]
-    warnings = [e for e in all_errors if e.severity == "warning"]
+    # Separate errors and warnings in a single pass
+    errors = []
+    warnings = []
+    error_entry_names = set()
+    warning_entry_names = set()
+    
+    for e in all_errors:
+        if e.severity == "error":
+            errors.append(e)
+            error_entry_names.add(e.entry_name)
+        else:
+            warnings.append(e)
+            warning_entry_names.add(e.entry_name)
     
     # Print detailed errors
     if errors:
@@ -391,8 +407,8 @@ def main():
     print("VALIDATION SUMMARY")
     print("=" * 70)
     print(f"✅ Valid items: {valid_count}")
-    print(f"❌ Items with errors: {len(set(e.entry_name for e in errors))}")
-    print(f"⚠️  Items with warnings: {len(set(e.entry_name for e in warnings))}")
+    print(f"❌ Items with errors: {len(error_entry_names)}")
+    print(f"⚠️  Items with warnings: {len(warning_entry_names)}")
     print(f"   Total errors: {len(errors)}")
     print(f"   Total warnings: {len(warnings)}")
     print()

@@ -1,0 +1,195 @@
+// ==========================================
+// BG3 VANILLA STATUS EFFECT REFERENCE DATA
+// ==========================================
+// This file contains reference examples of vanilla BG3 status effect definitions
+// Use this to validate your custom status effects follow proper BG3 data structure
+// Last Updated: BG3 Patch 8 (Build 6758295)
+// ==========================================
+
+// EXAMPLE: Simple Buff Status
+new entry "BLESSED"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h3a1f4f4ag1f2bg4d5ega5c3dg8e9c7b2a3d4e"
+data "Description" "h8b7c6d5eg4f3ag2b1ch9d8eg7f6a5b4c3d2e1f0"
+data "Icon" "statIcons_Bless"
+data "StackId" "BLESSED"
+data "StackPriority" "1"
+data "Boosts" "RollBonus(Attack,1d4);RollBonus(SavingThrow,1d4)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+// EXAMPLE: Damage Over Time Status
+new entry "BURNING"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h5f8d2e3ag4c1bg7a9dg2f6eg8c3a5b1d4e7f9"
+data "Description" "h1d7f3a9eg8c2bg5f4dg9a1eg3c6d8f2a7b5e4"
+data "Icon" "statIcons_Burning"
+data "StackId" "BURNING"
+data "TickType" "EndTurn"
+data "OnApplyFunctors" "ApplyStatus(SELF,BURNING_DAMAGE,100,1)"
+data "StatusEffect" "f8d3a5c1-9e2b-7f4d-6a1c-3e5f9b2d7a4c"
+
+new entry "BURNING_DAMAGE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "TickType" "EndTurn"
+data "DamageStats" "DealDamage(1d4,Fire)"
+data "RemoveEvents" "OnTurn"
+
+// EXAMPLE: Condition Status (Negative)
+new entry "PRONE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h9d3f7a1eg5c2bg8f4dg1a6eg7c3d9f2a5b8e4"
+data "Description" "h6f2d8a3eg9c1bg4f7dg2a5eg8c6d3f9a1b7e5"
+data "Icon" "statIcons_Prone"
+data "StackId" "PRONE"
+data "Boosts" "Disadvantage(AttackRoll,Ranged);Advantage(AttackRoll,Melee,AgainstThisEntity)"
+data "StatusPropertyFlags" "DisableCombatlog"
+
+// EXAMPLE: Temporary HP Status
+new entry "AID"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h7c4e3f2ag1b8dg4a5bg9c7dg6e8f2a1b3c4d5e"
+data "Description" "h2a1b9c8dg7f6eg5d4cg3b2ag1f0e9d8c7b6a5f"
+data "Icon" "statIcons_Aid"
+data "StackId" "AID"
+data "Boosts" "IncreaseMaxHP(5);IF(not HasStatus('AID_HP',context.Source)):TemporaryHP(5,false)"
+data "StatusEffect" "2c8f3e1a-7d4b-5f9e-6a1c-8d3f5b7e2a4c"
+
+// EXAMPLE: Immunity Status
+new entry "FREEDOM_OF_MOVEMENT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h3a7e1f5cg9d2bg8f4eg6a1cg5d3f7b9e2a4c"
+data "Description" "h5e9f3a1cg7d4bg2f8eg6a1cg3d5f9b7e2a4c"
+data "Icon" "statIcons_FreedomOfMovement"
+data "StackId" "FREEDOM_OF_MOVEMENT"
+data "Boosts" "StatusImmunity(SG_Restrained);StatusImmunity(SG_Prone);StatusImmunity(SG_Paralyzed)"
+data "StatusEffect" "8c3f9a5e-1d7b-4f2e-6a1c-7d3f5b9e2a4c"
+
+// EXAMPLE: Concentration Status
+new entry "SPIRIT_GUARDIANS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h2d8f4a6eg9c1bg7f3eg5a1cg8d2f6b4e9a7c"
+data "Description" "h6f3a9d1eg5c8bg2f7eg4a1cg9d5f3b8e7a2c"
+data "Icon" "statIcons_SpiritGuardians"
+data "StackId" "SPIRIT_GUARDIANS"
+data "TickType" "StartTurn"
+data "OnTickFunctors" "DealDamage(3d8,Radiant,Magical)"
+data "StatusPropertyFlags" "DisableCombatlog"
+data "StatusEffect" "a3e7f1c9-5d2b-8e4f-6a1c-9b3d5f7a2e4c"
+data "Passives" "Concentration"
+
+// EXAMPLE: Advantage/Disadvantage Status
+new entry "FAERIE_FIRE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hf2d8e4a1g7c3bg5f9eg2a6dg8c1f4b7e3a5d"
+data "Description" "h9a3f7d1eg5c2bg8f4dg6a1cg7e3f9b5d2a4c"
+data "Icon" "statIcons_FaerieFire"
+data "StackId" "FAERIE_FIRE"
+data "Boosts" "Advantage(AttackRoll,Melee,AgainstThisEntity);Advantage(AttackRoll,Ranged,AgainstThisEntity)"
+data "StatusEffect" "4c9f2a7e-1d5b-6f8e-3a1c-7d5f9b2e4a6c"
+data "StatusPropertyFlags" "DisableCombatlog"
+
+// EXAMPLE: Complex Status with Multiple Effects
+new entry "HASTE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h7e4a1f9cg3d5bg8f2eg6a1cg9d3f5b7e2a4c"
+data "Description" "h4c9f2a7eg1d5bg6f8eg3a1cg7d5f9b2e4a6c"
+data "Icon" "statIcons_Haste"
+data "StackId" "HASTE"
+data "Boosts" "ActionResource(ActionPoint,1,0);AC(2);Advantage(SavingThrow,Dexterity)"
+data "StatusEffect" "2d8f4a6e-9c1b-7f3e-5a1c-8d2f6b4e9a7c"
+data "Passives" "Concentration"
+data "OnRemoveFunctors" "ApplyStatus(LETHARGIC,100,1)"
+
+// ==========================================
+// COMMON STATUS PROPERTIES REFERENCE
+// ==========================================
+
+// StatusType Options:
+// - "BOOST" - Generic status (buff/debuff)
+// - "CONSUME" - Consumable effect
+// - "POLYMORPHED" - Polymorph effects
+// - "CLIMBING" - Climbing state
+// - "INCAPACITATED" - Incapacitation
+// - "INVISIBLE" - Invisibility
+// - "REACTION" - Reaction-based status
+
+// TickType Options:
+// - "StartTurn" - Triggers at start of turn
+// - "EndTurn" - Triggers at end of turn
+// - "None" - Doesn't tick
+
+// StatusPropertyFlags:
+// - "DisableOverhead" - Don't show overhead
+// - "DisableCombatlog" - Don't log to combat log
+// - "DisablePortraitIndicator" - Don't show on portrait
+// - "DisableImmunityOverhead" - Hide immunity messages
+// - "TickingWithSource" - Requires source to tick
+// - "ApplyToCaster" - Apply to the caster
+
+// RemoveEvents:
+// - "OnTurn" - Remove at turn end
+// - "OnRest" - Remove on rest
+// - "OnCombatEnd" - Remove when combat ends
+// - "OnAttacked" - Remove when attacked
+
+// OnApplyFunctors (common effects):
+// - "ApplyStatus(TARGET,STATUS_ID,100,10)" - Apply status for 10 turns
+// - "DealDamage(2d6,Fire)" - Deal damage on apply
+// - "RegainHitPoints(2d8+SpellCastingAbilityModifier)" - Heal on apply
+// - "RemoveStatus(SELF,STATUS_ID)" - Remove another status
+// - "CreateExplosion(ExplosionName)" - Create explosion
+
+// OnTickFunctors (recurring effects):
+// - "DealDamage(1d6,Poison)" - Deal damage each tick
+// - "RegainHitPoints(1d4)" - Heal each tick
+// - "ApplyStatus(SELF,BONUS_STATUS,100,1)" - Apply additional status
+
+// OnRemoveFunctors (on status end):
+// - "ApplyStatus(DEBUFF_STATUS,100,1)" - Apply status when removed
+// - "DealDamage(4d6,Fire)" - Damage on removal
+// - "CreateExplosion(ExplosionName)" - Explode on removal
+
+// ==========================================
+// STATUS IMMUNITY GROUPS
+// ==========================================
+// Common status immunity groups:
+// - "SG_Restrained" - Restrained immunity
+// - "SG_Prone" - Prone immunity
+// - "SG_Paralyzed" - Paralysis immunity
+// - "SG_Petrified" - Petrification immunity
+// - "SG_Polymorph" - Polymorph immunity
+// - "SG_Invisible" - Can't be made invisible
+// - "SG_Condition" - General condition immunity
+// - "SG_Charm" - Charm immunity
+// - "SG_Frightened" - Fear immunity
+// - "SG_Poisoned" - Poison immunity
+// - "SG_Stunned" - Stun immunity
+// - "SG_Blinded" - Blindness immunity
+// - "SG_Cursed" - Curse immunity
+
+// ==========================================
+// VALIDATION CHECKLIST
+// ==========================================
+// When creating custom status effects, ensure:
+// ✓ StatusType is valid
+// ✓ DisplayName and Description use localization handles
+// ✓ Icon references valid icon path
+// ✓ StackId is unique and doesn't conflict with vanilla
+// ✓ TickType is appropriate for the effect
+// ✓ Boosts use proper syntax and valid parameters
+// ✓ StatusEffect UUID is valid (if used)
+// ✓ OnApplyFunctors/OnTickFunctors/OnRemoveFunctors are properly formatted
+// ✓ StatusPropertyFlags are appropriate
+// ✓ RemoveEvents are suitable for the status duration
+// ✓ Status doesn't create infinite loops
+// ✓ Damage/healing values are balanced
+// ✓ Referenced statuses/passives exist

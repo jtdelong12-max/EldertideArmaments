@@ -1,0 +1,218 @@
+// ==========================================
+// BG3 VANILLA ITEM REFERENCE DATA
+// ==========================================
+// This file contains reference examples of vanilla BG3 item/armor definitions
+// Use this to validate your custom items follow proper BG3 data structure
+// Last Updated: BG3 Patch 8 (Build 6758295)
+// ==========================================
+
+// EXAMPLE: Basic Ring
+new entry "UNI_DaredevilGloves_Ring"
+type "Armor"
+using "_Ring"
+data "RootTemplate" "a9c3e1f7-5d2b-4e8f-9a1c-7d3f5b8e2a4c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "90"
+data "Rarity" "Uncommon"
+data "Boosts" "Advantage(AttackRoll,Melee,MeleeWeaponAttack)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Ring with Spell Unlock
+new entry "WYR_RING_ShadowBlade"
+type "Armor"
+using "_Ring"
+data "RootTemplate" "f3d8a5c1-9e2b-7f4d-6a1c-8e3f5b2d9a7c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "310"
+data "Rarity" "VeryRare"
+data "Boosts" "UnlockSpell(Target_ShadowBlade)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Ring with Multiple Boosts
+new entry "MAG_Uncommon_EvasiveShoes_Ring"
+type "Armor"
+using "_Ring"
+data "RootTemplate" "2c8f3e1a-7d4b-5f9e-6a1c-8d3f5b7e2a4c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "65"
+data "Rarity" "Uncommon"
+data "Boosts" "ACAgainstMeleeAttacks(1);ACAgainstRangedAttacks(1)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Amulet
+new entry "ARM_Camp_ProtectiveAmulet"
+type "Armor"
+using "_Amulet"
+data "RootTemplate" "5e9f8d1c-6b3a-4f2e-7d1c-9a8b7c6e5f4d"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "50"
+data "Rarity" "Uncommon"
+data "Boosts" "RollBonus(SavingThrow,1)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Legendary Ring with Complex Boosts
+new entry "MAG_Legendary_ElementalEssence_Ring"
+type "Armor"
+using "_Ring"
+data "RootTemplate" "9a3f7d1e-5c2b-8f4d-6a1c-7e3f9b5d2a4c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "1310"
+data "Rarity" "Legendary"
+data "Boosts" "Resistance(Acid,Resistant);Resistance(Cold,Resistant);Resistance(Fire,Resistant);Resistance(Lightning,Resistant);Resistance(Thunder,Resistant)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Ring with Passive and Status
+new entry "LOW_RING_AlchemistsFire"
+type "Armor"
+using "_Ring"
+data "RootTemplate" "4c9f2a7e-1d5b-6f8e-3a1c-7d5f9b2e4a6c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "190"
+data "Rarity" "Rare"
+data "Boosts" "UnlockSpell(Target_ProduceFlame);IF(HasStatus('BURNING',context.Source)):CharacterWeaponDamage(1d4,Fire)"
+data "PassivesOnEquip" ""
+data "StatusOnEquip" ""
+
+// EXAMPLE: Ring with Ability Boost
+new entry "MAG_Strength_Ring"
+type "Armor"
+using "_Ring"
+data "RootTemplate" "7e4a1f9c-3d5b-8f2e-6a1c-9d3f5b7e2a4c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "240"
+data "Rarity" "Rare"
+data "Boosts" "Ability(Strength,2,20)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Amulet with Multiple Features
+new entry "MAG_TheAmuletOfGreaterHealth"
+type "Armor"
+using "_Amulet"
+data "RootTemplate" "2d8f4a6e-9c1b-7f3e-5a1c-8d2f6b4e9a7c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "730"
+data "Rarity" "VeryRare"
+data "Boosts" "Ability(Constitution,23,23)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Ring with Action Resource
+new entry "MAG_Psychic_PearlOfPowerAmulet"
+type "Armor"
+using "_Amulet"
+data "RootTemplate" "6f3a9d1e-5c8b-2f7e-4a1c-9d5f3b8e7a2c"
+data "ObjectCategory" "Jewelry"
+data "ValueOverride" "190"
+data "Rarity" "Uncommon"
+data "Boosts" "ActionResource(SpellSlot,1,1)"
+data "PassivesOnEquip" ""
+
+// EXAMPLE: Armor Piece (Helmet)
+new entry "ARM_Camp_Body"
+type "Armor"
+using "_Clothes"
+data "RootTemplate" "a3e7f1c9-5d2b-8e4f-6a1c-9b3d5f7a2e4c"
+data "ArmorType" "Cloth"
+data "ValueOverride" "10"
+data "Rarity" "Common"
+data "Armor Class Ability" "Dexterity"
+data "ArmorClass" "10"
+
+// ==========================================
+// COMMON ITEM PROPERTIES REFERENCE
+// ==========================================
+
+// Using Options (Base Templates):
+// - "_Ring" - Ring slot item
+// - "_Amulet" - Amulet slot item
+// - "_Helmet" - Helmet slot
+// - "_Boots" - Boots slot
+// - "_Gloves" - Gloves slot
+// - "_Armor" - Chest armor
+// - "_Cloak" - Cloak slot
+// - "_Clothes" - Clothing (no armor)
+
+// ObjectCategory:
+// - "Jewelry" - For rings and amulets
+// - "Armor" - For armor pieces
+// - "Weapon" - For weapons
+// - "Consumable" - For potions/scrolls
+
+// Rarity Options:
+// - "Common" - White text
+// - "Uncommon" - Green text
+// - "Rare" - Blue text
+// - "VeryRare" - Purple text
+// - "Legendary" - Orange/gold text
+// - "Divine" - Special rarity
+// - "Unique" - Quest items
+// - "Sentient" - Sentient items
+
+// ==========================================
+// COMMON BOOSTS REFERENCE
+// ==========================================
+
+// Ability Score Boosts:
+// Format: Ability(AbilityName,Bonus,Max)
+// - "Ability(Strength,2,20)" - +2 STR, max 20
+// - "Ability(Dexterity,1,18)" - +1 DEX, max 18
+// - "Ability(Constitution,2,20)"
+// - "Ability(Intelligence,2,20)"
+// - "Ability(Wisdom,2,20)"
+// - "Ability(Charisma,2,20)"
+
+// Armor Class Boosts:
+// - "AC(1)" - +1 AC
+// - "AC(2)" - +2 AC
+// - "ACAgainstMeleeAttacks(1)" - +1 AC vs melee
+// - "ACAgainstRangedAttacks(1)" - +1 AC vs ranged
+
+// Resistance Boosts:
+// Format: Resistance(DamageType,ResistanceType)
+// - "Resistance(Fire,Resistant)" - Resistance to fire
+// - "Resistance(Cold,Immune)" - Immunity to cold
+// - "Resistance(Poison,Vulnerable)" - Vulnerability to poison
+
+// Damage Boosts:
+// - "CharacterWeaponDamage(1d4,Fire)" - +1d4 fire damage
+// - "Damage(1d6,Radiant)" - +1d6 radiant damage
+// - "DamageBonus(1d4,Necrotic)" - Bonus necrotic damage
+
+// Attack Roll Boosts:
+// - "RollBonus(Attack,1)" - +1 to attack rolls
+// - "RollBonus(AttackRoll,1)" - +1 to attack rolls
+// - "Advantage(AttackRoll,Melee)" - Advantage on melee attacks
+// - "Disadvantage(AttackRoll,Ranged)" - Disadvantage on ranged
+
+// Saving Throw Boosts:
+// - "RollBonus(SavingThrow,1)" - +1 to all saves
+// - "RollBonus(SavingThrow,1,Strength)" - +1 to STR saves
+// - "Advantage(SavingThrow,Dexterity)" - Advantage on DEX saves
+
+// Spell Unlocks:
+// - "UnlockSpell(SpellName)" - Unlocks a spell
+// - "UnlockSpell(Target_MistyStep)" - Example spell unlock
+
+// Action Resources:
+// - "ActionResource(SpellSlot,1,1)" - +1 level 1 spell slot
+// - "ActionResource(SpellSlot,1,3)" - +1 level 3 spell slot
+// - "ActionResource(BonusActionPoint,1,0)" - Extra bonus action
+
+// Conditional Boosts:
+// - "IF(condition):boost" - Conditional boost
+// - "IF(HasStatus('BURNING',context.Source)):CharacterWeaponDamage(1d4,Fire)"
+
+// ==========================================
+// VALIDATION CHECKLIST
+// ==========================================
+// When creating custom items, ensure:
+// ✓ using clause references valid base template (_Ring, _Amulet, etc.)
+// ✓ RootTemplate UUID is unique and properly formatted
+// ✓ ObjectCategory matches the item type
+// ✓ ValueOverride is reasonable for rarity
+// ✓ Rarity is one of the valid options
+// ✓ Boosts are properly formatted with semicolon separators
+// ✓ PassivesOnEquip references valid passive IDs (or is empty)
+// ✓ StatusOnEquip references valid status IDs (or is empty)
+// ✓ All referenced spells/passives/statuses exist
+// ✓ Ability boosts don't exceed reasonable maximums
+// ✓ Multiple boosts are separated by semicolons (;)

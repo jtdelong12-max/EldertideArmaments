@@ -19,6 +19,14 @@ from pathlib import Path
 from typing import List, Dict, Set, Tuple
 from collections import defaultdict
 
+# Pre-compiled regex patterns for better performance
+_ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
+_UUID_PATTERN = re.compile(r'data "RootTemplate" "([^"]+)"')
+_UNLOCK_SPELL_PATTERN = re.compile(r'UnlockSpell\(([^)]+)\)')
+_PASSIVES_ON_EQUIP_PATTERN = re.compile(r'data "PassivesOnEquip" "([^"]+)"')
+_STATUS_ON_EQUIP_PATTERN = re.compile(r'data "StatusOnEquip" "([^"]+)"')
+_APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?')
+
 class ReferenceError:
     def __init__(self, file_path: str, line_num: int, entry_name: str, 
                  ref_type: str, ref_name: str, message: str):
@@ -46,8 +54,8 @@ def find_all_entries(directory: str, entry_type: str) -> Dict[str, Tuple[str, in
                 lines = f.readlines()
                 
             for i, line in enumerate(lines):
-                # Match: new entry "EntryName"
-                match = re.match(r'new entry "([^"]+)"', line.strip())
+                # Use pre-compiled pattern
+                match = _ENTRY_PATTERN.match(line.strip())
                 if match:
                     entry_name = match.group(1)
                     
@@ -76,13 +84,15 @@ def find_all_uuids(directory: str) -> Dict[str, List[Tuple[str, int, str]]]:
                 
             current_entry = ""
             for i, line in enumerate(lines):
-                # Track current entry name
-                match = re.match(r'new entry "([^"]+)"', line.strip())
+                stripped = line.strip()
+                
+                # Track current entry name - use pre-compiled pattern
+                match = _ENTRY_PATTERN.match(stripped)
                 if match:
                     current_entry = match.group(1)
                 
-                # Find UUID
-                match = re.match(r'data "RootTemplate" "([^"]+)"', line.strip())
+                # Find UUID - use pre-compiled pattern
+                match = _UUID_PATTERN.match(stripped)
                 if match:
                     uuid = match.group(1)
                     uuid_locations[uuid].append((str(file_path), i + 1, current_entry))
@@ -94,6 +104,7 @@ def find_all_uuids(directory: str) -> Dict[str, List[Tuple[str, int, str]]]:
 def find_references(directory: str, ref_pattern: str, ref_type: str) -> List[Tuple[str, int, str, str]]:
     """Find all references matching a pattern."""
     references = []
+    compiled_pattern = re.compile(ref_pattern)  # Compile once
     
     path = Path(directory)
     for file_path in path.rglob("*.txt"):
@@ -103,13 +114,13 @@ def find_references(directory: str, ref_pattern: str, ref_type: str) -> List[Tup
                 
             current_entry = ""
             for i, line in enumerate(lines):
-                # Track current entry name
-                match = re.match(r'new entry "([^"]+)"', line.strip())
+                # Track current entry name - use pre-compiled pattern
+                match = _ENTRY_PATTERN.match(line.strip())
                 if match:
                     current_entry = match.group(1)
                 
-                # Find references
-                for match in re.finditer(ref_pattern, line):
+                # Find references - use compiled pattern
+                for match in compiled_pattern.finditer(line):
                     ref_name = match.group(1)
                     references.append((str(file_path), i + 1, current_entry, ref_name))
         except Exception:

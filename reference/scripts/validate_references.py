@@ -25,7 +25,86 @@ _UUID_PATTERN = re.compile(r'data "RootTemplate" "([^"]+)"')
 _UNLOCK_SPELL_PATTERN = re.compile(r'UnlockSpell\(([^)]+)\)')
 _PASSIVES_ON_EQUIP_PATTERN = re.compile(r'data "PassivesOnEquip" "([^"]+)"')
 _STATUS_ON_EQUIP_PATTERN = re.compile(r'data "StatusOnEquip" "([^"]+)"')
-_APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?')
+_APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)')
+
+class ParsedData:
+    """Container for all parsed data from directory."""
+    def __init__(self):
+        self.spells = {}  # spell_name -> (file_path, line_num)
+        self.passives = {}  # passive_name -> (file_path, line_num)
+        self.statuses = {}  # status_name -> (file_path, line_num)
+        self.uuids = defaultdict(list)  # uuid -> [(file_path, line_num, entry_name)]
+        self.spell_refs = []  # [(file_path, line_num, entry_name, spell_name)]
+        self.passive_refs = []  # [(file_path, line_num, entry_name, passive_str)]
+        self.status_refs = []  # [(file_path, line_num, entry_name, status_name)]
+
+def parse_directory_single_pass(directory: str) -> ParsedData:
+    """Parse all files once and extract all needed information.
+    
+    This is much more efficient than the original approach which read
+    files multiple times for different purposes.
+    """
+    data = ParsedData()
+    path = Path(directory)
+    
+    for file_path in path.rglob("*.txt"):
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+            
+            current_entry = ""
+            current_entry_line = 0
+            
+            for i, line in enumerate(lines):
+                stripped = line.strip()
+                
+                # Track current entry name
+                match = _ENTRY_PATTERN.match(stripped)
+                if match:
+                    current_entry = match.group(1)
+                    current_entry_line = i + 1
+                    
+                    # Check entry type in next few lines
+                    type_check = ''.join(lines[i:min(i+5, len(lines))])
+                    if 'type "SpellData"' in type_check:
+                        data.spells[current_entry] = (str(file_path), current_entry_line)
+                    elif 'type "PassiveData"' in type_check:
+                        data.passives[current_entry] = (str(file_path), current_entry_line)
+                    elif 'type "StatusData"' in type_check:
+                        data.statuses[current_entry] = (str(file_path), current_entry_line)
+                
+                # Find UUID references
+                match = _UUID_PATTERN.match(stripped)
+                if match:
+                    uuid = match.group(1)
+                    data.uuids[uuid].append((str(file_path), i + 1, current_entry))
+                
+                # Find spell references
+                for match in _UNLOCK_SPELL_PATTERN.finditer(line):
+                    spell_name = match.group(1)
+                    data.spell_refs.append((str(file_path), i + 1, current_entry, spell_name))
+                
+                # Find passive references
+                match = _PASSIVES_ON_EQUIP_PATTERN.match(stripped)
+                if match:
+                    passives_str = match.group(1)
+                    data.passive_refs.append((str(file_path), i + 1, current_entry, passives_str))
+                
+                # Find status references
+                match = _STATUS_ON_EQUIP_PATTERN.match(stripped)
+                if match:
+                    status_name = match.group(1)
+                    data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
+                
+                # Find ApplyStatus references
+                for match in _APPLY_STATUS_PATTERN.finditer(line):
+                    status_name = match.group(1)
+                    data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
+            
+        except Exception:
+            continue
+    
+    return data
 
 class ReferenceError:
     def __init__(self, file_path: str, line_num: int, entry_name: str, 
@@ -43,106 +122,12 @@ class ReferenceError:
                 f"   Missing: {self.ref_name}\n"
                 f"   Error: {self.message}\n")
 
-def find_all_entries(directory: str, entry_type: str) -> Dict[str, Tuple[str, int]]:
-    """Find all entries of a specific type in directory."""
-    entries = {}
-    
-    path = Path(directory)
-    for file_path in path.rglob("*.txt"):
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                
-            for i, line in enumerate(lines):
-                # Use pre-compiled pattern
-                match = _ENTRY_PATTERN.match(line.strip())
-                if match:
-                    entry_name = match.group(1)
-                    
-                    # Check if it's the right type (in next few lines)
-                    type_check = ''.join(lines[i:min(i+5, len(lines))])
-                    if f'type "{entry_type}"' in type_check:
-                        if entry_name in entries:
-                            # Duplicate entry (report separately)
-                            pass
-                        else:
-                            entries[entry_name] = (str(file_path), i + 1)
-        except Exception:
-            continue
-    
-    return entries
-
-def find_all_uuids(directory: str) -> Dict[str, List[Tuple[str, int, str]]]:
-    """Find all RootTemplate UUIDs and their locations."""
-    uuid_locations = defaultdict(list)
-    
-    path = Path(directory)
-    for file_path in path.rglob("*.txt"):
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                
-            current_entry = ""
-            for i, line in enumerate(lines):
-                stripped = line.strip()
-                
-                # Track current entry name - use pre-compiled pattern
-                match = _ENTRY_PATTERN.match(stripped)
-                if match:
-                    current_entry = match.group(1)
-                
-                # Find UUID - use pre-compiled pattern
-                match = _UUID_PATTERN.match(stripped)
-                if match:
-                    uuid = match.group(1)
-                    uuid_locations[uuid].append((str(file_path), i + 1, current_entry))
-        except Exception:
-            continue
-    
-    return uuid_locations
-
-def find_references(directory: str, ref_pattern: str, ref_type: str) -> List[Tuple[str, int, str, str]]:
-    """Find all references matching a pattern."""
-    references = []
-    compiled_pattern = re.compile(ref_pattern)  # Compile once
-    
-    path = Path(directory)
-    for file_path in path.rglob("*.txt"):
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                
-            current_entry = ""
-            for i, line in enumerate(lines):
-                # Track current entry name - use pre-compiled pattern
-                match = _ENTRY_PATTERN.match(line.strip())
-                if match:
-                    current_entry = match.group(1)
-                
-                # Find references - use compiled pattern
-                for match in compiled_pattern.finditer(line):
-                    ref_name = match.group(1)
-                    references.append((str(file_path), i + 1, current_entry, ref_name))
-        except Exception:
-            continue
-    
-    return references
-
-def validate_spell_references(directory: str) -> List[ReferenceError]:
-    """Validate UnlockSpell() references."""
+def validate_spell_references(parsed_data: ParsedData) -> List[ReferenceError]:
+    """Validate UnlockSpell() references using pre-parsed data."""
     errors = []
     
-    print("🔍 Finding all spell definitions...")
-    spells = find_all_entries(directory, "SpellData")
-    print(f"   Found {len(spells)} spell definitions")
-    
-    print("🔍 Finding all spell references...")
-    spell_refs = find_references(directory, r'UnlockSpell\(([^)]+)\)', "UnlockSpell")
-    print(f"   Found {len(spell_refs)} spell references")
-    print()
-    
-    for file_path, line_num, entry_name, spell_name in spell_refs:
-        if spell_name not in spells:
+    for file_path, line_num, entry_name, spell_name in parsed_data.spell_refs:
+        if spell_name not in parsed_data.spells:
             errors.append(ReferenceError(
                 file_path, line_num, entry_name,
                 "UnlockSpell", spell_name,
@@ -151,20 +136,11 @@ def validate_spell_references(directory: str) -> List[ReferenceError]:
     
     return errors
 
-def validate_passive_references(directory: str) -> List[ReferenceError]:
-    """Validate PassivesOnEquip references."""
+def validate_passive_references(parsed_data: ParsedData) -> List[ReferenceError]:
+    """Validate PassivesOnEquip references using pre-parsed data."""
     errors = []
     
-    print("🔍 Finding all passive definitions...")
-    passives = find_all_entries(directory, "PassiveData")
-    print(f"   Found {len(passives)} passive definitions")
-    
-    print("🔍 Finding all passive references...")
-    passive_refs = find_references(directory, r'data "PassivesOnEquip" "([^"]+)"', "PassivesOnEquip")
-    print(f"   Found {len(passive_refs)} passive references")
-    print()
-    
-    for file_path, line_num, entry_name, passives_str in passive_refs:
+    for file_path, line_num, entry_name, passives_str in parsed_data.passive_refs:
         if not passives_str:
             continue
             
@@ -172,7 +148,7 @@ def validate_passive_references(directory: str) -> List[ReferenceError]:
         passive_list = [p.strip() for p in passives_str.split(";")]
         
         for passive_name in passive_list:
-            if passive_name and passive_name not in passives:
+            if passive_name and passive_name not in parsed_data.passives:
                 errors.append(ReferenceError(
                     file_path, line_num, entry_name,
                     "PassivesOnEquip", passive_name,
@@ -181,31 +157,18 @@ def validate_passive_references(directory: str) -> List[ReferenceError]:
     
     return errors
 
-def validate_status_references(directory: str) -> List[ReferenceError]:
-    """Validate status effect references."""
+def validate_status_references(parsed_data: ParsedData) -> List[ReferenceError]:
+    """Validate status effect references using pre-parsed data."""
     errors = []
     
-    print("🔍 Finding all status definitions...")
-    statuses = find_all_entries(directory, "StatusData")
-    print(f"   Found {len(statuses)} status definitions")
-    
-    print("🔍 Finding all status references...")
-    # StatusOnEquip
-    status_refs = find_references(directory, r'data "StatusOnEquip" "([^"]+)"', "StatusOnEquip")
-    # ApplyStatus calls - capture first two parameters to handle both TARGET and direct status names
-    # Format: ApplyStatus(TARGET,STATUS) or ApplyStatus(STATUS,duration,turns)
-    status_refs.extend(find_references(directory, r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?', "ApplyStatus"))
-    print(f"   Found {len(status_refs)} status references")
-    print()
-    
-    for file_path, line_num, entry_name, status_name in status_refs:
+    for file_path, line_num, entry_name, status_name in parsed_data.status_refs:
         if not status_name or status_name in ["SELF", "TARGET", "SOURCE"]:
             continue
             
         # Clean up the status name (remove quotes, whitespace)
         status_name = status_name.strip().strip('"\'')
         
-        if status_name and status_name not in statuses:
+        if status_name and status_name not in parsed_data.statuses:
             errors.append(ReferenceError(
                 file_path, line_num, entry_name,
                 "Status", status_name,
@@ -214,16 +177,11 @@ def validate_status_references(directory: str) -> List[ReferenceError]:
     
     return errors
 
-def validate_uuid_uniqueness(directory: str) -> List[ReferenceError]:
-    """Check for duplicate UUIDs."""
+def validate_uuid_uniqueness(parsed_data: ParsedData) -> List[ReferenceError]:
+    """Check for duplicate UUIDs using pre-parsed data."""
     errors = []
     
-    print("🔍 Finding all RootTemplate UUIDs...")
-    uuid_locations = find_all_uuids(directory)
-    print(f"   Found {len(uuid_locations)} unique UUIDs")
-    print()
-    
-    for uuid, locations in uuid_locations.items():
+    for uuid, locations in parsed_data.uuids.items():
         if len(locations) > 1:
             # Duplicate UUID found
             for file_path, line_num, entry_name in locations:
@@ -236,13 +194,25 @@ def validate_uuid_uniqueness(directory: str) -> List[ReferenceError]:
     return errors
 
 def validate_directory(directory: str) -> List[ReferenceError]:
-    """Validate all cross-references in directory."""
+    """Validate all cross-references in directory using single-pass parsing."""
     all_errors = []
+    
+    # Parse all files once - significant performance improvement
+    print("🔍 Parsing all files (single pass)...")
+    parsed_data = parse_directory_single_pass(directory)
+    print(f"   Found {len(parsed_data.spells)} spell definitions")
+    print(f"   Found {len(parsed_data.passives)} passive definitions")
+    print(f"   Found {len(parsed_data.statuses)} status definitions")
+    print(f"   Found {len(parsed_data.uuids)} unique UUIDs")
+    print(f"   Found {len(parsed_data.spell_refs)} spell references")
+    print(f"   Found {len(parsed_data.passive_refs)} passive references")
+    print(f"   Found {len(parsed_data.status_refs)} status references")
+    print()
     
     print("=" * 70)
     print("Validating Spell References")
     print("=" * 70)
-    spell_errors = validate_spell_references(directory)
+    spell_errors = validate_spell_references(parsed_data)
     all_errors.extend(spell_errors)
     
     if spell_errors:
@@ -253,7 +223,7 @@ def validate_directory(directory: str) -> List[ReferenceError]:
     print("=" * 70)
     print("Validating Passive References")
     print("=" * 70)
-    passive_errors = validate_passive_references(directory)
+    passive_errors = validate_passive_references(parsed_data)
     all_errors.extend(passive_errors)
     
     if passive_errors:
@@ -264,7 +234,7 @@ def validate_directory(directory: str) -> List[ReferenceError]:
     print("=" * 70)
     print("Validating Status References")
     print("=" * 70)
-    status_errors = validate_status_references(directory)
+    status_errors = validate_status_references(parsed_data)
     all_errors.extend(status_errors)
     
     if status_errors:
@@ -275,7 +245,7 @@ def validate_directory(directory: str) -> List[ReferenceError]:
     print("=" * 70)
     print("Validating UUID Uniqueness")
     print("=" * 70)
-    uuid_errors = validate_uuid_uniqueness(directory)
+    uuid_errors = validate_uuid_uniqueness(parsed_data)
     all_errors.extend(uuid_errors)
     
     if uuid_errors:

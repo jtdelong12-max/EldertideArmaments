@@ -45,7 +45,15 @@ VALID_SPELL_FLAGS = {
     "HasVerbalComponent", "HasSomaticComponent", "IsSpell", "IsRitual",
     "HasHighGroundRangeExtension", "Concentration", "IsHarmful",
     "CombatLogSetSingleLineRoll", "IsMelee", "IsLinkedSpellContainer",
-    "AddFallDamageOnLand", "IgnoreVisionBlock", "IgnoreSilence"
+    "AddFallDamageOnLand", "IgnoreVisionBlock", "IgnoreSilence",
+    "IsConcentration", "CanAreaDamageEvade", "RangeIgnoreVerticalThreshold",
+    "CannotTargetItems", "CannotTargetCharacter", "Temporary", "DisableBlood",
+    "IsEnemySpell", "CannotRotate", "IgnoreSurfaceCover", "TrajectoryRules",
+    "UnavailableInDialogs", "Invisible", "NoSurprise",
+    "IsAttack", "UNUSED_C", "CannotTargetTerrain", "Wildshape",
+    "IgnorePreviouslyPickedEntities", "IsJump", "ImmediateCast",
+    "SteeringSpeedOverride", "CallListeners", "DisablePortraitIndicator",
+    "NoCooldownOnMiss"
 }
 
 class ValidationError:
@@ -270,8 +278,10 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
     
     print(f"📁 Found {len(spell_files)} spell file(s) to validate\n")
     
-    for spell_file in spell_files:
-        print(f"🔍 Validating: {spell_file.name}")
+    # Process files with progress indication
+    for idx, spell_file in enumerate(spell_files, 1):
+        file_size = spell_file.stat().st_size / 1024  # Size in KB
+        print(f"🔍 [{idx}/{len(spell_files)}] Validating: {spell_file.name} ({file_size:.1f} KB)")
         valid, errors = validate_spell_file(str(spell_file))
         total_valid += valid
         all_errors.extend(errors)

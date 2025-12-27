@@ -327,8 +327,10 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
     
     print(f"📁 Found {len(item_files)} item file(s) to validate\n")
     
-    for item_file in item_files:
-        print(f"🔍 Validating: {item_file.name}")
+    # Process files with progress indication
+    for idx, item_file in enumerate(item_files, 1):
+        file_size = item_file.stat().st_size / 1024  # Size in KB
+        print(f"🔍 [{idx}/{len(item_files)}] Validating: {item_file.name} ({file_size:.1f} KB)")
         valid, errors = validate_item_file(str(item_file))
         total_valid += valid
         all_errors.extend(errors)

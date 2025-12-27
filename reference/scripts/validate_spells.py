@@ -49,7 +49,7 @@ VALID_SPELL_FLAGS = {
     "IsConcentration", "CanAreaDamageEvade", "RangeIgnoreVerticalThreshold",
     "CannotTargetItems", "CannotTargetCharacter", "Temporary", "DisableBlood",
     "IsEnemySpell", "CannotRotate", "IgnoreSurfaceCover", "TrajectoryRules",
-    "UnavailableInDialogs", "AddFallDamageOnLand", "Invisible", "NoSurprise",
+    "UnavailableInDialogs", "Invisible", "NoSurprise",
     "IsAttack", "UNUSED_C", "CannotTargetTerrain", "Wildshape",
     "IgnorePreviouslyPickedEntities", "IsJump", "ImmediateCast",
     "SteeringSpeedOverride", "CallListeners", "DisablePortraitIndicator",

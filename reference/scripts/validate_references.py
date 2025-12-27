@@ -97,15 +97,19 @@ def parse_directory_single_pass(directory: str) -> ParsedData:
                     data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
                 
                 # Find ApplyStatus references
+                # ApplyStatus can have format: ApplyStatus(STATUS,...) or ApplyStatus(TARGET,STATUS,...)
+                # We check both first and second parameters as potential status names
+                # The validation phase will filter out targets (SELF, TARGET, SOURCE, SWAP) and numbers
                 for match in _APPLY_STATUS_PATTERN.finditer(line):
-                    # ApplyStatus can have format: ApplyStatus(STATUS,...) or ApplyStatus(TARGET,STATUS,...)
-                    # Try first parameter
-                    status_name = match.group(1)
-                    data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
-                    # Try second parameter if it exists
-                    if match.group(2):
-                        status_name = match.group(2)
-                        data.status_refs.append((str(file_path), i + 1, current_entry, status_name))
+                    param1 = match.group(1)
+                    param2 = match.group(2) if match.lastindex >= 2 else None
+                    
+                    # Add first parameter (could be status or target)
+                    data.status_refs.append((str(file_path), i + 1, current_entry, param1))
+                    
+                    # Add second parameter if it exists (could be status or duration)
+                    if param2:
+                        data.status_refs.append((str(file_path), i + 1, current_entry, param2))
             
         except Exception:
             continue

@@ -1,0 +1,18 @@
+new entry "ASTARION_BEACH_WAKEUP"
+type "StatusData"
+data "StatusType" "KNOCKED_DOWN"
+using "KNOCKED_DOWN"
+
+new entry "KNOCKED_DOWN_INSTANT"
+type "StatusData"
+data "StatusType" "KNOCKED_DOWN"
+using "KNOCKED_DOWN"
+data "Instant" "Yes"
+
+new entry "UND_MONKAMULET_MADNESS"
+type "StatusData"
+data "StatusType" "KNOCKED_DOWN"
+using "HIDEOUS_LAUGHTER"
+data "DisplayName" "hd3d1feb1g1bd4g443fg8a19gc43d7382affc;1"
+data "Description" "h122ea6acg91ddg40d0gbad0ga1946471c4a1;4"
+

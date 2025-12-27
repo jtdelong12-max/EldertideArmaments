@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="307"/>
+    <region id="AnimationSetPriorities">
+        <node id="root">
+            <children>
+                <node id="AnimationSetPriority">
+                    <attribute id="Name" type="LSString" value="Companion"/>
+                    <attribute id="Priority" type="int32" value="30"/>
+                    <attribute id="ReferenceId" type="guid" value="c87c64cd-0164-4b1a-8406-a5795f7cb070"/>
+                    <attribute id="UUID" type="guid" value="b301afa2-e21e-47ea-84ec-eb9737afb82e"/>
+                    <children>
+                        <node id="AddidionalObjects">
+                            <attribute id="Object" type="guid" value="3780c689-d903-41c2-bf64-1e6ec6a8e1e5"/>
+                        </node>
+                        <node id="AddidionalObjects">
+                            <attribute id="Object" type="guid" value="fb3bc4c3-49eb-4944-b714-d0cb357bb635"/>
+                        </node>
+                        <node id="AddidionalObjects">
+                            <attribute id="Object" type="guid" value="35c3caad-5543-4593-be75-e7deba30f062"/>
+                        </node>
+                        <node id="AddidionalObjects">
+                            <attribute id="Object" type="guid" value="2bb39cf2-4649-4238-8d0c-44f62b5a3dfd"/>
+                        </node>
+                        <node id="AddidionalObjects">
+                            <attribute id="Object" type="guid" value="efc9d114-0296-4a30-b701-365fc07d44fb"/>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

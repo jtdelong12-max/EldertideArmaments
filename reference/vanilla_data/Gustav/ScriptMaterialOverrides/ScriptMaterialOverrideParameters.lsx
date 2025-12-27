@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="319"/>
+    <region id="ScriptMaterialOverrideParameters">
+        <node id="root">
+            <children>
+                <node id="ScriptMaterialOverrideParameter">
+                    <attribute id="ParameterName" type="FixedString" value="Blindness_L"/>
+                    <attribute id="ParameterType" type="FixedString" value="Float"/>
+                    <attribute id="ParameterValue" type="LSString" value="1"/>
+                    <attribute id="UUID" type="guid" value="1f0831f5-b3aa-44ea-b28c-cd499146eac8"/>
+                </node>
+                <node id="ScriptMaterialOverrideParameter">
+                    <attribute id="ParameterName" type="FixedString" value="Blindness"/>
+                    <attribute id="ParameterType" type="FixedString" value="Float"/>
+                    <attribute id="ParameterValue" type="LSString" value="1"/>
+                    <attribute id="UUID" type="guid" value="32aa6533-1ad2-47f9-86f8-683231740dfe"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

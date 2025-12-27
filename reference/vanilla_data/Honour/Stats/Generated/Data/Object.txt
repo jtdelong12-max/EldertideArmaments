@@ -1,0 +1,12 @@
+new entry "END_Crown"
+type "Object"
+using "END_Crown"
+data "Vitality" "9999"
+data "PersonalStatusImmunities" "SG_Condition;BLEEDING;BURNING;FLAMING_SPHERE;WILD_MAGIC_BURNING;MAG_ATTACK_DEBUFF"
+data "PassivesOnEquip" "CrownOfKarsus_EnnervationRay"
+
+new entry "OBJ_PLT_SpiderWeb"
+type "Object"
+using "OBJ_PLT_SpiderWeb"
+data "Vitality" "12"
+

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="323"/>
+    <region id="ActionResourceDefinitions">
+        <node id="root">
+            <children>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hb31192e3g460eg46c9g81a5g953e66df08ee" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_CriticalExecution"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="cb54a933-4e77-4e6f-8b7a-9b6b4082f4a2"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h1d881b86g5eceg486bg8706g6b9ea9b44795" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_ParalyzingCritical"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="78236f5a-94d5-4f8b-bb54-16f5508723e6"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5784805eg341eg4e88g8073g3b0c0e9d1b2f" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_Shield"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="c6eb8069-00e5-4b46-869c-6f1c542d6427"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h19f23e5fg0855g4b33ga9adg470bce49727e" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_Shield_LeatherArmor"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="6f74ea30-96c3-45e4-9820-fbb3cc16b9bc"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hfcc8fbc5g75ebg494fg8a4cgd13caf2c46ea" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_Shield_HarpersAmulet"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="0d157939-3ede-45aa-a153-e8c2e47edb74"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h70b94fb9gc92cg428eg841dg96b5f6850725" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_SecondChance"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="7410e905-71a2-483d-8689-57b6e5b7d534"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd7dfc5d0g270bg44ecg8038ga0ec9b526eba" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Passive_MAG_Extended_Target_Cantrip"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="f3ef1ec5-ca2f-48f6-9317-25bf50e1ef39"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hcacdc7cdgeccdg499eg997dg0515a30f5b62" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Passive_MAG_ClosQuarterRangedSpell"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="a8770e1c-7fed-443e-9927-4c305535e87d"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha94be1f1g1ddcg4c9cga735g6e3d8956b9fa" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Passive_MAG_Warlock_Quickened_Cantrips"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="dc2cfa76-6a9d-4a9c-8a79-cbb12adcd34b"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2ae2afb5gd50eg4d06g893dgc473b933d76f" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_MAG_Counterspell"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="1c188f7f-556e-4d2e-b1b2-e239fc2d79d3"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h7d02c746g1eaeg413cga478g599fd904245f" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_Scarab_Of_Protection"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="c55c135f-4e35-42f8-9ebd-a11e890def01"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h53b2acd7ga777g4c62g8b2eg9cdb910db192" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_Legendary_InfernalResistance"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="67581067-020c-4e0d-814f-963714479f8a"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2cba659cgd104g4931gb375g2dc1b1c8a590" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_LegendaryEvasion_Protection"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="4ebba3a3-f42e-42a6-87af-d36592ba8d49"/>
+                </node>
+                <node id="ActionResourceDefinition">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h76cc8a84g9f7fg4d3egacefg684184d5101b" version="1"/>
+                    <attribute id="IsHidden" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Interrupt_AbsorbElements"/>
+                    <attribute id="ReplenishType" type="FixedString" value="Never"/>
+                    <attribute id="UUID" type="guid" value="6275ca19-95d9-469c-a649-b26f990882fa"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

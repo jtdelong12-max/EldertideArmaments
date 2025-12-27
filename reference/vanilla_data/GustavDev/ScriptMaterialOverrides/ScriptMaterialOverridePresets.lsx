@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="3" revision="0" build="302"/>
+    <region id="ScriptMaterialOverridePresets">
+        <node id="root">
+            <children>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="ORI_ShadowHeartWhite"/>
+                    <attribute id="UUID" type="guid" value="831f8c8a-4101-4265-ad55-1a57217d2af7"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="41e3a213-7dda-483b-a09a-8fc0949a2439"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="1ac5c1c9-cb2e-42fe-85d5-58fb9709751f"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="80e715b1-3a52-4873-a163-c696fa8a02b1"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="c270013e-97df-49a3-b95f-6a9f355edc30"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="ae969e8a-2a61-4442-a489-1893d0272c0d"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="9feba73c-97cd-4bf8-a617-650abbc60190"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="635623c2-71ca-43ef-bca4-041b88e4aeeb"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="02e703f2-fb47-458b-ba17-e7c7c732c870"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="9f546037-7aa7-45f6-9339-380b9ee6c9a2"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="HalfIllithid"/>
+                    <attribute id="UUID" type="guid" value="398ca8ae-c3c0-47f5-8e45-d9402e198389"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="aa05de4f-c4d7-48ab-8618-2616d78f0e37"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="967beb97-7fb8-4f89-9c93-ef5981da56c5"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="3a4dd6a7-8d44-4089-9ea2-682bb6b76d57"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="e9b87370-28ab-47d1-a455-798dc8b9785d"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="e56ee0a4-6f45-4da1-a57b-dc78f82d9cfd"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="086d7e58-7dd0-4151-89e1-d1857fa03e69"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="e0509587-7930-45db-aac7-1004530728fb"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="adf6bc37-d3ff-4225-b0e4-081d9ff3743f"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="PlayerPortraitPreset"/>
+                    <attribute id="UUID" type="guid" value="6201596e-059a-4619-86d5-3c5db0957fc8"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="5436f58f-0bef-4073-877b-19616211bb87"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="WYR_Circus_FacePaint_01"/>
+                    <attribute id="UUID" type="guid" value="84be66ac-53ae-4243-9436-aca6c8d8de32"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="9cb4ddcd-8bbf-4b82-bad2-7f7a37699edf"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="dd230106-281d-4109-96ed-3e27d6b3b062"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="fb1b3bd7-0b61-4919-a985-f0cb9dee75e7"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="97d0a539-bf92-4407-9c11-2e7db9d3f12d"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="e13f3869-4605-4bc6-858a-ceafaa6767e6"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="fe54f41c-3030-4103-bf82-80fa46660100"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="b263b7b4-6dff-4507-91a3-78ed41584e0f"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="ec842cee-c6cf-4aaf-95ec-56630cd3ce39"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="c7d259a4-5fde-45c4-b925-e8405ecd2aa8"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="ee09820a-2467-4572-9e8d-c211eab19e5c"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="CAMP_Volo_ErsatzEye"/>
+                    <attribute id="UUID" type="guid" value="dc46662a-d909-4df5-ad12-50a524150aff"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="f4a75ff3-14e6-4deb-b3aa-acc80dcaa27d"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="SCL_PixieCurse_FacePaint"/>
+                    <attribute id="UUID" type="guid" value="bcd624e2-8347-4f97-a7ec-5fd52a6b49e4"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="5c2ddc65-2f5c-42fc-9ea0-0a19a87cf049"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="131b5c40-e91b-4306-8917-70955b6006c5"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="7b8d4764-d3b8-475b-99fe-012bdadc1d29"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="faf5f8c8-7356-4c77-a954-f10f7a7bdedf"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="a537ba9d-dcf8-4482-897b-3712af34c87a"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="7f5fee73-e5ad-4c4a-8eb0-8e64f66aeb28"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="c9cc6987-f86d-4831-924b-0e6712fc5105"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="WYR_Circus_FacePaint_Dragonborn_01"/>
+                    <attribute id="UUID" type="guid" value="80ba02f5-ce5b-4611-a745-1c9406e1d780"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="18499386-4bc7-4ab5-9a31-9c3c93d7551a"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="b031cd91-2ddb-4ecc-b44d-3db30cf640a2"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="f6f84df5-24c7-43d6-bfa6-e67ce57363d8"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="2bbb893d-708f-4b3b-b3f2-05a4830d2dd2"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="bf9ef8e5-fb5d-4dee-9827-0cb7114c3763"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="9dc24b04-c64a-45b0-afe6-8ade81acb28e"/>
+                        </node>
+                    </children>
+                </node>
+                <node id="ScriptMaterialOverridePreset">
+                    <attribute id="PresetName" type="FixedString" value="SCL_PixieCurse_FacePaint_Dragonborn"/>
+                    <attribute id="UUID" type="guid" value="67c4eed0-be5b-4e34-a9c1-bbd3fc88eccd"/>
+                    <children>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="18499386-4bc7-4ab5-9a31-9c3c93d7551a"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="b031cd91-2ddb-4ecc-b44d-3db30cf640a2"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="f6f84df5-24c7-43d6-bfa6-e67ce57363d8"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="2bbb893d-708f-4b3b-b3f2-05a4830d2dd2"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="bf9ef8e5-fb5d-4dee-9827-0cb7114c3763"/>
+                        </node>
+                        <node id="ParameterUUIDs">
+                            <attribute id="Object" type="guid" value="27613498-2479-4ab9-bc4c-4503e6f998d6"/>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

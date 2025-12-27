@@ -1,0 +1,15 @@
+new entry "LOW_RAPHAEL_ASCENDEDCAMBION_REMOVE_VFX"
+type "StatusData"
+data "StatusType" "EFFECT"
+using "LOW_RAPHAEL_REMOVE_VFX"
+data "DisplayName" "h3c79e87fg374dg43adga444gb1fb84371d5e;1"
+data "Description" "hc63f4251g57b2g4413gb0b3g774e3ae07e2d;1"
+data "StatusEffect" "2b0cc716-32e2-4d02-943f-2bd3bb83573d"
+
+new entry "LOW_RAPHAEL_ASCENDEDCAMBION_ADDITIONAL_VFX"
+type "StatusData"
+data "StatusType" "EFFECT"
+using "LOW_RAPHAEL_ASCENDEDCAMBION_REMOVE_VFX"
+data "DisplayName" "h4c550d31gcc61g4a4cgbe61gbbec3f953a53;1"
+data "StatusEffect" "d9d254b2-3771-482e-990b-a74d546e0d4e"
+

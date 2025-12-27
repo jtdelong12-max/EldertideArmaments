@@ -1,0 +1,7 @@
+new entry "TWN_DISTILLERY_DRUNK_03"
+type "StatusData"
+data "StatusType" "KNOCKED_DOWN"
+using "TWN_DISTILLERY_DRUNK_03"
+data "Description" "h9d827582g9ed6g4197g9c35g9f622aa1a49e;1"
+data "Boosts" "AC(-5); Advantage(AttackTarget)"
+

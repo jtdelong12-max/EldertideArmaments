@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="6" revision="0" build="1"/>
+    <region id="ConditionErrors">
+        <node id="root">
+            <children>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hc07a2620g8a77g4878g80bcg399f36479595" version="2"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="IsNotKarlach"/>
+                    <attribute id="UUID" type="guid" value="a38edbf2-280b-4e6f-af42-ee0b75107f4d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd1d16b03g4ca5g413cgbf5fg74ecd1935661" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_MAG_ZOC_FORCE_CONDUIT_False"/>
+                    <attribute id="UUID" type="guid" value="0577d55f-abca-417c-97a4-d50314ab4d54"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h56b5082ag099eg4d90g91cfg3b87828c122e" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_1_False"/>
+                    <attribute id="UUID" type="guid" value="cb5cccc0-4826-4bd8-b753-8f4d9b5dcdc8"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd6d881cag5d8fg4608g8495g3233b0763449" version="2"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_1_True"/>
+                    <attribute id="UUID" type="guid" value="82e298d4-b749-4a58-bc17-a06ccf340f3e"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h28a5b507geaeeg44f3ga907g3b210dd48994" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_2_True"/>
+                    <attribute id="UUID" type="guid" value="cc55026d-fdc6-4020-8940-ab9f5f35543b"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h1a9e355fg9af7g4ec6g9c69ga398fec670f9" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_3_True"/>
+                    <attribute id="UUID" type="guid" value="beeb9afa-6f57-4432-8023-a7933d6a8434"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="he1841812g7e91g437fg81aag2dc015b85764" version="2"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_4_True"/>
+                    <attribute id="UUID" type="guid" value="83f6b34f-b53e-4211-abbe-24f04ffc0260"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2d73cb0egd00fg4832ga34cg7b814ab20e5e" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_2_False"/>
+                    <attribute id="UUID" type="guid" value="eaae618d-6cfe-48ba-9d18-104085815352"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h23def009g557eg4638g97b0gda70ddbba5e0" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_3_False"/>
+                    <attribute id="UUID" type="guid" value="463bfb87-f2ed-47c1-aa79-bd0be4b20ea3"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0b630447ge2a1g4f4ag91ddgf2774bbdc4c3" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_PILLARCOUNTER_4_False"/>
+                    <attribute id="UUID" type="guid" value="6f390530-4a6c-4636-bab0-85412eff0e62"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h4e481dc4g1dd7g4202gb30eg5d9a429d7a7f" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value=" CE_Status_LOW_RAPHAEL_SOUL_9_True"/>
+                    <attribute id="UUID" type="guid" value="93802121-0667-4394-bd3a-1bfed37ee7d7"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h91d1694eg7575g4596g93fbgbaeb19d36710" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_LOW_HOUSEOFGRIEF_VICTIM_True"/>
+                    <attribute id="UUID" type="guid" value="9dcc4685-ef96-4c41-8c4c-36d47590cd69"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hdcb38faeg524dg47c8ga68ag5cb0240c06fc" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_LOW_HOUSEOFGRIEF_VICTIM_False"/>
+                    <attribute id="UUID" type="guid" value="42fdc20c-4289-4a27-9af7-ec4eedad80cf"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h46f506a5g767eg4607gbec3g16f13bbd5fd9" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_STUNNED_False"/>
+                    <attribute id="UUID" type="guid" value="c686a817-f217-4f3c-afa3-fbd0a345060f"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0663feffgbc65g47b1ga704gef8e414d6311" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_STUNNED_True"/>
+                    <attribute id="UUID" type="guid" value="87ee7d6b-46c8-49d4-8d4c-6e6a29a07ccc"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hdf9568a0g1c58g45b7g9c55g408312eabfb1" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS1_False"/>
+                    <attribute id="UUID" type="guid" value="9213c8b1-6cc4-4de4-982c-5a0de2fa4a5e"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="he58cb488g68e4g42dcg8b15g20fb80f7b9c7" version="2"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_LOW_RAPHAEL_MONSTER_FORM_False"/>
+                    <attribute id="UUID" type="guid" value="483984ce-4e1b-4ba6-b751-7553751b3ad5"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h8f43baadg9bbbg460bg9c8cgb2c6cc8fc35c" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS2_False"/>
+                    <attribute id="UUID" type="guid" value="e6d74dce-4310-4525-8f7d-cb63c19d533a"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="haba734e2g4504g4cdegb8e0gd7d692f134af" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS3_False"/>
+                    <attribute id="UUID" type="guid" value="164f614f-d8f3-424d-8f71-d2020e602b9c"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd58bd1f7g7e5ag4ec9gac19g1c0103d84ba5" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS4_False"/>
+                    <attribute id="UUID" type="guid" value="e9a3ea6a-bdd3-48fa-8814-2e0f09289ccc"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd6a1ee26gb8a1g4678ga25agfe70c6ccf5b3" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS5_False"/>
+                    <attribute id="UUID" type="guid" value="cc0f5f91-582a-419c-9758-ca9c3f23696d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h27fe3f2dga5c7g4961gaf65g3bc33e8577bb" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS6_False"/>
+                    <attribute id="UUID" type="guid" value="f0fe78c0-ba40-4f90-97b7-48c3b61e3f4b"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h4df496e8g455fg4449g88e6gcdaee508b331" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS7_False"/>
+                    <attribute id="UUID" type="guid" value="5ea4e0cb-6223-446a-8b59-d5875d841abe"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hcffc5365gf33dg43e1g9f1cg1eaa4d566dac" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS8_False"/>
+                    <attribute id="UUID" type="guid" value="bdd8399c-ea80-429a-bdf7-224af69e2408"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6b5d31c3g1426g4d74gabbbg883f695afa55" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS9_False"/>
+                    <attribute id="UUID" type="guid" value="b0ddebff-61b4-45a8-9bfe-1673bb4407f7"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h4cf8e30ega618g4c50ga434gf8d429ec82d6" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS10_False"/>
+                    <attribute id="UUID" type="guid" value="a2a3eb04-f410-48d7-923d-925920c0bec9"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h782da038g2eb9g4beega057gb432216c3f70" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS11_False"/>
+                    <attribute id="UUID" type="guid" value="8ac2dcf8-3ad5-4fbe-94e3-3a644e95c5a0"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hf1b851feg6a99g4b6dgb7d3g2734d348c882" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS12_False"/>
+                    <attribute id="UUID" type="guid" value="2dde3c66-0126-4726-88cc-cf67b8b89755"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5fe2950bg23fcg41b7gbbc6gadfac4101ab0" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS13_False"/>
+                    <attribute id="UUID" type="guid" value="6cb4ea49-1005-4901-9988-47934c401a2a"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hda67a1cagf5b4g4badg91b1g88f93975f5b0" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS14_False"/>
+                    <attribute id="UUID" type="guid" value="0ccf9184-cf5c-4338-a810-0898b4062fa2"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h892d48c6ga3fbg4f48gba15g6fc71205ff31" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS15_False"/>
+                    <attribute id="UUID" type="guid" value="d4a0ca9f-8079-4cc6-b4ae-888f6b20c083"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2a76acafg43c5g4076g9119g1b74fe2ee0e1" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS16_False"/>
+                    <attribute id="UUID" type="guid" value="6a862140-820b-4c70-88c6-a7873dcc3ea1"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hc09d43e5g3b63g4896g8755gbcfe053b859a" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT3_WYR_CHESS_VALIDPOS17_False"/>
+                    <attribute id="UUID" type="guid" value="c6eb367c-3b86-42c3-8311-7880635d403e"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_LOW_HOUSEOFHOPE_IDENTIFY_RAPHAEL_False"/>
+                    <attribute id="UUID" type="guid" value="10532375-196f-4bcb-ade0-a08b9dfa8533"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value=" CE_Status_END_KARSUSCOMPULSION_CHANNELINGCOMPLETE_False"/>
+                    <attribute id="UUID" type="guid" value="ffc1485a-4b45-48d4-ab10-d44c54abc17d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha8b2f103g8832g4746gb44bg7c72957b7407" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_END_CROWN_OF_KARSUS_False"/>
+                    <attribute id="UUID" type="guid" value="445f3c38-43ce-4123-8ec6-97ac488cdb8d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h1f9d6e2agd508g4ccag9fa9g655026331286" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_MAG_ParalyzingCritical_False"/>
+                    <attribute id="UUID" type="guid" value="459bf909-d4f7-46c6-9b8f-d81c64d1f00d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h880d522egcdc1g46bfg9ef9g32bb1eeae3c1" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_MAG_Shield_False"/>
+                    <attribute id="UUID" type="guid" value="94c1cc57-8f77-4de7-8daf-0f1e5bb7bdbc"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h7042f7f4gf722g42aegbbf0g4053d2644555" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_MAG_Shield_LeatherArmor_False"/>
+                    <attribute id="UUID" type="guid" value="36686a90-09d2-4a93-867c-aed92a7d1931"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hed533136g96fdg4566gb525g27f6ce4911d4" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_MAG_Shield_HarpersAmulet_False"/>
+                    <attribute id="UUID" type="guid" value="8fba5288-9cf6-4752-980f-9a09d69a7437"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hb8db7ebbg4af8g4330g8709gac9fa875fd9e" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_MAG_SecondChance_False"/>
+                    <attribute id="UUID" type="guid" value="41d035e3-98d4-40f1-816e-951b918f89bd"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hdb253db0g5274g434fgb6f9gaf41ad18da46" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Tag_ACT2_TWN_WARDINGBONDRECEIVER_False"/>
+                    <attribute id="UUID" type="guid" value="0297c44f-c20d-4d35-a9c7-48cc5c432ab9"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h449a1af8gf249g4119g9e43g4349e201b0e4" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="SummonBlockCheck"/>
+                    <attribute id="UUID" type="guid" value="c430a18d-0ba0-4560-9081-db63579d2356"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hf87e77efgafa4g4b76g8f2fgf8ce720b6da6" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Passive_MAG_Extended_Target_Cantrip_False"/>
+                    <attribute id="UUID" type="guid" value="a41cab7e-54d9-4e3e-b0a3-c1655a09798d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hab62305cga202g4c3bgbc39gd4d225762ea2" version="2"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Passive_MAG_ClosQuarterRangedSpell_False"/>
+                    <attribute id="UUID" type="guid" value="425947f0-9685-4b92-9da4-0d00da6c649d"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha1b81babga1d3g4411g9765g784e65232495" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Passive_MAG_Warlock_Quickened_Cantrips_False"/>
+                    <attribute id="UUID" type="guid" value="3a3df0ba-21ff-486e-8929-aa564c0847d5"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h790294feg3952g4842g8e14g4e7583ce7b1a" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_MAG_Counterspell_False"/>
+                    <attribute id="UUID" type="guid" value="a62a3d20-839b-42bc-9adf-ba4e65786502"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h64a1cf4cgedd9g4060g9d0dgfa3a79fc9d3d" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_Scarab_Of_Protection_False"/>
+                    <attribute id="UUID" type="guid" value="8697cd7a-cf1a-40c2-9b16-12790f2049a2"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5fcedf83g0b11g42f1g9281g2a856e422f39" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_Legendary_InfernalResistance_False"/>
+                    <attribute id="UUID" type="guid" value="06755667-9ec6-42d9-8006-04244935ce5c"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha3f44ba7g3c9fg4404g9bd4gedc27b762beb" version="2"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_LegendaryEvasion_Protection_False"/>
+                    <attribute id="UUID" type="guid" value="41514e34-c0c6-4bc3-84f9-1fe217b2f0cf"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h7e18ca75g6839g48cfg8d9fg6da0713875b3" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_ActionResource_Interrupt_AbsorbElements_False"/>
+                    <attribute id="UUID" type="guid" value="b15e85c9-20a6-460d-a3bb-f83218ef6cad"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h26badc0age24dg4b6bg83ffg48b1e07e6f66" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_HARPERALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="81667376-025e-4bc0-b13e-abc57ff6a851"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h36227353g0c92g4a74ga0e4g2edd97cf249a" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_NIGHTSONGALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="7295beb2-c705-411d-a398-57693da83d8b"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h45c5a901g3edag4969g9f0dg991d84ccd7a1" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_OWLBEARALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="89deedfc-99ed-4f97-a861-e7960d26cbb7"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h04028a50g6ccbg415egbd05geb8ba93470ac" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILTIES_ROLANALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="a9325ae4-074c-4e90-8be8-13ddb27d26c7"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5f675470g16fcg4b64gb90fg56db0989429f" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_GRENADIERALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="f64079e5-d8b2-4fbc-ac50-b4df326f62d2"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h35709900gcaceg4481g97f2gc979b8bccdb2" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_WATCHALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="683c10d1-649e-4748-a5d1-9edd8e1b75e3"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h653513e0gafb8g4ee6g9923g71fe3f05f1ea" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_VERTERANALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="7532d4ff-a67d-4134-a3ac-aad83b5fa6ca"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hef9d46eag5c21g429fg9889g84d0a7f6b9d9" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_WATCHERALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="75e3de93-c8c5-43f0-b2ad-c1d7436f7e11"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hfe571ac6g63a6g49e4gb9f3gfbda3070f6ee" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILTIES_GITHALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="9e4576c5-d3ea-40b9-aaec-bc48b674e384"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h397f8a07g0d92g4e89gb578g57c4f343f974" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_ORTHONALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="22baf461-90ed-477a-ab43-684a0f24f8ef"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h65d6a730gb473g44a3g87a3ge4889bc31c3b" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILTIES_KEENEALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="36fbce12-b08b-42b2-8214-7cdf6c61c2a1"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha9504775g0930g49edgb6b8g4a4062087739" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILTIES_ZHENTARIMALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="4ba823a4-704c-44c1-bb96-87a02d4cc311"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h9d64c11dg5742g4dc3ga195gb2a45882d115" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILTIES_VAMPIREALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="67864f6a-1edd-4223-a53c-4650350b1184"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="he09b5c0bge58dg4832g93afg119979775161" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_ISOBELALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="356ffcd6-7b17-4554-8d33-6a55f1075761"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6669d62dgea70g4db1g90f6g27610303bf00" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILTIES_WYLLALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="b0c86102-d9c5-4ccc-8f21-478de25172fc"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h64a8cc50gbb38g49d0g8567g0f2f1afab6d7" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_SHARALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="62ad4dce-2ec1-4dfd-922a-bff84bd8028c"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h173f9a5ag57f8g42e0g9751g03d92712005f" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_FLAMINGFISTALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="bd5d1123-90f1-4c3c-8b8c-7656adc02789"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h14d458f2ge976g474egacbeg1f08af5f804a" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_HAGALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="189e51bf-4e06-4b7b-87f6-1eaf9af66da0"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h03611b35g453ag49b0g8523g105b880c3c07" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_GURALLIESCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="1fb676b4-cd2b-4605-b257-34b954ff634c"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h7c547d09gc02ag4291ga499g04b111fbe049" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_END_ALLYABILITIES_PHASMALLYCONSUMED_True"/>
+                    <attribute id="UUID" type="guid" value="18dc089c-8ea8-4fef-a189-15da1e5e0b09"/>
+                </node>
+                <node id="ConditionErrors">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h20e4a34bg6016g4070g92adgc99dce727e48" version="1"/>
+                    <attribute id="ErrorDescriptionType" type="uint8" value="0"/>
+                    <attribute id="Hidden" type="bool" value="true"/>
+                    <attribute id="Identifier" type="FixedString" value="CE_Status_DASH_True"/>
+                    <attribute id="UUID" type="guid" value="f5aad5e8-0341-4809-8822-5d0cfd54a41d"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

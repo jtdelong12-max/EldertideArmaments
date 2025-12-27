@@ -1,0 +1,15 @@
+new entry "HAG_DOWNED"
+type "StatusData"
+data "StatusType" "DOWNED"
+using "DOWNED"
+data "StableRollDC" "5"
+
+new entry "MAG_1HP"
+type "StatusData"
+data "StatusType" "DOWNED"
+using "SURVIVAL_INSTINCT_DOWNED"
+data "DisplayName" "h154130afgda31g4d0egad7fg204b01f9964d;3"
+data "Description" ""
+data "DescriptionParams" "RegainHitPoints(1)"
+data "OnApplyFunctors" "RemoveStatus(MAG_1HP);RegainHitPoints(1)"
+

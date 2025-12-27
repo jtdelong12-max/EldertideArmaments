@@ -336,7 +336,6 @@ data "Vitality" "77"
 data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
 data "Passives" "AttackOfOpportunity;DarknessRules;Darkvision;ShortResting;ExtraAttack;ImmuneToDisarm;DispelEvilAndGood_Charm_Check;DispelEvilAndGood_Frightened_Check;DispelEvilAndGood_Possessed_Check"
 
-
 - - - - - - - - - -
 // Dror Ragzlin \\
 - - - - - - - - - -

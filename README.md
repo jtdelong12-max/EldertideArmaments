@@ -26,6 +26,7 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - 🔧 **[Compatibility Guide](COMPATIBILITY.md)** - Mod compatibility and load order information
 - ⚖️ **[Balance Guide](BALANCE.md)** - Understanding item power and design philosophy
 - 🔍 **[Validation Guide](VALIDATION_GUIDE.md)** - Reference data and validation tools for mod files
+- ⚡ **[Optimization Guide](OPTIMIZATION_GUIDE.md)** - Performance optimizations and best practices
 
 ### Requirements
 - Baldur's Gate 3 Patch 8 (4.1.1.6758295 or later)

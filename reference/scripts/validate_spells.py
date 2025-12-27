@@ -52,7 +52,8 @@ VALID_SPELL_FLAGS = {
     "UnavailableInDialogs", "AddFallDamageOnLand", "Invisible", "NoSurprise",
     "IsAttack", "UNUSED_C", "CannotTargetTerrain", "Wildshape",
     "IgnorePreviouslyPickedEntities", "IsJump", "ImmediateCast",
-    "SteeringSpeedOverride", "CallListeners", "DisablePortraitIndicator"
+    "SteeringSpeedOverride", "CallListeners", "DisablePortraitIndicator",
+    "NoCooldownOnMiss"
 }
 
 class ValidationError:

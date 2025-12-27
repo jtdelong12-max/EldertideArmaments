@@ -1,0 +1,177 @@
+// ==========================================
+// BG3 VANILLA PASSIVE ABILITY REFERENCE DATA
+// ==========================================
+// This file contains reference examples of vanilla BG3 passive ability definitions
+// Use this to validate your custom passives follow proper BG3 data structure
+// Last Updated: BG3 Patch 8 (Build 6758295)
+// ==========================================
+
+// EXAMPLE: Simple Passive Boost
+new entry "CriticalHit_Success"
+type "PassiveData"
+data "DisplayName" "h3a1f4f4ag1f2bg4d5ega5c3dg8e9c7b2a3d4e"
+data "Description" "h8b7c6d5eg4f3ag2b1ch9d8eg7f6a5b4c3d2e1f0"
+data "Icon" "PassiveFeature_CriticalHit"
+data "Properties" "IsHidden"
+data "Boosts" "CriticalHit(AttackRoll,Success,Always)"
+
+// EXAMPLE: Conditional Passive
+new entry "FastHands"
+type "PassiveData"
+data "DisplayName" "h5f8d2e3ag4c1bg7a9dg2f6eg8c3a5b1d4e7f9"
+data "Description" "h1d7f3a9eg8c2bg5f4dg9a1eg3c6d8f2a7b5e4"
+data "Icon" "PassiveFeature_FastHands"
+data "Properties" "Highlighted"
+data "Boosts" "UnlockInterrupt(FastHandsToggle)"
+
+// EXAMPLE: Damage Reduction Passive
+new entry "HeavyArmourMaster"
+type "PassiveData"
+data "DisplayName" "h7c4e3f2ag1b8dg4a5bg9c7dg6e8f2a1b3c4d5e"
+data "Description" "h2a1b9c8dg7f6eg5d4cg3b2ag1f0e9d8c7b6a5f"
+data "Icon" "PassiveFeature_HeavyArmourMaster"
+data "Properties" "Highlighted"
+data "Boosts" "IF(not Self() and WearingArmor(HeavyArmor)):Resistance(Piercing,Resistant,Plate(3));IF(not Self() and WearingArmor(HeavyArmor)):Resistance(Slashing,Resistant,Plate(3));IF(not Self() and WearingArmor(HeavyArmor)):Resistance(Bludgeoning,Resistant,Plate(3))"
+
+// EXAMPLE: Advantage Passive
+new entry "RecklessAttack"
+type "PassiveData"
+data "DisplayName" "h9d3f7a1eg5c2bg8f4dg1a6eg7c3d9f2a5b8e4"
+data "Description" "h6f2d8a3eg9c1bg4f7dg2a5eg8c6d3f9a1b7e5"
+data "Icon" "PassiveFeature_RecklessAttack"
+data "Properties" "Highlighted"
+data "Boosts" "Advantage(AttackRoll,Melee)"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "HasStatus('RECKLESS_ATTACK',context.Source)"
+
+// EXAMPLE: Reaction Passive
+new entry "OpportunityAttack"
+type "PassiveData"
+data "DisplayName" "h3a7e1f5cg9d2bg8f4eg6a1cg5d3f7b9e2a4c"
+data "Description" "h5e9f3a1cg7d4bg2f8eg6a1cg3d5f9b7e2a4c"
+data "Icon" "Action_OpportunityAttack"
+data "Properties" "Highlighted"
+data "Boosts" "UnlockInterrupt(OpportunityAttack)"
+
+// EXAMPLE: Spell Modification Passive
+new entry "EmpoweredEvocation"
+type "PassiveData"
+data "DisplayName" "h8c3f9a5eg1d7bg4f2eg6a1cg7d3f5b9e2a4c"
+data "Description" "h2d8f4a6eg9c1bg7f3eg5a1cg8d2f6b4e9a7c"
+data "Icon" "PassiveFeature_EmpoweredEvocation"
+data "Properties" "Highlighted"
+data "Boosts" "IF(IsSpell() and SpellSchool(Evocation)):SpellDamageBonus(max(IntelligenceModifier,1))"
+
+// EXAMPLE: Movement Passive
+new entry "MobilePassive"
+type "PassiveData"
+data "DisplayName" "h6f3a9d1eg5c8bg2f7eg4a1cg9d5f3b8e7a2c"
+data "Description" "ha3e7f1c9g5d2bg8e4fg6a1cg9b3d5f7a2e4c"
+data "Icon" "PassiveFeature_Mobile"
+data "Properties" "Highlighted"
+data "Boosts" "ActionResource(Movement,3,0);StatusImmunity(SG_DifficultTerrain)"
+
+// EXAMPLE: Resistance Passive
+new entry "DragonbornResistance_Acid"
+type "PassiveData"
+data "DisplayName" "hf2d8e4a1g7c3bg5f9eg2a6dg8c1f4b7e3a5d"
+data "Description" "h9a3f7d1eg5c2bg8f4dg6a1cg7e3f9b5d2a4c"
+data "Icon" "PassiveFeature_DraconicAncestry_Acid"
+data "Properties" "Highlighted"
+data "Boosts" "Resistance(Acid,Resistant)"
+
+// EXAMPLE: Aura Passive
+new entry "AuraOfProtection"
+type "PassiveData"
+data "DisplayName" "h4c9f2a7eg1d5bg6f8eg3a1cg7d5f9b2e4a6c"
+data "Description" "h7e4a1f9cg3d5bg8f2eg6a1cg9d3f5b7e2a4c"
+data "Icon" "PassiveFeature_AuraOfProtection"
+data "Properties" "Highlighted"
+data "Boosts" "IF(IsSelf(context.Source)):RollBonus(SavingThrow,max(CharismaModifier,1));IF(not IsSelf(context.Source) and not Enemy() and not Dead() and HasStatus('AURA_OF_PROTECTION',GetActiveWeapon())):RollBonus(SavingThrow,max(SourceCharismaModifier,1))"
+data "TooltipSave" "Charisma"
+data "TooltipUseSavingThrowValues" "Yes"
+
+// EXAMPLE: On-Kill Passive
+new entry "GreatWeaponMaster_BonusAttack"
+type "PassiveData"
+data "DisplayName" "h2d8f4a6eg9c1bg7f3eg5a1cg8d2f6b4e9a7c"
+data "Description" "h6f3a9d1eg5c8bg2f7eg4a1cg9d5f3b8e7a2c"
+data "Icon" "PassiveFeature_GreatWeaponMaster"
+data "Properties" "Highlighted"
+data "StatsFunctors" "ApplyStatus(GREAT_WEAPON_MASTER_BONUS_ATTACK,100,1)"
+data "StatsFunctorContext" "OnKill;OnCriticalHit"
+data "Conditions" "IsMeleeAttack() and HasAttackWeapon() and IsWeaponAttack()"
+
+// ==========================================
+// COMMON PASSIVE PROPERTIES REFERENCE
+// ==========================================
+
+// Properties Options:
+// - "Highlighted" - Shows in character sheet as feature
+// - "IsHidden" - Hidden from player view
+// - "IsToggled" - Can be toggled on/off
+// - "ToggledDefaultOn" - Toggled on by default
+// - "ToggledDefaultOff" - Toggled off by default
+// - "ForceShowInCC" - Force show in character creation
+// - "OncePerTurn" - Only triggers once per turn
+// - "OncePerCombat" - Only triggers once per combat
+
+// StatsFunctorContext (when passive triggers):
+// - "OnAttack" - When attacking
+// - "OnDamage" - When dealing damage
+// - "OnHeal" - When healing
+// - "OnKill" - When killing an enemy
+// - "OnCast" - When casting a spell
+// - "OnStatusApplied" - When status is applied
+// - "OnStatusRemoved" - When status is removed
+// - "OnTurn" - Each turn
+// - "OnCriticalHit" - On critical hit
+// - "OnMiss" - On missing an attack
+
+// Common Boosts for Passives:
+// - "Advantage(AttackRoll,Melee)" - Advantage on melee attacks
+// - "Disadvantage(AttackRoll,Ranged)" - Disadvantage on ranged
+// - "RollBonus(SavingThrow,1)" - +1 to saves
+// - "Resistance(Fire,Resistant)" - Fire resistance
+// - "StatusImmunity(SG_Prone)" - Immune to prone
+// - "UnlockInterrupt(InterruptName)" - Unlock reaction
+// - "ActionResource(Movement,3,0)" - Extra movement
+// - "CriticalHit(AttackRoll,Success,Always)" - Critical hit on 19-20
+// - "SpellDamageBonus(max(IntelligenceModifier,1))" - Spell damage bonus
+
+// Conditions (common checks):
+// - "IsMeleeAttack()" - Check if melee attack
+// - "IsRangedAttack()" - Check if ranged attack
+// - "IsSpell()" - Check if spell
+// - "HasStatus('STATUS_ID',context.Source)" - Check for status
+// - "WearingArmor(HeavyArmor)" - Check armor type
+// - "HasWeaponInMainHand()" - Check main hand weapon
+// - "IsWeaponAttack()" - Check if weapon attack
+// - "IsSelf(context.Source)" - Check if caster is self
+// - "Enemy()" - Check if enemy
+// - "Dead()" - Check if dead
+
+// ==========================================
+// PASSIVE STACKING AND PRIORITY
+// ==========================================
+// Passives stack unless they have the same ID
+// Advantages and disadvantages cancel out
+// Multiple sources of resistance don't stack
+// Temporary effects override permanent ones
+
+// ==========================================
+// VALIDATION CHECKLIST
+// ==========================================
+// When creating custom passives, ensure:
+// ✓ DisplayName and Description use localization handles
+// ✓ Icon references valid icon path
+// ✓ Properties are appropriate for the passive type
+// ✓ Boosts use proper syntax and valid parameters
+// ✓ StatsFunctorContext matches when you want it to trigger
+// ✓ Conditions are properly formatted
+// ✓ StatsFunctors reference valid functors
+// ✓ TooltipSave/TooltipUseSavingThrowValues set correctly for saves
+// ✓ Passive doesn't create infinite loops
+// ✓ IF() conditions are properly nested and closed
+// ✓ Passive is balanced and doesn't break game mechanics
+// ✓ All referenced statuses/interrupts exist

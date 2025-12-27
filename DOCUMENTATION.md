@@ -13,6 +13,18 @@ EldertideArmaments/
 ├── COMPATIBILITY.md      # Mod compatibility information
 ├── CONTRIBUTING.md       # Contribution guidelines
 ├── CHANGELOG.md          # Version history
+├── VALIDATION_GUIDE.md   # Reference data and validation tools
+├── reference/            # BG3 reference data and validation
+│   ├── README.md         # Reference structure documentation
+│   ├── vanilla_data/     # Vanilla BG3 examples
+│   │   ├── spells/       # Spell reference data
+│   │   ├── items/        # Item reference data
+│   │   ├── status_effects/ # Status reference data
+│   │   └── passives/     # Passive reference data
+│   └── scripts/          # Validation scripts
+│       ├── validate_spells.py
+│       ├── validate_items.py
+│       └── validate_references.py
 └── .gitignore           # Git configuration
 ```
 
@@ -100,6 +112,23 @@ EldertideArmaments/
 - **Length**: ~70 lines
 - **Special**: Version checking guide
 
+### VALIDATION_GUIDE.md
+- **Purpose**: Reference data and validation tools for BG3 modding
+- **Content**: Vanilla data examples, validation scripts, error solutions
+- **Audience**: Modders, developers, contributors
+- **Length**: ~400 lines
+- **Special**: Automated validation, cross-reference checking, inspired by AI-Allies approach
+
+### reference/
+- **Purpose**: Comprehensive validation structure for mod files
+- **Content**: Vanilla BG3 reference data, validation scripts, documentation
+- **Components**:
+  - **vanilla_data/** - Example spells, items, statuses, passives from vanilla BG3
+  - **scripts/** - Python validation tools for automated checking
+  - **README.md** - Usage guide and structure documentation
+- **Audience**: Modders, quality assurance, contributors
+- **Special**: Similar to AI-Allies repository approach for organizing game data
+
 ## Cross-References
 
 All documentation files are cross-referenced:
@@ -155,6 +184,8 @@ All documentation files are cross-referenced:
 - ✅ Community contributions with clear standards
 - ✅ Version history tracking
 - ✅ Professional presentation
+- ✅ Automated validation tools for quality assurance
+- ✅ Reference data for maintaining BG3 compatibility
 
 ### For Community
 - ✅ Knowledge sharing through docs
@@ -166,10 +197,10 @@ All documentation files are cross-referenced:
 ## Statistics
 
 ### Total Documentation
-- **Files Created**: 8
-- **Total Lines**: ~2,400 lines
-- **Words**: ~20,000 words
-- **Topics Covered**: 50+
+- **Files Created**: 16
+- **Total Lines**: ~5,000+ lines
+- **Words**: ~35,000+ words
+- **Topics Covered**: 80+
 
 ### Coverage
 - ✅ Installation (3 sections across 2 files)
@@ -179,6 +210,7 @@ All documentation files are cross-referenced:
 - ✅ Troubleshooting (Multiple sections)
 - ✅ Contributing (Guidelines included)
 - ✅ Version tracking (Changelog)
+- ✅ Validation (Reference data and scripts)
 
 ## Next Steps
 

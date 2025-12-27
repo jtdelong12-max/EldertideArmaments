@@ -25,6 +25,7 @@ A comprehensive collection of 22 unique magical rings and amulets for Baldur's G
 - 📋 **[Detailed Installation Guide](INSTALLATION.md)** - Step-by-step instructions for all skill levels
 - 🔧 **[Compatibility Guide](COMPATIBILITY.md)** - Mod compatibility and load order information
 - ⚖️ **[Balance Guide](BALANCE.md)** - Understanding item power and design philosophy
+- 🔍 **[Validation Guide](VALIDATION_GUIDE.md)** - Reference data and validation tools for mod files
 
 ### Requirements
 - Baldur's Gate 3 Patch 8 (4.1.1.6758295 or later)
@@ -178,6 +179,36 @@ If you find items too powerful, consider:
 - Using only 1-2 items per character
 - Playing on higher difficulty settings
 - Using the immersive version for natural progression
+
+## Validation & Reference Data
+
+This mod includes a comprehensive validation structure to ensure compatibility with BG3 standards:
+
+### Reference Files
+- **Vanilla BG3 Data Examples** - Reference files showing proper syntax for spells, items, status effects, and passives
+- **Property Documentation** - Valid values and formats for all BG3 data properties
+- **Common Patterns** - Best practices from vanilla game implementation
+
+### Validation Tools
+- **validate_spells.py** - Automated spell definition validation
+- **validate_items.py** - Item and armor definition checking
+- **validate_references.py** - Cross-reference validation between files
+
+### Quick Start
+```bash
+# Validate spell definitions
+python3 reference/scripts/validate_spells.py Public/EldertideArmament/Stats/Generated/Data/
+
+# Validate item definitions
+python3 reference/scripts/validate_items.py Public/EldertideArmament/Stats/Generated/Data/Armor.txt
+
+# Check all cross-references
+python3 reference/scripts/validate_references.py Public/EldertideArmament/
+```
+
+📖 **[Full Validation Guide](VALIDATION_GUIDE.md)** - Complete documentation with examples and error solutions
+
+This structure is inspired by the [AI-Allies](https://github.com/trancethehuman/baldurs-gate-ai-guide) repository approach to organizing and validating BG3 data.
 
 ## Troubleshooting
 

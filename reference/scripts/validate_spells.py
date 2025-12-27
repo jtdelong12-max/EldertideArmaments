@@ -19,6 +19,11 @@ import re
 from pathlib import Path
 from typing import List, Dict, Tuple
 
+# Pre-compiled regex patterns for better performance
+_ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
+_DATA_PATTERN = re.compile(r'data "([^"]+)" "([^"]*)"')
+_USE_COSTS_COMMA_ERROR = re.compile(r'\w+:\d+,\s*\w+(?::|$)')
+
 # Valid values from BG3 vanilla data
 VALID_SPELL_TYPES = {
     "Projectile", "Target", "Zone", "Shout", "Rush", "Wall", 
@@ -65,8 +70,8 @@ def parse_spell_entry(lines: List[str], start_idx: int) -> Tuple[Dict[str, str],
     entry_name = ""
     i = start_idx
     
-    # Get entry name
-    match = re.match(r'new entry "([^"]+)"', lines[i])
+    # Get entry name - use pre-compiled pattern
+    match = _ENTRY_PATTERN.match(lines[i])
     if match:
         entry_name = match.group(1)
         entry["_name"] = entry_name
@@ -82,8 +87,8 @@ def parse_spell_entry(lines: List[str], start_idx: int) -> Tuple[Dict[str, str],
         if line.startswith("new entry"):
             break
             
-        # Parse data line
-        match = re.match(r'data "([^"]+)" "([^"]*)"', line)
+        # Parse data line - use pre-compiled pattern
+        match = _DATA_PATTERN.match(line)
         if match:
             key = match.group(1)
             value = match.group(2)
@@ -185,9 +190,8 @@ def validate_use_costs(entry: Dict[str, str], file_path: str) -> List[Validation
     if "UseCosts" in entry:
         costs = entry["UseCosts"]
         
-        # Check for malformed costs with commas in wrong places
-        # Pattern: matches something like "Ability:1,Ability" which is wrong
-        if re.search(r'\w+:\d+,\s*\w+(?::|$)', costs):
+        # Check for malformed costs with commas in wrong places - use pre-compiled pattern
+        if _USE_COSTS_COMMA_ERROR.search(costs):
             errors.append(ValidationError(
                 file_path, entry["_start_line"], entry["_name"],
                 "UseCosts", costs,
@@ -298,6 +302,9 @@ def main():
     
     valid_count, errors = validate_directory(target)
     
+    # Collect unique entry names in a single pass
+    error_entry_names = set(e.entry_name for e in errors)
+    
     # Print detailed errors
     if errors:
         print("=" * 70)
@@ -312,7 +319,7 @@ def main():
     print("VALIDATION SUMMARY")
     print("=" * 70)
     print(f"✅ Valid spells: {valid_count}")
-    print(f"❌ Spells with errors: {len(set(e.entry_name for e in errors))}")
+    print(f"❌ Spells with errors: {len(error_entry_names)}")
     print(f"⚠️  Total errors: {len(errors)}")
     print()
     

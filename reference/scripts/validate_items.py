@@ -19,6 +19,14 @@ import re
 from pathlib import Path
 from typing import List, Dict, Tuple
 
+# Pre-compiled regex patterns for better performance
+_ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
+_USING_PATTERN = re.compile(r'using "([^"]+)"')
+_DATA_PATTERN = re.compile(r'data "([^"]+)" "([^"]*)"')
+_UUID_FORMAT = re.compile(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', re.IGNORECASE)
+_ABILITY_BOOST_PATTERN = re.compile(r'Ability\((\w+),\s*(\d+),\s*(\d+)\)')
+_COMMA_SEPARATOR_ERROR = re.compile(r'\),\s*\w+\(')
+
 # Configuration constants
 MAX_ABILITY_CAP = 30  # Maximum reasonable ability score cap
 MAX_ABILITY_BONUS = 10  # Maximum reasonable ability bonus
@@ -66,8 +74,8 @@ def parse_item_entry(lines: List[str], start_idx: int) -> Tuple[Dict[str, str], 
     entry_name = ""
     i = start_idx
     
-    # Get entry name
-    match = re.match(r'new entry "([^"]+)"', lines[i])
+    # Get entry name - use pre-compiled pattern
+    match = _ENTRY_PATTERN.match(lines[i])
     if match:
         entry_name = match.group(1)
         entry["_name"] = entry_name
@@ -83,13 +91,13 @@ def parse_item_entry(lines: List[str], start_idx: int) -> Tuple[Dict[str, str], 
         if line.startswith("new entry"):
             break
             
-        # Parse using line
-        match = re.match(r'using "([^"]+)"', line)
+        # Parse using line - use pre-compiled pattern
+        match = _USING_PATTERN.match(line)
         if match:
             entry["using"] = match.group(1)
         
-        # Parse data line
-        match = re.match(r'data "([^"]+)" "([^"]*)"', line)
+        # Parse data line - use pre-compiled pattern
+        match = _DATA_PATTERN.match(line)
         if match:
             key = match.group(1)
             value = match.group(2)
@@ -121,10 +129,8 @@ def validate_uuid(entry: Dict[str, str], file_path: str) -> List[ValidationError
     
     if "RootTemplate" in entry:
         uuid = entry["RootTemplate"]
-        # UUID format: 8-4-4-4-12 hexadecimal digits
-        uuid_pattern = r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
-        
-        if not re.match(uuid_pattern, uuid, re.IGNORECASE):
+        # Use pre-compiled UUID pattern
+        if not _UUID_FORMAT.match(uuid):
             errors.append(ValidationError(
                 file_path, entry["_start_line"], entry["_name"],
                 "RootTemplate", uuid,
@@ -173,8 +179,8 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
     if "Boosts" in entry:
         boosts = entry["Boosts"]
         
-        # Check for comma instead of semicolon (common mistake)
-        if re.search(r'\),\s*\w+\(', boosts):
+        # Check for comma instead of semicolon (common mistake) - use pre-compiled pattern
+        if _COMMA_SEPARATOR_ERROR.search(boosts):
             errors.append(ValidationError(
                 file_path, entry["_start_line"], entry["_name"],
                 "Boosts", boosts[:50] + "...",
@@ -182,9 +188,8 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
                 "error"
             ))
         
-        # Validate ability boosts
-        ability_pattern = r'Ability\((\w+),\s*(\d+),\s*(\d+)\)'
-        for match in re.finditer(ability_pattern, boosts):
+        # Validate ability boosts - use pre-compiled pattern
+        for match in _ABILITY_BOOST_PATTERN.finditer(boosts):
             ability = match.group(1)
             bonus = int(match.group(2))
             cap = int(match.group(3))
@@ -328,8 +333,14 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         total_valid += valid
         all_errors.extend(errors)
         
-        error_count = len([e for e in errors if e.severity == "error"])
-        warning_count = len([e for e in errors if e.severity == "warning"])
+        # Count errors and warnings in a single pass
+        error_count = 0
+        warning_count = 0
+        for e in errors:
+            if e.severity == "error":
+                error_count += 1
+            else:
+                warning_count += 1
         
         if error_count > 0:
             print(f"   ❌ Found {error_count} error(s)")
@@ -359,9 +370,19 @@ def main():
     
     valid_count, all_errors = validate_directory(target)
     
-    # Separate errors and warnings
-    errors = [e for e in all_errors if e.severity == "error"]
-    warnings = [e for e in all_errors if e.severity == "warning"]
+    # Separate errors and warnings in a single pass
+    errors = []
+    warnings = []
+    error_entry_names = set()
+    warning_entry_names = set()
+    
+    for e in all_errors:
+        if e.severity == "error":
+            errors.append(e)
+            error_entry_names.add(e.entry_name)
+        else:
+            warnings.append(e)
+            warning_entry_names.add(e.entry_name)
     
     # Print detailed errors
     if errors:
@@ -386,8 +407,8 @@ def main():
     print("VALIDATION SUMMARY")
     print("=" * 70)
     print(f"✅ Valid items: {valid_count}")
-    print(f"❌ Items with errors: {len(set(e.entry_name for e in errors))}")
-    print(f"⚠️  Items with warnings: {len(set(e.entry_name for e in warnings))}")
+    print(f"❌ Items with errors: {len(error_entry_names)}")
+    print(f"⚠️  Items with warnings: {len(warning_entry_names)}")
     print(f"   Total errors: {len(errors)}")
     print(f"   Total warnings: {len(warnings)}")
     print()

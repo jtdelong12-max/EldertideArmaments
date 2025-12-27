@@ -55,6 +55,11 @@
           "name": "benchmark_validation.py",
           "purpose": "Performance testing for validation",
           "usage": "python3 benchmark_validation.py"
+        },
+        {
+          "name": "ai_allies_integration_example.py",
+          "purpose": "Demonstrate AI-Allies integration capabilities",
+          "usage": "python3 ai_allies_integration_example.py"
         }
       ]
     },

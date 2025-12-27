@@ -35,7 +35,7 @@ def load_metadata():
     """Load AI-Allies metadata from the repository."""
     repo_root = get_repo_root()
     metadata_path = repo_root / ".ai-allies-metadata.json"
-    with open(metadata_path, 'r') as f:
+    with open(metadata_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
@@ -156,11 +156,16 @@ def main():
         print("✅ Integration example completed successfully!")
         print("=" * 60)
         
-    except FileNotFoundError:
-        print("\n❌ Error: .ai-allies-metadata.json not found")
+    except FileNotFoundError as e:
+        print(f"\n❌ Error: File not found - {e.filename}")
         print("Make sure you're running this script from the repository root")
+    except json.JSONDecodeError as e:
+        print(f"\n❌ Error: Invalid JSON in metadata file at line {e.lineno}")
+        print(f"   {e.msg}")
+    except KeyError as e:
+        print(f"\n❌ Error: Missing expected key in metadata: {e}")
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n❌ Unexpected error: {e}")
 
 
 if __name__ == "__main__":

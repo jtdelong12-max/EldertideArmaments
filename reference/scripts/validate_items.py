@@ -276,29 +276,35 @@ def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
     while i < len(lines):
         line = lines[i].strip()
         
-        # Find item entry (Armor type)
-        if line.startswith('new entry') and 'type "Armor"' in ''.join(lines[i:i+5]):
-            entry, next_i = parse_item_entry(lines, i)
-            entry_name = entry.get("_name", "")
+        # Find item entry (Armor type) - optimized to avoid unnecessary string joining
+        if line.startswith('new entry'):
+            # Check next few lines for type without joining (more efficient)
+            is_armor_type = any('type "Armor"' in lines[i+j] for j in range(min(5, len(lines)-i)))
             
-            # Run all validations and collect errors for this entry
-            entry_errors[entry_name] = []
-            entry_errors[entry_name].extend(validate_using_clause(entry, file_path))
-            entry_errors[entry_name].extend(validate_uuid(entry, file_path))
-            entry_errors[entry_name].extend(validate_object_category(entry, file_path))
-            entry_errors[entry_name].extend(validate_rarity(entry, file_path))
-            entry_errors[entry_name].extend(validate_boosts(entry, file_path))
-            entry_errors[entry_name].extend(validate_value(entry, file_path))
-            
-            # Add entry errors to global list
-            errors.extend(entry_errors[entry_name])
-            
-            # Count as valid if no errors (warnings OK)
-            has_errors = any(e.severity == "error" for e in entry_errors[entry_name])
-            if not has_errors:
-                valid_count += 1
-            
-            i = next_i
+            if is_armor_type:
+                entry, next_i = parse_item_entry(lines, i)
+                entry_name = entry.get("_name", "")
+                
+                # Run all validations and collect errors for this entry
+                entry_errors[entry_name] = []
+                entry_errors[entry_name].extend(validate_using_clause(entry, file_path))
+                entry_errors[entry_name].extend(validate_uuid(entry, file_path))
+                entry_errors[entry_name].extend(validate_object_category(entry, file_path))
+                entry_errors[entry_name].extend(validate_rarity(entry, file_path))
+                entry_errors[entry_name].extend(validate_boosts(entry, file_path))
+                entry_errors[entry_name].extend(validate_value(entry, file_path))
+                
+                # Add entry errors to global list
+                errors.extend(entry_errors[entry_name])
+                
+                # Count as valid if no errors (warnings OK)
+                has_errors = any(e.severity == "error" for e in entry_errors[entry_name])
+                if not has_errors:
+                    valid_count += 1
+                
+                i = next_i
+            else:
+                i += 1
         else:
             i += 1
     
@@ -335,14 +341,9 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         total_valid += valid
         all_errors.extend(errors)
         
-        # Count errors and warnings in a single pass
-        error_count = 0
-        warning_count = 0
-        for e in errors:
-            if e.severity == "error":
-                error_count += 1
-            else:
-                warning_count += 1
+        # Count errors and warnings in a single pass with early exit optimization
+        error_count = sum(1 for e in errors if e.severity == "error")
+        warning_count = len(errors) - error_count  # More efficient than second iteration
         
         if error_count > 0:
             print(f"   ❌ Found {error_count} error(s)")

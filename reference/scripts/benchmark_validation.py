@@ -41,11 +41,14 @@ def benchmark_command(command: list, description: str) -> Tuple[float, int]:
         end_time = time.time()
         execution_time = end_time - start_time
         
-        # Print summary of output
+        # Print summary of output - optimized to avoid repeated string searches
         lines = result.stdout.split('\n')
         summary_started = False
+        summary_keywords = ('VALIDATION SUMMARY', 'VALIDATION PASSED', 'VALIDATION FAILED')
+        
         for line in lines:
-            if 'VALIDATION SUMMARY' in line or 'VALIDATION PASSED' in line or 'VALIDATION FAILED' in line:
+            # Use any() with generator for early exit on first match
+            if not summary_started and any(keyword in line for keyword in summary_keywords):
                 summary_started = True
             if summary_started:
                 print(line)

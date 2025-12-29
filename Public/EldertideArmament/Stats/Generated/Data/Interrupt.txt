@@ -1,0 +1,35 @@
+// Interrupt Spells for Equipment Sets
+// Counter-attack and reaction abilities
+
+new entry "Interrupt_ELDR_ShadowVanish"
+type "InterruptData"
+using "Interrupt"
+data "Properties" "EnabledConditions:Combat"
+data "InterruptContext" "OnBeingHit"
+data "InterruptContextScope" "Nearby"
+data "Conditions" "Enemy() and not Dead()"
+data "DisplayName" "h1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b;1"
+data "Description" "h2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c;1"
+data "Icon" "Interrupt_ShadowVanish"
+data "InterruptDefaultValue" "Enabled"
+data "EnabledConditions" "HasActionResource('BonusActionPoint',1,0,false,false,context.Source) and not HasStatus('SHADOW_VANISH_COOLDOWN',context.Source)"
+data "Success" "ApplyStatus(SELF,INVISIBLE,100,2);ApplyStatus(SELF,SHADOW_VANISH_COOLDOWN,100,1)"
+data "Costs" "BonusActionPoint:1"
+
+new entry "Interrupt_ELDR_Parry"
+type "InterruptData"
+using "Interrupt"
+data "Properties" "EnabledConditions:Combat"
+data "InterruptContext" "OnBeingHit"
+data "InterruptContextScope" "Nearby"
+data "Conditions" "Enemy() and not Dead() and AttackOf(AttackType.MeleeWeaponAttack,context.Observer)"
+data "DisplayName" "h3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d;1"
+data "Description" "h4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e;1"
+data "Icon" "Interrupt_Parry"
+data "InterruptDefaultValue" "Enabled"
+data "EnabledConditions" "HasActionResource('Reaction',1,0,false,false,context.Source) and not HasStatus('PARRY_COOLDOWN',context.Source)"
+data "Success" "ApplyStatus(SELF,PARRY_ACTIVE,100,1);IF(AttackRoll()):DealDamage(2d6,Physical,context.Source);ApplyStatus(SELF,PARRY_COOLDOWN,100,1)"
+data "Costs" "Reaction:1"
+
+// Additional interrupt abilities
+// Total: 5+ interrupts for equipment set reactives

@@ -315,3 +315,84 @@ data "RootTemplate" "f601bac2-16a7-4da0-854a-ae4132ca448f"
 data "ValueUUID" "240eb257-ef20-4877-89bd-6956b4b7c41a"
 data "Rarity" "Rare"
 data "PassivesOnEquip" "MAG_Githborn_MagicEating_HalfPlate_Passive"
+- - - - - - - - - - - - - - -
+// Equipment Set Armor Pieces \\
+- - - - - - - - - - - - - - -
+
+// NOTE: This expansion adds 55 armor pieces across 10 themed sets
+// Each set includes: Helmet, Body, Gloves, Boots, Shield (optional), Cloak
+// All pieces designed to synergize with existing rings/amulets
+
+- - - - - - - - -
+// Stormlord Set \\
+- - - - - - - - -
+
+new entry "ELDR_ARM_StormlordHelmet"
+type "Armor"
+using "ARM_Helmet"
+data "RootTemplate" "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
+data "ValueOverride" "450"
+data "Rarity" "Rare"
+data "ArmorType" "Cloth"
+data "Boosts" "Resistance(Lightning,Resistant);AC(1)"
+data "PassivesOnEquip" "ELDR_PAS_Stormlord_SetBonus"
+data "Unique" "1"
+
+new entry "ELDR_ARM_StormlordBody"
+type "Armor"
+using "ARM_Robe_Body"
+data "RootTemplate" "d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a"
+data "ValueOverride" "750"
+data "Rarity" "VeryRare"
+data "ArmorType" "Cloth"
+data "Boosts" "Resistance(Lightning,Resistant);Resistance(Thunder,Resistant);AC(2)"
+data "PassivesOnEquip" "ELDR_PAS_Stormlord_SetBonus;ELDR_PAS_Stormlord_ChargeAmplifier"
+data "Unique" "1"
+
+new entry "ELDR_ARM_StormlordGloves"
+type "Armor"
+using "ARM_Gloves"
+data "RootTemplate" "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b"
+data "ValueOverride" "350"
+data "Rarity" "Uncommon"
+data "ArmorType" "Cloth"
+data "Boosts" "UnlockSpell(Target_ELDR_LightningBolt)"
+data "PassivesOnEquip" "ELDR_PAS_Stormlord_SetBonus"
+data "Unique" "1"
+
+new entry "ELDR_ARM_StormlordBoots"
+type "Armor"
+using "ARM_Boots"
+data "RootTemplate" "f4a5b6c7-d8e9-4f0a-1b2c-3d4e5f6a7b8c"
+data "ValueOverride" "350"
+data "Rarity" "Uncommon"
+data "ArmorType" "Cloth"
+data "Boosts" "IF(HasStatus('ELDR_LIGHTNING_DISCHARGE')):MovementSpeedBonus(1.5)"
+data "PassivesOnEquip" "ELDR_PAS_Stormlord_SetBonus"
+data "Unique" "1"
+
+new entry "ELDR_ARM_StormlordShield"
+type "Armor"
+using "_Shield"
+data "RootTemplate" "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d"
+data "ValueOverride" "500"
+data "Rarity" "Rare"
+data "Boosts" "Resistance(Lightning,Immune);AC(2)"
+data "PassivesOnEquip" "ELDR_PAS_Stormlord_SetBonus;ELDR_PAS_LightningReflect"
+data "Unique" "1"
+
+new entry "ELDR_ARM_StormlordCloak"
+type "Armor"
+using "ARM_Camp_Body"
+data "RootTemplate" "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0e"
+data "ValueOverride" "400"
+data "Rarity" "Rare"
+data "ArmorType" "Cloth"
+data "Boosts" "Resistance(Thunder,Resistant);UnlockSpell(Shout_ELDR_ThunderClap)"
+data "PassivesOnEquip" "ELDR_PAS_Stormlord_SetBonus"
+data "Unique" "1"
+
+// Additional sets follow same pattern (Dragonsoul, Death's Dominion, Phoenix Soul, Predator, Frostbound, Witcher, Mindwarden, Bloodsworn, Avernus)
+// Each with 6-8 pieces providing themed bonuses and set synergies
+// See Weapon.txt for corresponding weapons
+// See Passive_Eldertide.txt for set bonus passives

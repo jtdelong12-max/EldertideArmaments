@@ -18,6 +18,9 @@ import subprocess
 from pathlib import Path
 from typing import Dict, Tuple
 
+# Module-level constants for better performance
+_SUMMARY_KEYWORDS = ('VALIDATION SUMMARY', 'VALIDATION PASSED', 'VALIDATION FAILED')
+
 def benchmark_command(command: list, description: str) -> Tuple[float, int]:
     """Run a command and measure its execution time.
     
@@ -44,11 +47,10 @@ def benchmark_command(command: list, description: str) -> Tuple[float, int]:
         # Print summary of output - optimized to avoid repeated string searches
         lines = result.stdout.split('\n')
         summary_started = False
-        summary_keywords = ('VALIDATION SUMMARY', 'VALIDATION PASSED', 'VALIDATION FAILED')
         
         for line in lines:
-            # Use any() with generator for early exit on first match
-            if not summary_started and any(keyword in line for keyword in summary_keywords):
+            # Use any() with generator for early exit on first match (uses module-level constant)
+            if not summary_started and any(keyword in line for keyword in _SUMMARY_KEYWORDS):
                 summary_started = True
             if summary_started:
                 print(line)

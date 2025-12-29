@@ -27,6 +27,9 @@ _PASSIVES_ON_EQUIP_PATTERN = re.compile(r'data "PassivesOnEquip" "([^"]+)"')
 _STATUS_ON_EQUIP_PATTERN = re.compile(r'data "StatusOnEquip" "([^"]+)"')
 _APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?')
 
+# Constant set for ignored status target keywords (module level for performance)
+_IGNORE_TARGETS = frozenset({"SELF", "TARGET", "SOURCE", "SWAP", ""})
+
 class ParsedData:
     """Container for all parsed data from directory."""
     def __init__(self):
@@ -189,15 +192,12 @@ def validate_status_references(parsed_data: ParsedData) -> List[ReferenceError]:
     """Validate status effect references using pre-parsed data."""
     errors = []
     
-    # Pre-define ignore set for O(1) lookups
-    IGNORE_TARGETS = {"SELF", "TARGET", "SOURCE", "SWAP", ""}
-    
     for file_path, line_num, entry_name, status_name in parsed_data.status_refs:
         # Clean up the status name once (remove quotes, whitespace)
         status_name = status_name.strip().strip('"\'')
         
-        # Combined check for empty, targets, or numeric values
-        if not status_name or status_name in IGNORE_TARGETS or status_name.isdigit():
+        # Combined check for empty, targets, or numeric values using module-level constant
+        if not status_name or status_name in _IGNORE_TARGETS or status_name.isdigit():
             continue
         
         if status_name not in parsed_data.statuses:

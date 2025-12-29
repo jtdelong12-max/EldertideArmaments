@@ -242,7 +242,9 @@ def validate_spell_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         # Find spell entry - optimized to avoid unnecessary string joining
         if line.startswith('new entry'):
             # Check next few lines for type without joining (more efficient)
-            is_spell_data = any('type "SpellData"' in lines[i+j] for j in range(min(5, len(lines)-i)))
+            # Ensure we don't go beyond array bounds: j ranges from 0 to min(4, len(lines)-i-1)
+            max_lookahead = min(5, len(lines) - i)
+            is_spell_data = any('type "SpellData"' in lines[i+j] for j in range(max_lookahead))
             
             if is_spell_data:
                 entry, next_i = parse_spell_entry(lines, i)

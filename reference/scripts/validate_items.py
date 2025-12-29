@@ -279,7 +279,9 @@ def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         # Find item entry (Armor type) - optimized to avoid unnecessary string joining
         if line.startswith('new entry'):
             # Check next few lines for type without joining (more efficient)
-            is_armor_type = any('type "Armor"' in lines[i+j] for j in range(min(5, len(lines)-i)))
+            # Ensure we don't go beyond array bounds
+            max_lookahead = min(5, len(lines) - i)
+            is_armor_type = any('type "Armor"' in lines[i+j] for j in range(max_lookahead))
             
             if is_armor_type:
                 entry, next_i = parse_item_entry(lines, i)

@@ -19,6 +19,13 @@ import re
 from pathlib import Path
 from typing import List, Dict, Tuple
 
+# Try to import caching module (optional dependency)
+try:
+    from validation_cache import ValidationCache
+    CACHING_AVAILABLE = True
+except ImportError:
+    CACHING_AVAILABLE = False
+
 # Pre-compiled regex patterns for better performance
 _ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
 _USING_PATTERN = re.compile(r'using "([^"]+)"')
@@ -285,8 +292,15 @@ def validate_value(entry: Dict[str, str], file_path: str) -> List[ValidationErro
     
     return errors
 
-def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
+def validate_item_file(file_path: str, cache: 'ValidationCache' = None) -> Tuple[int, List[ValidationError]]:
     """Validate a single item file."""
+    
+    # Try to load from cache if available
+    if cache and CACHING_AVAILABLE:
+        cached = cache.load_cached_results(file_path)
+        if cached is not None:
+            return cached
+    
     errors = []
     valid_count = 0
     entry_errors = {}  # Track errors per entry name
@@ -338,12 +352,21 @@ def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         else:
             i += 1
     
-    return valid_count, errors
+    results = (valid_count, errors)
+    
+    # Save to cache if available
+    if cache and CACHING_AVAILABLE:
+        cache.save_cached_results(file_path, results)
+    
+    return results
 
 def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
     """Validate all item files in a directory."""
     all_errors = []
     total_valid = 0
+    
+    # Initialize cache if available
+    cache = ValidationCache() if CACHING_AVAILABLE else None
     
     path = Path(directory)
     
@@ -361,13 +384,17 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         print(f"❌ No item files found in {directory}")
         return 0, []
     
-    print(f"📁 Found {len(item_files)} item file(s) to validate\n")
+    print(f"📁 Found {len(item_files)} item file(s) to validate")
+    if cache and CACHING_AVAILABLE:
+        print(f"💾 Caching enabled\n")
+    else:
+        print()
     
     # Process files with progress indication
     for idx, item_file in enumerate(item_files, 1):
         file_size = item_file.stat().st_size / 1024  # Size in KB
         print(f"🔍 [{idx}/{len(item_files)}] Validating: {item_file.name} ({file_size:.1f} KB)")
-        valid, errors = validate_item_file(str(item_file))
+        valid, errors = validate_item_file(str(item_file), cache)
         total_valid += valid
         all_errors.extend(errors)
         
@@ -382,6 +409,10 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         if error_count == 0 and warning_count == 0:
             print(f"   ✅ All {valid} item(s) valid")
         print()
+    
+    # Print cache stats if available
+    if cache and CACHING_AVAILABLE:
+        cache.print_stats()
     
     return total_valid, all_errors
 

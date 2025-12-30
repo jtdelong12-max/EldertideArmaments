@@ -2,6 +2,45 @@
 
 All notable changes to Eldertide Armaments will be documented in this file.
 
+## [2.0.0] - 2025-12-30
+
+### MAJOR CHANGES - Mod Simplification
+- **BREAKING CHANGE:** Removed all weapon and armor equipment sets (70+ items)
+- Mod now focuses exclusively on rings, amulets, and consumable potions
+- This simplification reduces complexity and potential balance issues
+
+### Removed
+- **Weapons:** All 18 equipment set weapons removed (ELDR_WPN_* entries)
+  - Stormlord, Dragonsoul, Death's Dominion, Phoenix Soul, Predator, Frostbound, Witcher, Mindwarden, Bloodsworn, and Avernus sets
+- **Armor:** All 55+ armor pieces removed (ELDR_ARM_* entries)
+  - Helmets, body armor, gloves, boots, shields, and cloaks from all 10 sets
+- **Passives:** All equipment set bonus passives removed (ELDR_PAS_* entries)
+  - Set bonus trackers, signature mechanics, and amplifier passives
+- **Spells:** All equipment-specific spells removed
+  - 12 Rush attacks (Rush_ELDR_*)
+  - 12 Zone attacks (Zone_ELDR_*)
+  - 10 Shout abilities (Shout_ELDR_*)
+  - Equipment-specific target spells
+  - 2 Interrupt reactions (Shadow Vanish, Parry)
+
+### Kept (Unchanged)
+- **13 Legendary Rings** - All ring abilities and passives preserved
+- **9 Powerful Amulets** - All amulet abilities and passives preserved
+- **16 Consumable Potions** - All consumables remain available
+- **Journal Pages and Books** - Lore items preserved
+- **NPC Equipment** - Minthara, Nere, and other NPC gear untouched
+
+### Documentation Updates
+- Updated README.md to reflect rings/amulets/potions focus
+- Updated ITEMS.md - removed 270+ lines of equipment set documentation
+- Rewrote Docs/IMPLEMENTATION_SUMMARY.md to focus on rings/amulets/potions
+- Updated this CHANGELOG.md to document removal
+
+### Migration Notes
+- **Existing saves:** If you have equipment set items equipped, they will be removed upon loading
+- **Recommendation:** Start a new game or load a save from before using equipment sets
+- This is a major version change (2.0.0) due to breaking compatibility
+
 ## [1.6.6] - 2025-12-25
 
 ### Performance Improvements

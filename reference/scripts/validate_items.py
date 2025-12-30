@@ -17,7 +17,7 @@ import sys
 import os
 import re
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 
 # Try to import caching module (optional dependency)
 try:
@@ -25,6 +25,7 @@ try:
     CACHING_AVAILABLE = True
 except ImportError:
     CACHING_AVAILABLE = False
+    ValidationCache = None  # For type hints when not available
 
 # Pre-compiled regex patterns for better performance
 _ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
@@ -292,7 +293,7 @@ def validate_value(entry: Dict[str, str], file_path: str) -> List[ValidationErro
     
     return errors
 
-def validate_item_file(file_path: str, cache: 'ValidationCache' = None) -> Tuple[int, List[ValidationError]]:
+def validate_item_file(file_path: str, cache: Optional[ValidationCache] = None) -> Tuple[int, List[ValidationError]]:
     """Validate a single item file."""
     
     # Try to load from cache if available

@@ -78,7 +78,7 @@ class ValidationCache:
                 for chunk in iter(lambda: f.read(8192), b''):
                     sha256.update(chunk)
             return sha256.hexdigest()
-        except Exception:
+        except (OSError, IOError, FileNotFoundError, PermissionError):
             # If we can't hash the file, return empty string to skip caching
             return ""
     
@@ -156,8 +156,9 @@ class ValidationCache:
             self._cache_stats['hits'] += 1
             return cache_data.get('results')
             
-        except Exception as e:
-            # On any error, treat as cache miss
+        except (FileNotFoundError, PermissionError, pickle.UnpicklingError, EOFError, AttributeError):
+            # On expected cache errors, treat as cache miss
+            # AttributeError can occur when unpickling objects from different modules
             self._cache_stats['errors'] += 1
             return None
     
@@ -194,7 +195,7 @@ class ValidationCache:
             self._cache_stats['saves'] += 1
             return True
             
-        except Exception as e:
+        except (OSError, PermissionError, pickle.PicklingError):
             self._cache_stats['errors'] += 1
             return False
     
@@ -225,7 +226,8 @@ class ValidationCache:
                         for cache_file in cache_dir.glob("*.cache"):
                             cache_file.unlink()
                             deleted += 1
-        except Exception:
+        except (OSError, PermissionError):
+            # Silently ignore file deletion errors
             pass
         
         return deleted

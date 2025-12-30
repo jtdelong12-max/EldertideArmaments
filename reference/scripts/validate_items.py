@@ -50,6 +50,12 @@ VALID_ABILITIES = {
     "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"
 }
 
+# Pre-compute sorted strings for error messages (performance optimization)
+_VALID_USING_TYPES_STR = ', '.join(sorted(VALID_USING_TYPES))
+_VALID_OBJECT_CATEGORIES_STR = ', '.join(sorted(VALID_OBJECT_CATEGORIES))
+_VALID_RARITIES_STR = ', '.join(sorted(VALID_RARITIES))
+_VALID_ABILITIES_STR = ', '.join(sorted(VALID_ABILITIES))
+
 class ValidationError:
     def __init__(self, file_path: str, line_num: int, entry_name: str, 
                  property_name: str, value: str, message: str, severity: str = "error"):
@@ -114,10 +120,13 @@ def validate_using_clause(entry: Dict[str, str], file_path: str) -> List[Validat
     if "using" in entry:
         using = entry["using"]
         if using not in VALID_USING_TYPES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "using", using,
-                f"Invalid base type. Valid options: {', '.join(sorted(VALID_USING_TYPES))}",
+                f"Invalid base type. Valid options: {_VALID_USING_TYPES_STR}",
                 "error"
             ))
     
@@ -131,8 +140,11 @@ def validate_uuid(entry: Dict[str, str], file_path: str) -> List[ValidationError
         uuid = entry["RootTemplate"]
         # Use pre-compiled UUID pattern
         if not _UUID_FORMAT.match(uuid):
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "RootTemplate", uuid,
                 "Invalid UUID format. Should be: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                 "error"
@@ -147,10 +159,13 @@ def validate_object_category(entry: Dict[str, str], file_path: str) -> List[Vali
     if "ObjectCategory" in entry:
         category = entry["ObjectCategory"]
         if category not in VALID_OBJECT_CATEGORIES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "ObjectCategory", category,
-                f"Invalid ObjectCategory. Valid options: {', '.join(sorted(VALID_OBJECT_CATEGORIES))}",
+                f"Invalid ObjectCategory. Valid options: {_VALID_OBJECT_CATEGORIES_STR}",
                 "error"
             ))
     
@@ -163,10 +178,13 @@ def validate_rarity(entry: Dict[str, str], file_path: str) -> List[ValidationErr
     if "Rarity" in entry:
         rarity = entry["Rarity"]
         if rarity not in VALID_RARITIES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "Rarity", rarity,
-                f"Invalid Rarity. Valid options: {', '.join(sorted(VALID_RARITIES))}",
+                f"Invalid Rarity. Valid options: {_VALID_RARITIES_STR}",
                 "error"
             ))
     
@@ -179,10 +197,14 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
     if "Boosts" in entry:
         boosts = entry["Boosts"]
         
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        
         # Check for comma instead of semicolon (common mistake) - use pre-compiled pattern
         if _COMMA_SEPARATOR_ERROR.search(boosts):
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "Boosts", boosts[:50] + "...",
                 "Boosts should use semicolons (;) not commas (,) to separate multiple boosts",
                 "error"
@@ -196,15 +218,15 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
             
             if ability not in VALID_ABILITIES:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Boosts", match.group(0),
-                    f"Invalid ability '{ability}'. Valid: {', '.join(sorted(VALID_ABILITIES))}",
+                    f"Invalid ability '{ability}'. Valid: {_VALID_ABILITIES_STR}",
                     "error"
                 ))
             
             if cap > MAX_ABILITY_CAP:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Boosts", match.group(0),
                     f"Ability cap {cap} exceeds reasonable maximum ({MAX_ABILITY_CAP}). Consider balance.",
                     "warning"
@@ -212,7 +234,7 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
             
             if bonus > MAX_ABILITY_BONUS:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Boosts", match.group(0),
                     f"Ability bonus +{bonus} is very high. Consider balance.",
                     "warning"
@@ -225,9 +247,15 @@ def validate_value(entry: Dict[str, str], file_path: str) -> List[ValidationErro
     errors = []
     
     if "ValueOverride" in entry and "Rarity" in entry:
+        value_str = entry["ValueOverride"]
+        rarity = entry["Rarity"]
+        
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        
         try:
-            value = int(entry["ValueOverride"])
-            rarity = entry["Rarity"]
+            value = int(value_str)
             
             # Suggested value ranges by rarity (these are guidelines)
             rarity_ranges = {
@@ -242,15 +270,15 @@ def validate_value(entry: Dict[str, str], file_path: str) -> List[ValidationErro
                 min_val, max_val = rarity_ranges[rarity]
                 if value < min_val or value > max_val:
                     errors.append(ValidationError(
-                        file_path, entry["_start_line"], entry["_name"],
+                        file_path, entry_line, entry_name,
                         "ValueOverride", str(value),
                         f"{rarity} items typically valued {min_val}-{max_val}. Current: {value}",
                         "warning"
                     ))
         except ValueError:
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
-                "ValueOverride", entry["ValueOverride"],
+                file_path, entry_line, entry_name,
+                "ValueOverride", value_str,
                 "ValueOverride should be a number",
                 "error"
             ))

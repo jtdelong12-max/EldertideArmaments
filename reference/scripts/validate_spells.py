@@ -19,6 +19,13 @@ import re
 from pathlib import Path
 from typing import List, Dict, Tuple
 
+# Try to import caching module (optional dependency)
+try:
+    from validation_cache import ValidationCache
+    CACHING_AVAILABLE = True
+except ImportError:
+    CACHING_AVAILABLE = False
+
 # Pre-compiled regex patterns for better performance
 _ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
 _DATA_PATTERN = re.compile(r'data "([^"]+)" "([^"]*)"')
@@ -55,6 +62,12 @@ VALID_SPELL_FLAGS = {
     "SteeringSpeedOverride", "CallListeners", "DisablePortraitIndicator",
     "NoCooldownOnMiss"
 }
+
+# Pre-compute sorted strings for error messages (performance optimization)
+_VALID_SPELL_TYPES_STR = ', '.join(sorted(VALID_SPELL_TYPES))
+_VALID_SPELL_SCHOOLS_STR = ', '.join(sorted(VALID_SPELL_SCHOOLS))
+_VALID_DAMAGE_TYPES_STR = ', '.join(sorted(VALID_DAMAGE_TYPES))
+_VALID_SPELL_FLAGS_SAMPLE = ', '.join(sorted(VALID_SPELL_FLAGS)[:5])
 
 class ValidationError:
     def __init__(self, file_path: str, line_num: int, entry_name: str, 
@@ -113,10 +126,13 @@ def validate_spell_type(entry: Dict[str, str], file_path: str) -> List[Validatio
     if "SpellType" in entry:
         spell_type = entry["SpellType"]
         if spell_type not in VALID_SPELL_TYPES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "SpellType", spell_type,
-                f"Invalid SpellType. Valid options: {', '.join(sorted(VALID_SPELL_TYPES))}"
+                f"Invalid SpellType. Valid options: {_VALID_SPELL_TYPES_STR}"
             ))
     
     return errors
@@ -126,18 +142,23 @@ def validate_spell_level(entry: Dict[str, str], file_path: str) -> List[Validati
     errors = []
     
     if "Level" in entry:
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        level_str = entry["Level"]
+        
         try:
-            level = int(entry["Level"])
+            level = int(level_str)
             if level < 0 or level > 9:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Level", str(level),
                     "Level must be between 0 (cantrip) and 9"
                 ))
         except ValueError:
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
-                "Level", entry["Level"],
+                file_path, entry_line, entry_name,
+                "Level", level_str,
                 "Level must be a number"
             ))
     
@@ -150,10 +171,13 @@ def validate_spell_school(entry: Dict[str, str], file_path: str) -> List[Validat
     if "SpellSchool" in entry:
         school = entry["SpellSchool"]
         if school not in VALID_SPELL_SCHOOLS:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "SpellSchool", school,
-                f"Invalid SpellSchool. Valid options: {', '.join(sorted(VALID_SPELL_SCHOOLS))}"
+                f"Invalid SpellSchool. Valid options: {_VALID_SPELL_SCHOOLS_STR}"
             ))
     
     return errors
@@ -165,10 +189,13 @@ def validate_damage_type(entry: Dict[str, str], file_path: str) -> List[Validati
     if "DamageType" in entry:
         damage_type = entry["DamageType"]
         if damage_type not in VALID_DAMAGE_TYPES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "DamageType", damage_type,
-                f"Invalid DamageType. Valid options: {', '.join(sorted(VALID_DAMAGE_TYPES))}"
+                f"Invalid DamageType. Valid options: {_VALID_DAMAGE_TYPES_STR}"
             ))
     
     return errors
@@ -181,12 +208,16 @@ def validate_spell_flags(entry: Dict[str, str], file_path: str) -> List[Validati
         flags_str = entry["SpellFlags"]
         flags = [f.strip() for f in flags_str.split(";")]
         
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        
         for flag in flags:
             if flag and flag not in VALID_SPELL_FLAGS:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "SpellFlags", flag,
-                    f"Unknown SpellFlag. Common flags: {', '.join(sorted(VALID_SPELL_FLAGS)[:5])}"
+                    f"Unknown SpellFlag. Common flags: {_VALID_SPELL_FLAGS_SAMPLE}"
                 ))
     
     return errors
@@ -198,10 +229,14 @@ def validate_use_costs(entry: Dict[str, str], file_path: str) -> List[Validation
     if "UseCosts" in entry:
         costs = entry["UseCosts"]
         
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        
         # Check for malformed costs with commas in wrong places - use pre-compiled pattern
         if _USE_COSTS_COMMA_ERROR.search(costs):
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "UseCosts", costs,
                 "UseCosts should use semicolons (;) not commas (,) to separate multiple costs"
             ))
@@ -211,15 +246,22 @@ def validate_use_costs(entry: Dict[str, str], file_path: str) -> List[Validation
         for cost in cost_parts:
             if cost and ":" not in cost:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "UseCosts", cost,
                     "Each cost should be in format 'ResourceType:Amount' or 'ResourceType:Amount:Level'"
                 ))
     
     return errors
 
-def validate_spell_file(file_path: str) -> Tuple[int, List[ValidationError]]:
+def validate_spell_file(file_path: str, cache: 'ValidationCache' = None) -> Tuple[int, List[ValidationError]]:
     """Validate a single spell file."""
+    
+    # Try to load from cache if available
+    if cache and CACHING_AVAILABLE:
+        cached = cache.load_cached_results(file_path)
+        if cached is not None:
+            return cached
+    
     errors = []
     valid_count = 0
     
@@ -271,12 +313,21 @@ def validate_spell_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         else:
             i += 1
     
-    return valid_count, errors
+    results = (valid_count, errors)
+    
+    # Save to cache if available
+    if cache and CACHING_AVAILABLE:
+        cache.save_cached_results(file_path, results)
+    
+    return results
 
 def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
     """Validate all spell files in a directory."""
     all_errors = []
     total_valid = 0
+    
+    # Initialize cache if available
+    cache = ValidationCache() if CACHING_AVAILABLE else None
     
     path = Path(directory)
     
@@ -292,13 +343,17 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         print(f"❌ No spell files found in {directory}")
         return 0, []
     
-    print(f"📁 Found {len(spell_files)} spell file(s) to validate\n")
+    print(f"📁 Found {len(spell_files)} spell file(s) to validate")
+    if cache and CACHING_AVAILABLE:
+        print(f"💾 Caching enabled\n")
+    else:
+        print()
     
     # Process files with progress indication
     for idx, spell_file in enumerate(spell_files, 1):
         file_size = spell_file.stat().st_size / 1024  # Size in KB
         print(f"🔍 [{idx}/{len(spell_files)}] Validating: {spell_file.name} ({file_size:.1f} KB)")
-        valid, errors = validate_spell_file(str(spell_file))
+        valid, errors = validate_spell_file(str(spell_file), cache)
         total_valid += valid
         all_errors.extend(errors)
         
@@ -307,6 +362,10 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         else:
             print(f"   ✅ All {valid} spell(s) valid")
         print()
+    
+    # Print cache stats if available
+    if cache and CACHING_AVAILABLE:
+        cache.print_stats()
     
     return total_valid, all_errors
 

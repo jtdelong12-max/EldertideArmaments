@@ -27,6 +27,9 @@ _PASSIVES_ON_EQUIP_PATTERN = re.compile(r'data "PassivesOnEquip" "([^"]+)"')
 _STATUS_ON_EQUIP_PATTERN = re.compile(r'data "StatusOnEquip" "([^"]+)"')
 _APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?')
 
+# Constant set for ignored status target keywords (module level for performance)
+_IGNORE_TARGETS = frozenset({"SELF", "TARGET", "SOURCE", "SWAP", ""})
+
 class ParsedData:
     """Container for all parsed data from directory."""
     def __init__(self):
@@ -77,14 +80,19 @@ def parse_directory_single_pass(directory: str) -> ParsedData:
                     current_entry = match.group(1)
                     current_entry_line = i + 1
                     
-                    # Check entry type in next few lines
-                    type_check = ''.join(lines[i:min(i+5, len(lines))])
-                    if 'type "SpellData"' in type_check:
-                        data.spells[current_entry] = (str(file_path), current_entry_line)
-                    elif 'type "PassiveData"' in type_check:
-                        data.passives[current_entry] = (str(file_path), current_entry_line)
-                    elif 'type "StatusData"' in type_check:
-                        data.statuses[current_entry] = (str(file_path), current_entry_line)
+                    # Check entry type in next few lines - optimized to check directly without joining
+                    end_idx = min(i+5, len(lines))
+                    for j in range(i, end_idx):
+                        line_content = lines[j]
+                        if 'type "SpellData"' in line_content:
+                            data.spells[current_entry] = (str(file_path), current_entry_line)
+                            break
+                        elif 'type "PassiveData"' in line_content:
+                            data.passives[current_entry] = (str(file_path), current_entry_line)
+                            break
+                        elif 'type "StatusData"' in line_content:
+                            data.statuses[current_entry] = (str(file_path), current_entry_line)
+                            break
                 
                 # Find UUID references
                 match = _UUID_PATTERN.match(stripped)
@@ -185,17 +193,14 @@ def validate_status_references(parsed_data: ParsedData) -> List[ReferenceError]:
     errors = []
     
     for file_path, line_num, entry_name, status_name in parsed_data.status_refs:
-        if not status_name or status_name in ["SELF", "TARGET", "SOURCE", "SWAP"]:
-            continue
-            
-        # Clean up the status name (remove quotes, whitespace)
+        # Clean up the status name once (remove quotes, whitespace)
         status_name = status_name.strip().strip('"\'')
         
-        # Skip if it's a number (duration parameter)
-        if status_name.isdigit():
+        # Combined check for empty, targets, or numeric values using module-level constant
+        if not status_name or status_name in _IGNORE_TARGETS or status_name.isdigit():
             continue
         
-        if status_name and status_name not in parsed_data.statuses:
+        if status_name not in parsed_data.statuses:
             errors.append(ReferenceError(
                 file_path, line_num, entry_name,
                 "Status", status_name,

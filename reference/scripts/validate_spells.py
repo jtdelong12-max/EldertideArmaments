@@ -232,26 +232,42 @@ def validate_spell_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         ))
         return 0, errors
     
+    # Track entries with errors using a set for O(1) lookups
+    entries_with_errors = set()
+    
     i = 0
     while i < len(lines):
         line = lines[i].strip()
         
-        # Find spell entry
-        if line.startswith('new entry') and 'type "SpellData"' in ''.join(lines[i:i+5]):
-            entry, next_i = parse_spell_entry(lines, i)
+        # Find spell entry - optimized to avoid unnecessary string joining
+        if line.startswith('new entry'):
+            # Check next few lines for type without joining (more efficient)
+            # Ensure we don't go beyond array bounds: j ranges from 0 to min(4, len(lines)-i-1)
+            max_lookahead = min(5, len(lines) - i)
+            is_spell_data = any('type "SpellData"' in lines[i+j] for j in range(max_lookahead))
             
-            # Run all validations
-            errors.extend(validate_spell_type(entry, file_path))
-            errors.extend(validate_spell_level(entry, file_path))
-            errors.extend(validate_spell_school(entry, file_path))
-            errors.extend(validate_damage_type(entry, file_path))
-            errors.extend(validate_spell_flags(entry, file_path))
-            errors.extend(validate_use_costs(entry, file_path))
-            
-            if not any(e.entry_name == entry["_name"] for e in errors):
-                valid_count += 1
-            
-            i = next_i
+            if is_spell_data:
+                entry, next_i = parse_spell_entry(lines, i)
+                entry_name = entry["_name"]
+                
+                # Run all validations and track if any errors occur
+                entry_errors_before = len(errors)
+                errors.extend(validate_spell_type(entry, file_path))
+                errors.extend(validate_spell_level(entry, file_path))
+                errors.extend(validate_spell_school(entry, file_path))
+                errors.extend(validate_damage_type(entry, file_path))
+                errors.extend(validate_spell_flags(entry, file_path))
+                errors.extend(validate_use_costs(entry, file_path))
+                
+                # Check if new errors were added (O(1) instead of O(n))
+                if len(errors) == entry_errors_before:
+                    valid_count += 1
+                else:
+                    entries_with_errors.add(entry_name)
+                
+                i = next_i
+            else:
+                i += 1
         else:
             i += 1
     

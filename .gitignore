@@ -60,3 +60,7 @@ $RECYCLE.BIN/
 *.tar
 *.tar.gz
 reference/scripts/__pycache__/
+
+# Validation cache files
+.validation_cache/
+*.cache

@@ -17,7 +17,15 @@ import sys
 import os
 import re
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
+
+# Try to import caching module (optional dependency)
+try:
+    from validation_cache import ValidationCache
+    CACHING_AVAILABLE = True
+except ImportError:
+    CACHING_AVAILABLE = False
+    ValidationCache = None  # For type hints when not available
 
 # Pre-compiled regex patterns for better performance
 _ENTRY_PATTERN = re.compile(r'new entry "([^"]+)"')
@@ -49,6 +57,12 @@ VALID_RARITIES = {
 VALID_ABILITIES = {
     "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"
 }
+
+# Pre-compute sorted strings for error messages (performance optimization)
+_VALID_USING_TYPES_STR = ', '.join(sorted(VALID_USING_TYPES))
+_VALID_OBJECT_CATEGORIES_STR = ', '.join(sorted(VALID_OBJECT_CATEGORIES))
+_VALID_RARITIES_STR = ', '.join(sorted(VALID_RARITIES))
+_VALID_ABILITIES_STR = ', '.join(sorted(VALID_ABILITIES))
 
 class ValidationError:
     def __init__(self, file_path: str, line_num: int, entry_name: str, 
@@ -114,10 +128,13 @@ def validate_using_clause(entry: Dict[str, str], file_path: str) -> List[Validat
     if "using" in entry:
         using = entry["using"]
         if using not in VALID_USING_TYPES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "using", using,
-                f"Invalid base type. Valid options: {', '.join(sorted(VALID_USING_TYPES))}",
+                f"Invalid base type. Valid options: {_VALID_USING_TYPES_STR}",
                 "error"
             ))
     
@@ -131,8 +148,11 @@ def validate_uuid(entry: Dict[str, str], file_path: str) -> List[ValidationError
         uuid = entry["RootTemplate"]
         # Use pre-compiled UUID pattern
         if not _UUID_FORMAT.match(uuid):
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "RootTemplate", uuid,
                 "Invalid UUID format. Should be: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                 "error"
@@ -147,10 +167,13 @@ def validate_object_category(entry: Dict[str, str], file_path: str) -> List[Vali
     if "ObjectCategory" in entry:
         category = entry["ObjectCategory"]
         if category not in VALID_OBJECT_CATEGORIES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "ObjectCategory", category,
-                f"Invalid ObjectCategory. Valid options: {', '.join(sorted(VALID_OBJECT_CATEGORIES))}",
+                f"Invalid ObjectCategory. Valid options: {_VALID_OBJECT_CATEGORIES_STR}",
                 "error"
             ))
     
@@ -163,10 +186,13 @@ def validate_rarity(entry: Dict[str, str], file_path: str) -> List[ValidationErr
     if "Rarity" in entry:
         rarity = entry["Rarity"]
         if rarity not in VALID_RARITIES:
+            # Cache dict lookups for performance
+            entry_name = entry["_name"]
+            entry_line = entry["_start_line"]
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "Rarity", rarity,
-                f"Invalid Rarity. Valid options: {', '.join(sorted(VALID_RARITIES))}",
+                f"Invalid Rarity. Valid options: {_VALID_RARITIES_STR}",
                 "error"
             ))
     
@@ -179,10 +205,14 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
     if "Boosts" in entry:
         boosts = entry["Boosts"]
         
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        
         # Check for comma instead of semicolon (common mistake) - use pre-compiled pattern
         if _COMMA_SEPARATOR_ERROR.search(boosts):
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
+                file_path, entry_line, entry_name,
                 "Boosts", boosts[:50] + "...",
                 "Boosts should use semicolons (;) not commas (,) to separate multiple boosts",
                 "error"
@@ -196,15 +226,15 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
             
             if ability not in VALID_ABILITIES:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Boosts", match.group(0),
-                    f"Invalid ability '{ability}'. Valid: {', '.join(sorted(VALID_ABILITIES))}",
+                    f"Invalid ability '{ability}'. Valid: {_VALID_ABILITIES_STR}",
                     "error"
                 ))
             
             if cap > MAX_ABILITY_CAP:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Boosts", match.group(0),
                     f"Ability cap {cap} exceeds reasonable maximum ({MAX_ABILITY_CAP}). Consider balance.",
                     "warning"
@@ -212,7 +242,7 @@ def validate_boosts(entry: Dict[str, str], file_path: str) -> List[ValidationErr
             
             if bonus > MAX_ABILITY_BONUS:
                 errors.append(ValidationError(
-                    file_path, entry["_start_line"], entry["_name"],
+                    file_path, entry_line, entry_name,
                     "Boosts", match.group(0),
                     f"Ability bonus +{bonus} is very high. Consider balance.",
                     "warning"
@@ -225,9 +255,15 @@ def validate_value(entry: Dict[str, str], file_path: str) -> List[ValidationErro
     errors = []
     
     if "ValueOverride" in entry and "Rarity" in entry:
+        value_str = entry["ValueOverride"]
+        rarity = entry["Rarity"]
+        
+        # Cache dict lookups for performance
+        entry_name = entry["_name"]
+        entry_line = entry["_start_line"]
+        
         try:
-            value = int(entry["ValueOverride"])
-            rarity = entry["Rarity"]
+            value = int(value_str)
             
             # Suggested value ranges by rarity (these are guidelines)
             rarity_ranges = {
@@ -242,23 +278,30 @@ def validate_value(entry: Dict[str, str], file_path: str) -> List[ValidationErro
                 min_val, max_val = rarity_ranges[rarity]
                 if value < min_val or value > max_val:
                     errors.append(ValidationError(
-                        file_path, entry["_start_line"], entry["_name"],
+                        file_path, entry_line, entry_name,
                         "ValueOverride", str(value),
                         f"{rarity} items typically valued {min_val}-{max_val}. Current: {value}",
                         "warning"
                     ))
         except ValueError:
             errors.append(ValidationError(
-                file_path, entry["_start_line"], entry["_name"],
-                "ValueOverride", entry["ValueOverride"],
+                file_path, entry_line, entry_name,
+                "ValueOverride", value_str,
                 "ValueOverride should be a number",
                 "error"
             ))
     
     return errors
 
-def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
+def validate_item_file(file_path: str, cache: Optional[ValidationCache] = None) -> Tuple[int, List[ValidationError]]:
     """Validate a single item file."""
+    
+    # Try to load from cache if available
+    if cache and CACHING_AVAILABLE:
+        cached = cache.load_cached_results(file_path)
+        if cached is not None:
+            return cached
+    
     errors = []
     valid_count = 0
     entry_errors = {}  # Track errors per entry name
@@ -310,12 +353,21 @@ def validate_item_file(file_path: str) -> Tuple[int, List[ValidationError]]:
         else:
             i += 1
     
-    return valid_count, errors
+    results = (valid_count, errors)
+    
+    # Save to cache if available
+    if cache and CACHING_AVAILABLE:
+        cache.save_cached_results(file_path, results)
+    
+    return results
 
 def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
     """Validate all item files in a directory."""
     all_errors = []
     total_valid = 0
+    
+    # Initialize cache if available
+    cache = ValidationCache() if CACHING_AVAILABLE else None
     
     path = Path(directory)
     
@@ -333,13 +385,17 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         print(f"❌ No item files found in {directory}")
         return 0, []
     
-    print(f"📁 Found {len(item_files)} item file(s) to validate\n")
+    print(f"📁 Found {len(item_files)} item file(s) to validate")
+    if cache and CACHING_AVAILABLE:
+        print(f"💾 Caching enabled\n")
+    else:
+        print()
     
     # Process files with progress indication
     for idx, item_file in enumerate(item_files, 1):
         file_size = item_file.stat().st_size / 1024  # Size in KB
         print(f"🔍 [{idx}/{len(item_files)}] Validating: {item_file.name} ({file_size:.1f} KB)")
-        valid, errors = validate_item_file(str(item_file))
+        valid, errors = validate_item_file(str(item_file), cache)
         total_valid += valid
         all_errors.extend(errors)
         
@@ -354,6 +410,10 @@ def validate_directory(directory: str) -> Tuple[int, List[ValidationError]]:
         if error_count == 0 and warning_count == 0:
             print(f"   ✅ All {valid} item(s) valid")
         print()
+    
+    # Print cache stats if available
+    if cache and CACHING_AVAILABLE:
+        cache.print_stats()
     
     return total_valid, all_errors
 

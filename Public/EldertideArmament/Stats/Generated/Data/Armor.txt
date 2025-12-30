@@ -738,7 +738,7 @@ data "RootTemplate" "cde5df2b-c64b-4684-9db1-a6a5194e46ac"
 data "ValueOverride" "750"
 data "Rarity" "VeryRare"
 data "ArmorType" "Cloth"
-data "Boosts" "AC(2);UnlockSpell(Target_ELDR_Aard);UnlockSpell(Target_ELDR_Igni);UnlockSpell(Target_ELDR_Quen);UnlockSpell(Target_ELDR_Yrden);UnlockSpell(Target_ELDR_Axii)"
+data "Boosts" "AC(2);UnlockSpell(ELDER_Zone_Aard);UnlockSpell(ELDER_Zone_Igni);UnlockSpell(ELDER_Shout_Quen);UnlockSpell(ELDER_Target_Yrden_Trap);UnlockSpell(ELDER_Target_Axii)"
 data "PassivesOnEquip" "ELDR_PAS_Witcher_SetBonus;ELDR_PAS_Witcher_SignEnhancement"
 data "Unique" "1"
 

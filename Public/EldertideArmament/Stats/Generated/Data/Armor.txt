@@ -622,7 +622,7 @@ data "RootTemplate" "ff33e478-0702-463a-b6b6-7a2a04a37382"
 data "ValueOverride" "400"
 data "Rarity" "Rare"
 data "ArmorType" "Cloth"
-data "Boosts" "IF(HasStatus('SNEAKING',GetActiveWeapon())):CharacterWeaponDamage(2d6)"
+data "Boosts" "IF(HasStatus('SNEAKING')):CharacterWeaponDamage(2d6)"
 data "PassivesOnEquip" "ELDR_PAS_Predator_SetBonus"
 data "Unique" "1"
 

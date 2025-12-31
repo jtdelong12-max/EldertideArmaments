@@ -1,4 +1,4 @@
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+﻿- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Eldertide Armaments - Equipment Configuration
 // 
 // This file is reserved for future equipment loadout configurations.

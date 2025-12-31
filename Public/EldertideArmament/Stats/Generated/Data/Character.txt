@@ -1,4 +1,4 @@
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+﻿- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Eldertide Armaments - Character Configuration
 // 
 // This file is reserved for future character stat configurations.

@@ -1,4 +1,9 @@
-﻿import xml.etree.ElementTree as ET
+"""
+Script to clean _merged.lsf.lsx - removes all character templates.
+Run this from the repository root.
+"""
+
+import xml.etree.ElementTree as ET
 from pathlib import Path
 import shutil
 

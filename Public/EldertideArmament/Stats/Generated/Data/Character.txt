@@ -1,27 +1,10 @@
-- - - - - - -
-// Huginn \\
-- - - - - - -
-
-new entry "Stats_Huginn_Level_4"
-type "Character"
-using "_Critter"
-data "Level" "4"
-data "Strength" "6"
-data "Dexterity" "14"
-data "Constitution" "10"
-data "Intelligence" "3"
-data "Wisdom" "12"
-data "Charisma" "6"
-data "Armor" "13"
-data "Vitality" "21"
-data "Weight" "7"
-data "GameSize" "Small"
-data "StepsType" "Clawed"
-data "Flags" "Floating"
-data "ProficiencyBonusScaling" "265d62c4-9b82-4ed6-9a86-da675b4ef8fe"
-data "DefaultBoosts" "ProficiencyBonus(Skill, Perception); BlockRegainHP(Undead;Construct)"
-data "PersonalStatusImmunities" "CRIPPLED"
-data "Passives" "AttackOfOpportunity;DarknessRules;ShortResting;CompanionsBond_Creature"
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Eldertide Armaments - Character Configuration
+// 
+// This file is reserved for future character stat configurations.
+// Currently, the mod only adds 13 legendary rings, 9 amulets, and 16 elixirs.
+// No character or creature stat modifications are included in this mod.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 new entry "Stats_Huginn_Level_7"
 type "Character"

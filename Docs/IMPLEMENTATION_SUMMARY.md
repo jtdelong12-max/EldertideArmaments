@@ -9,6 +9,7 @@ Eldertide Armaments is a focused mod adding unique magical rings, amulets, and c
 ### 1. Rings (13 Total) ✅
 
 All rings are fully implemented with:
+
 - Complete stat definitions in `Armor.txt`
 - Unique abilities and passive effects
 - Custom spells for each ring
@@ -17,6 +18,7 @@ All rings are fully implemented with:
 - Localization entries for names and descriptions
 
 **Ring Types**:
+
 - Ring 1: Dragonsoul Ring - Dragon abilities with flight
 - Ring 2: Bloodsworn Ring - Vampiric/lifesteal abilities
 - Ring 3: Riftwalker's Ring - Stealth and explosive damage
@@ -34,6 +36,7 @@ All rings are fully implemented with:
 ### 2. Amulets (9 Total) ✅
 
 All amulets are fully implemented with:
+
 - Complete stat definitions in `Armor.txt`
 - Unique passive effects and abilities
 - Custom spells and transformations
@@ -41,6 +44,7 @@ All amulets are fully implemented with:
 - Localization entries
 
 **Amulet Types**:
+
 - Amulet 1: Talisman of Hill Giant Strength - +2 Strength bonus
 - Amulet 2: Lifebringer's Amulet - Healing and restoration
 - Amulet 3: Firewalker's Talisman - Fire resistance and flame powers
@@ -54,6 +58,7 @@ All amulets are fully implemented with:
 ### 3. Consumables (16 Total) ✅
 
 Unique potions and elixirs implemented in `Potions_Eldertide.txt`:
+
 - Regeneration potions
 - Elemental damage potions
 - Transformation elixirs
@@ -63,6 +68,7 @@ Unique potions and elixirs implemented in `Potions_Eldertide.txt`:
 ### 4. Spells and Abilities ✅
 
 **Ring and Amulet Spells** (40+ spells):
+
 - Projectile attacks
 - Zone abilities
 - Target spells
@@ -73,6 +79,7 @@ Unique potions and elixirs implemented in `Potions_Eldertide.txt`:
 ### 5. Passive Abilities ✅
 
 **Ring and Amulet Passives** (30+ passives):
+
 - Damage bonuses
 - Defensive abilities
 - Utility effects
@@ -82,6 +89,7 @@ Unique potions and elixirs implemented in `Potions_Eldertide.txt`:
 ### 6. Treasure Table Integration ✅
 
 Complete loot distribution system:
+
 - Tutorial chest version (all items available)
 - Immersive version (distributed across ~40 locations)
 - Proper merchant integration
@@ -90,6 +98,7 @@ Complete loot distribution system:
 ### 7. Documentation ✅
 
 **Complete Documentation**:
+
 - `README.md` - Installation and overview
 - `ITEMS.md` - Detailed item descriptions and abilities
 - `BALANCE.md` - Balance philosophy and item power levels
@@ -131,6 +140,7 @@ Public/EldertideArmament/
 ### Testing & Validation
 
 The mod has been validated for:
+
 - Proper item loading and spawning
 - Spell functionality
 - Passive effect application
@@ -141,12 +151,14 @@ The mod has been validated for:
 ## Mod Features
 
 ### Immersive Version
+
 - Items distributed across Acts 1-3
 - Found in merchant inventories, treasure chests, and boss loot
 - Each item unique (drops only once per playthrough)
 - Approximately 40 spawn locations
 
 ### Tutorial Chest Version
+
 - All items available in tutorial chest
 - Perfect for testing and quick access
 - Requires Tutorial Chest Summoning mod
@@ -154,12 +166,15 @@ The mod has been validated for:
 ## Technical Notes
 
 ### UUID Generation
+
 All items use properly generated UUIDs for:
+
 - RootTemplates
 - Stat entries
 - Localization references
 
 ### Compatibility
+
 - Works with BG3 Patch 8+
 - Compatible with most other mods
 - Uses CanMerge flag for treasure table compatibility
@@ -168,6 +183,7 @@ All items use properly generated UUIDs for:
 ## Conclusion
 
 Eldertide Armaments provides a complete, focused collection of magical jewelry and consumables for Baldur's Gate 3. The implementation is:
+
 - **Complete** - All features fully implemented
 - **Tested** - Validated in-game
 - **Documented** - Comprehensive guides for users

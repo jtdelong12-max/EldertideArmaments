@@ -144,6 +144,7 @@ data "RootTemplate" "82d3cecf-9a9f-456b-99c6-f8d76a5a970c"
 data "ValueOverride" "850"
 data "Rarity" "Legendary"
 data "Boosts" "CriticalHit(AttackTarget,Success,Never);UnlockSpell(ELDER_Shout_HillGiantForm);Ability(Strength, +2);Ability(Constitution, +2)"
+data "PassivesOnEquip" ""
 
 new entry "ELDER_Amulet_2"
 type "Armor"
@@ -170,6 +171,7 @@ data "RootTemplate" "df3ec7f3-f511-4c18-8704-1acce5af36b9"
 data "ValueOverride" "400"
 data "Rarity" "VeryRare"
 data "Boosts" "UnlockSpell(Ritual_ELDER_Shout_SpeakWithAnimals);UnlockSpell(Ritual_ELDER_Target_SpeakWithDead);UnlockSpell(Ritual_ELDER_Shout_DetectThoughts);UnlockSpell(Ritual_ELDER_Shout_DisguiseSelf);UnlockSpell(Ritual_ELDER_Target_CreateWater);Ability(Intelligence,+2)"
+data "PassivesOnEquip" ""
 
 new entry "ELDER_Amulet_5"
 type "Armor"
@@ -215,3 +217,106 @@ data "ValueOverride" "750"
 data "Rarity" "VeryRare"
 data "Boosts" "UnlockSpell(ELDER_Projectile_BewitchingBolt);UnlockSpell(ELDER_Target_WitchQueenCauldron);Ability(Charisma,+2)"
 data "PassivesOnEquip" "Passive_ELDER_DreadfulBacklash_Unlock"
+
+- - - - - - - - - - - - -
+// Minthara Equipment \\
+- - - - - - - - - - - - -
+
+new entry "Minthara_DeathKnight_Armor"
+type "Armor"
+using "ARM_Plate_Body_1"
+data "RootTemplate" "1109da0a-2d12-4ed3-a93a-fe369023ead3"
+data "ValueUUID" "adfdafe5-f4da-4c64-a1e6-a33d626437d2"
+data "Rarity" "VeryRare"
+
+new entry "Minthara_DeathKnight_Boots"
+type "Armor"
+using "ARM_Boots_Metal"
+data "RootTemplate" "bc3c8375-bad5-4f02-b1f3-2261cea690aa"
+data "ValueUUID" "240eb257-ef20-4877-89bd-6956b4b7c41a"
+data "Rarity" "Rare"
+
+new entry "Minthara_DeathKnight_Gloves"
+type "Armor"
+using "ARM_Gloves_Metal"
+data "RootTemplate" "65c65d78-1786-4a78-9a43-96c19849b6f3"
+data "ValueUUID" "240eb257-ef20-4877-89bd-6956b4b7c41a"
+data "Rarity" "Rare"
+
+new entry "Minthara_TheBulwark_Shield"
+type "Armor"
+using "ARM_Shield_1"
+data "RootTemplate" "4f313dde-14bb-43a2-abdd-07b2eb38b33a"
+data "ValueUUID" "f46eb019-edd0-4216-99df-9dae89a83ce7"
+data "Rarity" "Legendary"
+
+new entry "Minthara_Scimitar"
+type "Weapon"
+using "WPN_Scimitar_2"
+data "RootTemplate" "517231eb-e812-43ed-9ce3-482ba7ed31e6"
+data "ValueUUID" "d24c441f-7ebe-4229-8522-cf34c257ff20"
+data "Rarity" "Legendary"
+data "Proficiency Group" "MartialWeapons;Shortswords;Scimitars"
+
+new entry "Minthara_Scimitar_2"
+type "Weapon"
+using "WPN_Scimitar_2"
+data "RootTemplate" "d60524f4-583e-4b16-91b2-871221d441cf"
+data "ValueUUID" "81764c3c-c7a9-49a7-b145-d31ffd5aebe1"
+data "Rarity" "VeryRare"
+
+- - - - - -
+// Nere \\
+- - - - - -
+
+new entry "Nere_Rapier"
+type "Weapon"
+using "WPN_Rapier_1"
+data "RootTemplate" "df6698d2-b690-4aea-be83-956d3b2ea97e"
+data "ItemGroup" ""
+data "ValueUUID" "86e7e503-a225-4b48-819e-2e24de1f904a"
+data "Rarity" "Rare"
+data "DefaultBoosts" "WeaponProperty(Magical);WeaponDamage(1d4, Psychic)"
+
+- - - - - - - - - -
+// Dror Ragzlin \\
+- - - - - - - - - -
+
+new entry "Dror_Ragzlin_Warhammer"
+type "Weapon"
+using "WPN_Warhammer_1"
+data "RootTemplate" "37a29c63-3fcd-43bd-8021-c363dcc852bc"
+data "ValueUUID" "86e7e503-a225-4b48-819e-2e24de1f904a"
+data "Rarity" "Rare"
+data "DefaultBoosts" "WeaponEnchantment(1);WeaponProperty(Magical)"
+data "Boosts" "UnlockSpell(Target_GOB_GoblinKing_ForceAttack_WeaponAttack)"
+
+- - - - - - - - - - - - - - - - -
+// Githyanki Fighter Equipment \\
+- - - - - - - - - - - - - - - - -
+
+new entry "Githyanki_Fighter_Longsword"
+type "Weapon"
+using "WPN_Longsword_1"
+data "RootTemplate" "0553ced5-00b0-4c39-8ee4-519f6401f44a"
+data "ItemGroup" ""
+data "ValueUUID" "86e7e503-a225-4b48-819e-2e24de1f904a"
+data "Rarity" "Rare"
+data "DefaultBoosts" "WeaponProperty(Magical)"
+data "PassivesOnEquip" "MAG_Githborn_Mindcrusher_Greatsword_Passive"
+
+new entry "Githyanki_Fighter_Shield"
+type "Armor"
+using "_Shield_Magic"
+data "RootTemplate" "3374ad91-ddcf-430a-bddd-f48e8699ade9"
+data "ItemGroup" ""
+data "Rarity" "Rare"
+data "PassivesOnEquip" "MAG_LowHP_TemporaryHP_Passive"
+
+new entry "Githyanki_Fighter_HalfPlate"
+type "Armor"
+using "ARM_HalfPlate_Body_Githyanki"
+data "RootTemplate" "f601bac2-16a7-4da0-854a-ae4132ca448f"
+data "ValueUUID" "240eb257-ef20-4877-89bd-6956b4b7c41a"
+data "Rarity" "Rare"
+data "PassivesOnEquip" "MAG_Githborn_MagicEating_HalfPlate_Passive"

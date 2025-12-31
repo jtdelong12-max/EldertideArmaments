@@ -1,7 +1,80 @@
-﻿- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Eldertide Armaments - Equipment Configuration
-// 
-// This file is reserved for future equipment loadout configurations.
-// Currently, the mod only adds 13 legendary rings, 9 amulets, and 16 elixirs.
-// No NPC equipment modifications are included in this mod.
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+﻿- - - - - - - -
+// Minthara \\
+- - - - - - - -
+
+new equipment "Equipment_Minthara_Level_4"
+add equipmentgroup
+add equipment entry "Minthara_Scimitar"
+add equipmentgroup
+add equipment entry "Minthara_Scimitar_2"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Armor"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Gloves"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Boots"
+
+new equipment "Equipment_Minthara_Level_7"
+add equipmentgroup
+add equipment entry "Minthara_Scimitar"
+add equipmentgroup
+add equipment entry "Minthara_TheBulwark_Shield"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Armor"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Gloves"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Boots"
+
+new equipment "Equipment_Minthara_Level_10"
+add equipmentgroup
+add equipment entry "Minthara_Scimitar"
+add equipmentgroup
+add equipment entry "Minthara_TheBulwark_Shield"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Armor"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Gloves"
+add equipmentgroup
+add equipment entry "Minthara_DeathKnight_Boots"
+
+- - - - - -
+// Nere \\
+- - - - - -
+
+new equipment "Equipment_Nere_ALL"
+add initialweaponset "Melee"
+add equipmentgroup
+add equipment entry "Nere_Rapier"
+add equipmentgroup
+add equipment entry "ARM_Robe_Body"
+
+- - - - - - - - - -
+// Dror Ragzlin \\
+- - - - - - - - - -
+
+new equipment "Equipment_Dror_Ragzlin_ALL"
+add equipmentgroup
+add equipment entry "Dror_Ragzlin_Warhammer"
+
+- - - - - - - - - - - -
+// Githyanki Warlock \\
+- - - - - - - - - - - -
+
+new equipment "Equipment_Githyanki_Warlock_ALL"
+add initialweaponset "Melee"
+add equipmentgroup
+add equipment entry "WPN_Rapier_2"
+
+- - - - - - - - - - - -
+// Githyanki Fighter \\
+- - - - - - - - - - - -
+
+new equipment "Equipment_Githyanki_Fighter_ALL"
+add initialweaponset "Melee"
+add equipmentgroup
+add equipment entry "Githyanki_Fighter_Longsword"
+add equipmentgroup
+add equipment entry "Githyanki_Fighter_Shield"
+add equipmentgroup
+add equipment entry "Githyanki_Fighter_HalfPlate"

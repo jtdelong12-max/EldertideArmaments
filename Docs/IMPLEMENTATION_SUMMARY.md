@@ -17,19 +17,19 @@ All rings are fully implemented with:
 - Localization entries for names and descriptions
 
 **Ring Types**:
-- Dragonsoul Ring - Dragon-themed abilities with flight
-- Bloodsworn Ring - Vampiric/lifesteal abilities
-- Riftwalker's Ring - Stealth and explosive damage
-- Selune's Grace Ring - Healing and defensive abilities
-- Stormlord's Ring - Lightning-based powers
-- Frostbinder's Ring - Cold damage and control
-- Predator's Ring - Hunter/assassin abilities
-- Phoenix Soul Ring - Fire damage and rebirth
-- Witcher's Ring - Monster slaying buffs
-- Mindwarden's Ring - Psionic abilities
-- Soulreaver's Ring - Necrotic damage
-- Shadowdancer's Ring - Stealth and mobility
-- Avernus Sigil Ring - Infernal powers
+- Ring 1: Dragonsoul Ring - Dragon abilities with flight
+- Ring 2: Bloodsworn Ring - Vampiric/lifesteal abilities
+- Ring 3: Riftwalker's Ring - Stealth and explosive damage
+- Ring 4: Selune's Grace Ring - Healing and defensive abilities
+- Ring 5: Trickster's Ring - Sanctuary and luck-based abilities
+- Ring 6: Mindwarden Ring - Psionic mind protection
+- Ring 7: Astral Champion's Ring - Githyanki astral powers
+- Ring 8: Predator's Ring - Hunter/assassin critical builds
+- Ring 9: Stormlord's Ring - Lightning and thunder abilities
+- Ring 10: Frostbound Ring - Cold damage and ice control
+- Ring 11: Deathspeaker's Ring - Necrotic and death magic
+- Ring 12: Witcher's Ring - Monster slaying and Witcher Signs
+- Ring 13: Hellfire Ring - Infernal powers and cambion summoning
 
 ### 2. Amulets (9 Total) ✅
 
@@ -41,15 +41,15 @@ All amulets are fully implemented with:
 - Localization entries
 
 **Amulet Types**:
-- Giant's Might - Strength and size-based abilities
-- Phoenix Soul Amulet - Fire transformation
-- Witcher's Medallion - Monster detection and buffs
-- Mindwarden's Torc - Mental protection
-- Shadowdancer's Pendant - Stealth abilities
-- Bloodsworn Sigil - Vampiric powers
-- Stormcaller's Talisman - Weather control
-- Predator's Trophy - Hunter abilities
-- Frostbound Medallion - Cold powers
+- Amulet 1: Talisman of Hill Giant Strength - +2 Strength bonus
+- Amulet 2: Lifebringer's Amulet - Healing and restoration
+- Amulet 3: Firewalker's Talisman - Fire resistance and flame powers
+- Amulet 4: Talisman of Mystical Versatility - Multi-ability enhancement
+- Amulet 5: Drizzt's Shadowclaw Amulet - Ranger abilities and companions
+- Amulet 6: Amulet of the Shapeshifter - Wild Shape and nature powers
+- Amulet 7: Zealot's Talisman - Absolute cult-themed abilities
+- Amulet 8: Witcher's Medallion - Monster detection and Witcher Signs
+- Amulet 9: Witch Queen Amulet - Tasha-inspired arcane powers
 
 ### 3. Consumables (16 Total) ✅
 

@@ -28,6 +28,7 @@ reference/
 ### 2. Validation Scripts
 
 Python scripts for automated validation:
+
 - `validate_spells.py` - Validates spell definitions
 - `validate_items.py` - Validates item/armor definitions
 - `validate_references.py` - Checks cross-references
@@ -39,6 +40,7 @@ Python scripts for automated validation:
 ### 3. Documentation Structure
 
 Comprehensive markdown documentation:
+
 - Clear hierarchy and organization
 - Cross-referenced content
 - Searchable and indexable
@@ -49,6 +51,7 @@ Comprehensive markdown documentation:
 ### 4. Semantic Organization
 
 Data is organized by:
+
 - **Type** (spells, items, statuses, passives)
 - **Function** (validation, reference, documentation)
 - **Scope** (vanilla data vs. mod data)
@@ -110,6 +113,7 @@ Public/EldertideArmament/Stats/Generated/Data/
 ### Property Documentation
 
 All properties include:
+
 - Valid value ranges
 - Data types
 - Required vs optional
@@ -142,6 +146,7 @@ The repository includes comprehensive validation that checks:
 ### Integration with CI/CD
 
 Validation scripts can be integrated into:
+
 - GitHub Actions workflows
 - Pre-commit hooks
 - Automated testing pipelines
@@ -154,6 +159,7 @@ Validation scripts can be integrated into:
 ### 1. AI-Powered Modding Assistant
 
 AI-Allies can use this repository to:
+
 - Answer questions about BG3 modding patterns
 - Generate mod content based on templates
 - Validate user-created content
@@ -162,6 +168,7 @@ AI-Allies can use this repository to:
 ### 2. Knowledge Base Integration
 
 This repository serves as:
+
 - Training data for AI models
 - Reference corpus for semantic search
 - Validation ground truth
@@ -170,6 +177,7 @@ This repository serves as:
 ### 3. Automated Code Review
 
 AI tools can:
+
 - Check submitted changes against patterns
 - Suggest improvements based on best practices
 - Identify potential bugs or incompatibilities
@@ -178,6 +186,7 @@ AI tools can:
 ### 4. Interactive Documentation
 
 AI-Allies can provide:
+
 - Natural language queries over documentation
 - Context-aware help and suggestions
 - Interactive examples and tutorials

@@ -14,6 +14,7 @@ This document explains the balance philosophy behind Eldertide Armaments and pro
 ### Target Audience
 
 This mod is designed for players who:
+
 - Enjoy powerful, unique items
 - Want more build variety in endgame
 - Appreciate visual flair and special effects
@@ -33,43 +34,52 @@ Eldertide Armaments items are **intentionally more powerful** than most vanilla 
 ### Power Tier Breakdown
 
 #### Tier 1: Game-Changing (850-900 Value)
+
 **Examples**: Ring 8 (Predator's Ring), Ring 9 (Stormlord's Ring)
 
 **Characteristics**:
+
 - Multiple powerful abilities
 - Strong passive effects
 - Build-defining features
 - Suitable for hardest content
 
 **Use Cases**:
+
 - Honor Mode playthroughs
 - Challenging boss fights
 - Endgame optimization
 
 #### Tier 2: Powerful (650-750 Value)
+
 **Examples**: Ring 1 (Dragonsoul Ring), Ring 6 (Mindwarden Ring)
 
 **Characteristics**:
+
 - 2-3 unique abilities
 - Strong passive effect
 - Clear build synergies
 - Impactful but not overwhelming
 
 **Use Cases**:
+
 - Normal Tactician gameplay
 - Specialized builds
 - Mid-to-late game progression
 
 #### Tier 3: Strong (500-600 Value)
+
 **Examples**: Ring 4 (Selune's Grace Ring), Ring 5 (Trickster's Ring)
 
 **Characteristics**:
+
 - 1-2 unique abilities
 - Useful passive effect
 - Good for specific situations
 - Comparable to best vanilla items
 
 **Use Cases**:
+
 - Early Act 3 content
 - Filling out build gaps
 - Situational advantages
@@ -77,7 +87,9 @@ Eldertide Armaments items are **intentionally more powerful** than most vanilla 
 ### Item Categories
 
 #### Offensive Focus
+
 Items that enhance damage output:
+
 - **Ring 8**: Predator Precision (critical hits and assassin builds)
 - **Ring 9**: Thor's Fury (strength builds, smite damage)
 - **Ring 2**: Bloodborne abilities (lifesteal and vampiric builds)
@@ -85,7 +97,9 @@ Items that enhance damage output:
 **Balance**: High damage requires setup or specific builds to maximize
 
 #### Defensive Focus
+
 Items that enhance survivability:
+
 - **Ring 4**: Selune's Grace (healing and AC)
 - **Ring 6**: Mindwarden (psychic resistance and mind protection)
 - **Amulets**: Various defensive amulets with resistance
@@ -93,7 +107,9 @@ Items that enhance survivability:
 **Balance**: Powerful defense but doesn't increase damage significantly
 
 #### Utility Focus
+
 Items that provide unique abilities:
+
 - **Ring 5**: Trickster abilities (Midas Touch, sanctuary)
 - **Ring 7**: Astral abilities (ethereal powers)
 - **Ring 1**: Dragon heritage (flight and dragon abilities)
@@ -101,7 +117,9 @@ Items that provide unique abilities:
 **Balance**: Interesting abilities with situational power
 
 #### Hybrid Items
+
 Items that combine multiple focuses:
+
 - Most amulets
 - High-tier rings with multiple abilities
 
@@ -112,6 +130,7 @@ Items that combine multiple focuses:
 ### Spell Power Levels
 
 #### Tier 1 Spells (Powerful)
+
 - **Annihilation** (Ring 8): High damage, limited uses
 - **Thor's Fury** (Ring 9): Area lightning damage
 - **Cataclysm Blast** (Ring 3): Explosive damage
@@ -119,6 +138,7 @@ Items that combine multiple focuses:
 **Balance**: Limited spell slots or long cooldowns prevent spam
 
 #### Tier 2 Spells (Strong)
+
 - **Skybreaker Smite** (Ring 9): Enhanced smite
 - **Mind Blast** (Ring 6): Control and damage
 - **Logarius's Final Embrace** (Ring 2): Powerful buff
@@ -126,6 +146,7 @@ Items that combine multiple focuses:
 **Balance**: Strong effects with specific use cases
 
 #### Tier 3 Spells (Situational)
+
 - **Midas Touch** (Ring 5): Utility effect
 - **Shadow's Retribution** (Ring 4): Defensive counter
 - **Various Arena/Zone effects**: Control abilities
@@ -135,7 +156,9 @@ Items that combine multiple focuses:
 ### Passive Abilities
 
 #### Always-On Passives
+
 Examples:
+
 - **Predator Precision**: Consistent critical hit bonus
 - **Unyielding Tempest**: Lightning damage on hit
 - **Dark Vanish**: Stealth bonuses
@@ -143,7 +166,9 @@ Examples:
 **Balance**: Moderate power that stacks with build choices
 
 #### Conditional Passives
+
 Examples:
+
 - **Executioner Movement**: Bonus on kill
 - **Astral Surge**: Bonus in specific scenarios
 - **Mindwarden**: Protection against specific damage type
@@ -151,7 +176,9 @@ Examples:
 **Balance**: Powerful when conditions met, situational otherwise
 
 #### Triggered Effects
+
 Examples:
+
 - **Draconic Retaliation**: Counterattack
 - **Heal on specific actions**: Reactive healing
 
@@ -162,6 +189,7 @@ Examples:
 ### Melee Builds
 
 **Best Items**:
+
 - Ring 9 (Strength bonus, smite abilities)
 - Ring 2 (Lifesteal, vampiric abilities)
 - Ring 8 (Critical hits, assassin features)
@@ -172,6 +200,7 @@ Examples:
 ### Spellcaster Builds
 
 **Best Items**:
+
 - Ring 6 (Mind magic, psychic abilities)
 - Ring 3 (Explosive spells)
 - Various amulets with spell bonuses
@@ -182,6 +211,7 @@ Examples:
 ### Hybrid Builds
 
 **Best Items**:
+
 - Ring 7 (Astral abilities, physical bonuses)
 - Ring 1 (Dragon heritage, flight)
 - Utility amulets
@@ -192,6 +222,7 @@ Examples:
 ### Tank/Support Builds
 
 **Best Items**:
+
 - Ring 4 (AC, healing)
 - Ring 6 (Resistance, mind protection)
 - Defensive amulets
@@ -204,21 +235,25 @@ Examples:
 ### For Balanced Gameplay
 
 #### Story/Explorer Mode
+
 - Use **any items** - they'll make you feel powerful but not break the game
 - Mix and match for fun combinations
 - Focus on thematic builds
 
 #### Balanced/Normal Mode
+
 - Use **Tier 2-3 items** for appropriate challenge
 - Tier 1 items will make content significantly easier
 - Good balance of power and challenge
 
 #### Tactician Mode
+
 - **All items appropriate** - designed for this difficulty
 - Tier 1 items provide good endgame power
 - Tactical positioning still matters
 
 #### Honor Mode
+
 - **All items recommended** - you'll need the power
 - Tier 1 items help but don't trivialize content
 - Strategic use of abilities is crucial
@@ -239,11 +274,13 @@ If items feel too powerful, consider:
 ### Stacking Effects
 
 **What Stacks**:
+
 - Different types of bonuses (e.g., AC from one ring, damage from another)
 - Unique spell unlocks (you get all spells from all equipped items)
 - Different resistance types
 
 **What Doesn't Stack**:
+
 - Same ability score bonuses (highest applies)
 - Similar passive effects (game rules apply)
 - Duplicate resistances (one applies)
@@ -279,11 +316,13 @@ If items feel too powerful, consider:
 **Power Level**: Strong but limited by quantity
 
 **Design**:
+
 - More powerful than vanilla potions
 - Limited availability (found in specific locations)
 - Single-use ensures they don't trivialize content
 
 **Use Cases**:
+
 - Boss fights
 - Critical moments
 - Clutch plays
@@ -293,12 +332,14 @@ If items feel too powerful, consider:
 ### Power Level Considerations
 
 **Synergizes Well With**:
+
 - Difficulty-increasing mods
 - Class expansion mods
 - Enemy AI improvements
 - Tactical combat mods
 
 **May Stack Excessively With**:
+
 - Other powerful equipment mods
 - Stat-multiplying mods
 - Game-breaking ability mods

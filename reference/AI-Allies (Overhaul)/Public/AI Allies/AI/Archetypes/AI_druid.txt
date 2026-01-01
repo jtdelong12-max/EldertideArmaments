@@ -1,0 +1,38 @@
+USING base
+// AI Allies: Druid Archetype
+// Versatile controller/healer with balanced melee/ranged intent and surface awareness
+
+// Balanced offense/control
+MULTIPLIER_DAMAGE_ENEMY_POS                      1.00
+MULTIPLIER_CONTROL_ENEMY_POS                     1.20
+MULTIPLIER_BLIND                                 0.20
+
+// Healing and support
+MULTIPLIER_HEAL_ALLY_POS                         0.80
+MULTIPLIER_HEAL_SELF_POS                         0.70
+MULTIPLIER_BOOST_ALLY_POS                        1.00
+
+// Positioning: avoid danger, moderate caution
+MULTIPLIER_FALLBACK_ENEMIES_NEARBY               0.60
+MULTIPLIER_FALLBACK_ALLIES_NEARBY                0.30
+MULTIPLIER_ENDPOS_ENEMIES_NEARBY                 0.10
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE       0.85
+MULTIPLIER_MOVEMENT_SURFACE                      0.80
+
+// Item/weapon usage moderate
+USE_ITEM_MODIFIER                                0.60
+WEAPON_PICKUP_MODIFIER                           0.90
+
+// Concentration important for buffs/conjures
+MODIFIER_CONCENTRATION_REMOVE_SELF              20.0
+
+// Avoid friendly fire
+MULTIPLIER_DAMAGE_ALLY_NEG                      16.0
+MULTIPLIER_CONTROL_ALLY_NEG                     16.0
+MULTIPLIER_DOT_ALLY_NEG                          8.0
+MULTIPLIER_HOT_ALLY_NEG                          8.0
+
+// Targeting priorities
+MULTIPLIER_TARGET_MY_ENEMY                       1.25
+MULTIPLIER_TARGET_PREFERRED                      6.0
+MULTIPLIER_TARGET_UNPREFERRED                    0.1

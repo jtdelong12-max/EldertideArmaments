@@ -68,7 +68,8 @@ local DEFAULT_SETTINGS = {
     healingPriorityMode = "LOWEST_HP",
     enableFlankingBehavior = true,
     enableHighGroundSeeking = true,
-    debugArchetypes = false
+    debugArchetypes = false,
+    enableModdedSpellScan = true
 }
 
 local function GetCachedSettingValue(settingId, moduleUUID)
@@ -123,7 +124,11 @@ Ext.Events.SessionLoaded:Subscribe(InitAIControlOriginalFactions)
 -- Enable modded spells for AI use after session loads
 Ext.Events.SessionLoaded:Subscribe(function()
     Ext.Timer.WaitFor(2000, function()
-        EnableAllModdedSpells()
+        if GetCachedSettingValue("enableModdedSpellScan", ModuleUUID) then
+            EnableAllModdedSpells()
+        else
+            Log(LOG_LEVEL.INFO, "[ModdedSpell] Scan skipped (disabled in settings)")
+        end
     end)
 end)
 
@@ -303,9 +308,9 @@ end
 local CLASS_TO_ARCHETYPE = {
     -- Core classes (⭐ Using vanilla BG3 smart archetypes)
     ["BARBARIAN"] = "melee_smart",           -- Enhanced tactical melee
-    ["BARD"] = "mage_smart",                 -- Spellcaster with support focus
+    ["BARD"] = "AI_bard",                    -- Spellcaster with support focus
     ["CLERIC"] = "healer_ranged",            -- Healing priority
-    ["DRUID"] = "healer_ranged",             -- Healing + wildshape
+    ["DRUID"] = "AI_druid",                  -- Healing + wildshape
     ["FIGHTER"] = "melee_smart",             -- Tactical positioning
     ["MONK"] = "melee_smart",                -- Mobile melee combatant
     ["PALADIN"] = "melee_magic_smart",       -- Pre-buffs before engaging
@@ -333,9 +338,9 @@ local SUBCLASS_TO_ARCHETYPE = {
     ["CLERIC_WAR"] = "melee_magic_smart",
     
     -- Druid subclasses
-    ["DRUID_LAND"] = "mage_smart",
-    ["DRUID_MOON"] = "healer_ranged",
-    ["DRUID_SPORES"] = "melee_magic_smart",
+    ["DRUID_LAND"] = "AI_druid",
+    ["DRUID_MOON"] = "AI_druid",
+    ["DRUID_SPORES"] = "AI_druid",
     
     -- Fighter subclasses
     ["FIGHTER_BATTLEMASTER"] = "melee_smart",
@@ -395,7 +400,7 @@ end
 -- @param character string: Character UUID
 -- @return string|nil: Detected class tag or nil
 local function DetectCharacterClass(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return nil
     end
     
@@ -504,6 +509,8 @@ local function AutoApplyOptimalArchetype(character)
         ["AI_mage_melee"] = "AI_ALLIES_MAGE_MELEE",
         ["AI_mage_ranged"] = "AI_ALLIES_MAGE_RANGED",
         ["AI_mage_smart"] = "AI_ALLIES_MAGE_SMART",
+        ["AI_bard"] = "AI_ALLIES_BARD",
+        ["AI_druid"] = "AI_ALLIES_DRUID",
         ["AI_monk"] = "AI_ALLIES_MONK",
         ["AI_paladin"] = "AI_ALLIES_PALADIN",
         ["AI_rogue"] = "AI_ALLIES_ROGUE",
@@ -599,6 +606,8 @@ local aiCombatStatuses = {
     'AI_ALLIES_TRICKSTER',
     'AI_ALLIES_THROWER',
     'AI_ALLIES_DEFAULT',
+    'AI_ALLIES_BARD',
+    'AI_ALLIES_DRUID',
     'AI_ALLIES_MELEE_NPC',
     'AI_ALLIES_RANGED_NPC',
     'AI_ALLIES_HEALER_MELEE_NPC',
@@ -613,6 +622,8 @@ local aiCombatStatuses = {
     'AI_ALLIES_TRICKSTER_NPC',
     'AI_ALLIES_THROWER_NPC',
     'AI_ALLIES_DEFAULT_NPC',
+    'AI_ALLIES_BARD_NPC',
+    'AI_ALLIES_DRUID_NPC',
     -- SMART variants
     'AI_ALLIES_MELEE_SMART',
     'AI_ALLIES_RANGED_SMART',
@@ -652,6 +663,8 @@ local NPCStatuses = {
     'AI_ALLIES_TRICKSTER_NPC',
     'AI_ALLIES_THROWER_NPC',
     'AI_ALLIES_DEFAULT_NPC',
+    'AI_ALLIES_BARD_NPC',
+    'AI_ALLIES_DRUID_NPC',
     -- SMART variants
     'AI_ALLIES_MELEE_SMART_NPC',
     'AI_ALLIES_RANGED_SMART_NPC',
@@ -716,6 +729,138 @@ local WILDSHAPE_SPELLS = {
     "Shout_WildShape_Combat_Spider"      -- Alternative
 }
 
+-- Healer archetype statuses (for optimized healer detection)
+local HEALER_STATUSES = {
+    "AI_ALLIES_HEALER_MELEE",
+    "AI_ALLIES_HEALER_RANGED",
+    "AI_ALLIES_HEALER_MELEE_NPC",
+    "AI_ALLIES_HEALER_RANGED_NPC",
+    "AI_ALLIES_CLERIC",
+    "AI_ALLIES_CLERIC_NPC",
+    "AI_ALLIES_DRUID",
+    "AI_ALLIES_DRUID_NPC"
+}
+
+-- Threat-relevant status effects and their threat scores
+local THREAT_STATUSES = {
+    HASTE = 20,
+    BLESS = 10,
+    RAGE = 15
+}
+
+-------------------------------------------------------------------------------
+-- Common Utility Functions (Reduce Code Duplication)
+-------------------------------------------------------------------------------
+
+-- Validate character/spell UUID or name is non-nil and non-empty
+-- @param value string: The UUID or name to validate
+-- @return boolean: true if valid, false otherwise
+local function IsValidString(value)
+    return value ~= nil and value ~= ""
+end
+
+-- Generic cached value retrieval helper
+-- @param cache table: The cache table to check
+-- @param key string: The cache key
+-- @param expiry number: Cache expiry time in milliseconds
+-- @return any|nil: Cached value if valid, nil if expired or not found
+local function GetCachedValue(cache, key, expiry)
+    local cached = cache[key]
+    if cached and cached.time + expiry > Ext.Utils.MonotonicTime() then
+        return cached.value
+    end
+    return nil
+end
+
+-- Set a cached value with timestamp
+-- @param cache table: The cache table to update
+-- @param key string: The cache key
+-- @param value any: The value to cache
+-- @param counterRef table: Optional reference to counter variable {counter = var_name}
+local function SetCachedValue(cache, key, value, counterRef)
+    -- Track new cache entries for size-limited caches
+    if counterRef and not cache[key] then
+        counterRef.counter = counterRef.counter + 1
+    end
+    cache[key] = {value = value, time = Ext.Utils.MonotonicTime()}
+end
+
+-- Safe status application (only apply if not already present)
+-- @param character string: Character UUID
+-- @param status string: Status name to apply
+-- @param duration number: Duration (-1 for infinite)
+-- @return boolean: true if applied, false if already present or error
+local function SafeApplyStatus(character, status, duration)
+    if not IsValidString(character) or not IsValidString(status) then
+        return false
+    end
+    
+    local success, result = pcall(function()
+        if Osi.HasActiveStatus(character, status) == 0 then
+            Osi.ApplyStatus(character, status, duration or -1)
+            return true
+        end
+        return false
+    end)
+    
+    return success and result
+end
+
+-- Safe status removal (only remove if present)
+-- @param character string: Character UUID
+-- @param status string: Status name to remove
+-- @return boolean: true if removed, false if not present or error
+local function SafeRemoveStatus(character, status)
+    if not IsValidString(character) or not IsValidString(status) then
+        return false
+    end
+    
+    local success, result = pcall(function()
+        if Osi.HasActiveStatus(character, status) == 1 then
+            Osi.RemoveStatus(character, status)
+            return true
+        end
+        return false
+    end)
+    
+    return success and result
+end
+
+-- Iterator for party members (reduces boilerplate in loops)
+-- @param skipSummons boolean: If true, skips summoned creatures (default: false)
+-- @return iterator: Returns character UUIDs one at a time
+-- Usage: for character in IteratePartyMembers() do ... end
+local function IteratePartyMembers(skipSummons)
+    local players = GetPartyMembers()
+    if not players then
+        -- Return empty iterator if GetPartyMembers fails
+        return function() return nil end
+    end
+    
+    local index = 0
+    local playersArray = {}
+    
+    -- Convert to array for iteration
+    for _, player in pairs(players) do
+        table.insert(playersArray, player[1])
+    end
+    
+    return function()
+        while index < #playersArray do
+            index = index + 1
+            local character = playersArray[index]
+            
+            -- Skip summons if requested
+            if skipSummons and IsSummon(character) then
+                -- Continue to next iteration
+            else
+                return character
+            end
+        end
+        return nil
+    end
+end
+
 -------------------------------------------------------------------------------
 -- Modded Spell Support Configuration
 -------------------------------------------------------------------------------
@@ -768,7 +913,7 @@ local MODDED_SPELL_PATTERNS = {
 -- @param spellName string: The name of the spell to check
 -- @return boolean: true if spell matches a modded pattern
 local function IsModdedSpell(spellName)
-    if not spellName or spellName == "" then
+    if not IsValidString(spellName) then
         return false
     end
     
@@ -800,10 +945,13 @@ local function EnableModdedSpellForAI(spellName)
             
             spell.AIFlags = newFlags
             
-            Log(LOG_LEVEL.INFO, string.format(
-                "[ModdedSpell] Enabled spell for AI: %s (removed CanNotUse flag)",
-                spellName
-            ))
+            -- Move per-spell logging to DEBUG to reduce startup spam
+            if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+                Log(LOG_LEVEL.DEBUG, string.format(
+                    "[ModdedSpell] Enabled spell for AI: %s (removed CanNotUse flag)",
+                    spellName
+                ))
+            end
             return true
         end
         
@@ -862,7 +1010,7 @@ local cacheEntriesCount = 0  -- Track cache size efficiently
 
 -- Clear all cached entries for a character
 local function clearStatusCache(character)
-    local suffixes = {"_combat", "_npc", "_controller", "_relevant"}
+    local suffixes = {"_combat", "_npc", "_controller", "_relevant", "_healer"}
     for _, suffix in ipairs(suffixes) do
         local key = character .. suffix
         if statusCheckCache[key] then
@@ -909,6 +1057,12 @@ local function hasAnyNPCStatus(character)
     return hasAnyStatusFromList(character, NPCStatuses, "_npc")
 end
 
+-- Check if character has any healer archetype status (optimized)
+-- Uses cached status check to reduce API overhead
+local function IsHealer(character)
+    return hasAnyStatusFromList(character, HEALER_STATUSES, "_healer")
+end
+
 local function isControllerStatus(status)
     return aiStatusSet[status] ~= nil
 end
@@ -931,25 +1085,15 @@ end
 -------------------------------------------------------------------------------
 
 -- Get character HP percentage
+-- Optimized: Uses GetHealthData to avoid duplicate entity fetch logic
 local function GetHPPercentage(character)
-    local success, hpPercent = pcall(function()
-        local entity = Ext.Entity.Get(character)
-        if entity and entity.Health and entity.Health.Hp and entity.Health.MaxHp then
-            local currentHP = entity.Health.Hp
-            local maxHP = entity.Health.MaxHp
-            if maxHP > 0 then
-                return (currentHP / maxHP) * 100
-            end
-        end
-        return HP_FULL
-    end)
-    
-    return success and hpPercent or HP_FULL
+    local healthData = GetHealthData(character)
+    return healthData and healthData.hpPercent or HP_FULL
 end
 
 -- Count enemies adjacent to character
 local function GetAdjacentEnemyCount(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return 0
     end
     
@@ -1021,7 +1165,7 @@ end
 -- Note: Summon detection uses common BG3 tags and statuses. If new summon types are added
 --       to the game, extend the SUMMON_TAGS or SUMMON_STATUSES lists at module level (lines 406-407).
 local function IsSummon(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return false
     end
     
@@ -1047,15 +1191,11 @@ local function IsSummon(character)
 end
 
 -- Check if any ally is downed
+-- @param character string: Character UUID to exclude from check (optional)
+-- @return boolean: true if any non-summon ally is downed
 local function IsAnyAllyDowned(character)
-    local players = GetPartyMembers()
-    if not players then
-        return false
-    end
-    
-    for _, player in pairs(players) do
-        local ally = player[1]
-        if ally ~= character and not IsSummon(ally) then
+    for ally in IteratePartyMembers(true) do  -- Skip summons
+        if ally ~= character then
             if Osi.HasActiveStatus(ally, "DOWNED") == 1 then
                 return true
             end
@@ -1067,14 +1207,14 @@ end
 
 -- Check for Barbarian Rage
 local function IsRaging(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return false
     end
     
     -- Check cache first
-    local cached = rageStatusCache[character]
-    if cached and cached.time + COMBAT_STATUS_CACHE_EXPIRY > Ext.Utils.MonotonicTime() then
-        return cached.value
+    local cached = GetCachedValue(rageStatusCache, character, COMBAT_STATUS_CACHE_EXPIRY)
+    if cached ~= nil then
+        return cached
     end
     
     local isRaging = false
@@ -1088,21 +1228,21 @@ local function IsRaging(character)
     end)
     
     -- Cache result
-    rageStatusCache[character] = {value = isRaging, time = Ext.Utils.MonotonicTime()}
+    SetCachedValue(rageStatusCache, character, success and isRaging)
     
     return success and isRaging
 end
 
 -- Check for Wild Shape
 local function IsInWildShape(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return false
     end
     
     -- Check cache first
-    local cached = wildshapeStatusCache[character]
-    if cached and cached.time + COMBAT_STATUS_CACHE_EXPIRY > Ext.Utils.MonotonicTime() then
-        return cached.value
+    local cached = GetCachedValue(wildshapeStatusCache, character, COMBAT_STATUS_CACHE_EXPIRY)
+    if cached ~= nil then
+        return cached
     end
     
     local inWildShape = false
@@ -1130,7 +1270,7 @@ local function IsInWildShape(character)
     end)
     
     -- Cache result
-    wildshapeStatusCache[character] = {value = inWildShape, time = Ext.Utils.MonotonicTime()}
+    SetCachedValue(wildshapeStatusCache, character, success and inWildShape)
     
     return success and inWildShape
 end
@@ -1144,7 +1284,7 @@ end
 -- @param spellName string: Name of the spell to check
 -- @return boolean: true if character has the spell, false otherwise
 local function HasSpellAvailable(character, spellName)
-    if not character or character == "" or not spellName or spellName == "" then
+    if not IsValidString(character) or not IsValidString(spellName) then
         return false
     end
     
@@ -1159,7 +1299,7 @@ end
 -- @param character string: Character UUID
 -- @return table: List of spell names, or empty table on error
 local function GetAllCharacterSpells(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return {}
     end
     
@@ -1183,7 +1323,7 @@ end
 -- Debug utility to log all spells for a character
 -- @param character string: Character UUID
 local function LogCharacterSpells(character)
-    if not character or character == "" then
+    if not IsValidString(character) then
         return
     end
     
@@ -1204,32 +1344,6 @@ Mods.AIAllies.HasSpellAvailable = HasSpellAvailable
 Mods.AIAllies.GetAllCharacterSpells = GetAllCharacterSpells
 Mods.AIAllies.LogCharacterSpells = LogCharacterSpells
 
--- Get max HP for a character
-local function GetMaxHP(character)
-    local success, maxHP = pcall(function()
-        local entity = Ext.Entity.Get(character)
-        if entity and entity.Health and entity.Health.MaxHp then
-            return entity.Health.MaxHp
-        end
-        return 0
-    end)
-    
-    return success and maxHP or 0
-end
-
--- Get current HP for a character
-local function GetCurrentHP(character)
-    local success, currentHP = pcall(function()
-        local entity = Ext.Entity.Get(character)
-        if entity and entity.Health and entity.Health.Hp then
-            return entity.Health.Hp
-        end
-        return 0
-    end)
-    
-    return success and currentHP or 0
-end
-
 -- Optimized: Get all health data in single entity fetch
 -- Returns: {currentHP, maxHP, hpPercent} or nil on error
 local function GetHealthData(character)
@@ -1248,6 +1362,20 @@ local function GetHealthData(character)
     end)
     
     return success and healthData or nil
+end
+
+-- Get max HP for a character
+-- Optimized: Uses GetHealthData to avoid duplicate entity fetch logic
+local function GetMaxHP(character)
+    local healthData = GetHealthData(character)
+    return healthData and healthData.maxHP or 0
+end
+
+-- Get current HP for a character
+-- Optimized: Uses GetHealthData to avoid duplicate entity fetch logic
+local function GetCurrentHP(character)
+    local healthData = GetHealthData(character)
+    return healthData and healthData.currentHP or 0
 end
 
 -- Evaluate contextual conditions and apply temporary archetypes
@@ -1272,41 +1400,28 @@ local function EvaluateContextualArchetypes(character)
         -- Priority 1: Wild Shape detection (highest priority - state change)
         local enableWildShape = GetCachedSettingValue("enableWildShapeAI", ModuleUUID)
         if enableWildShape ~= false and IsInWildShape(character) then
-            if Osi.HasActiveStatus(character, "AI_ALLIES_BEAST_MODE") == 0 then
-                Osi.ApplyStatus(character, "AI_ALLIES_BEAST_MODE", -1)
-                if debugMode then
-                    Log(LOG_LEVEL.INFO, "[Contextual] Applied BEAST_MODE to Wild Shape druid: " .. character)
-                end
+            if SafeApplyStatus(character, "AI_ALLIES_BEAST_MODE", -1) and debugMode then
+                Log(LOG_LEVEL.INFO, "[Contextual] Applied BEAST_MODE to Wild Shape druid: " .. character)
             end
             return  -- Wild Shape overrides other contextual behaviors
         else
             -- Remove beast mode if no longer in wild shape
-            if Osi.HasActiveStatus(character, "AI_ALLIES_BEAST_MODE") == 1 then
-                Osi.RemoveStatus(character, "AI_ALLIES_BEAST_MODE")
-                if debugMode then
-                    Log(LOG_LEVEL.INFO, "[Contextual] Removed BEAST_MODE (no longer in Wild Shape): " .. character)
-                end
+            if SafeRemoveStatus(character, "AI_ALLIES_BEAST_MODE") and debugMode then
+                Log(LOG_LEVEL.INFO, "[Contextual] Removed BEAST_MODE (no longer in Wild Shape): " .. character)
             end
         end
         
         -- Priority 2: Berserker Mode for Raging Barbarians
         local enableBerserker = GetCachedSettingValue("enableBerserkerMode", ModuleUUID)
         if enableBerserker ~= false and IsRaging(character) then
-            if Osi.HasActiveStatus(character, "AI_ALLIES_BERSERKER_MODE") == 0 then
-                Osi.ApplyStatus(character, "AI_ALLIES_BERSERKER_MODE", -1)
-                if debugMode then
-                    Log(LOG_LEVEL.INFO, "[Contextual] Applied BERSERKER_MODE to raging character: " .. character)
-                end
+            if SafeApplyStatus(character, "AI_ALLIES_BERSERKER_MODE", -1) and debugMode then
+                Log(LOG_LEVEL.INFO, "[Contextual] Applied BERSERKER_MODE to raging character: " .. character)
             end
             -- Berserkers don't use defensive mode while raging
-            if Osi.HasActiveStatus(character, "AI_ALLIES_DEFENSIVE_MODE") == 1 then
-                Osi.RemoveStatus(character, "AI_ALLIES_DEFENSIVE_MODE")
-            end
+            SafeRemoveStatus(character, "AI_ALLIES_DEFENSIVE_MODE")
         else
             -- Remove berserker mode if no longer raging
-            if Osi.HasActiveStatus(character, "AI_ALLIES_BERSERKER_MODE") == 1 then
-                Osi.RemoveStatus(character, "AI_ALLIES_BERSERKER_MODE")
-                if debugMode then
+            if SafeRemoveStatus(character, "AI_ALLIES_BERSERKER_MODE") and debugMode then
                     Log(LOG_LEVEL.INFO, "[Contextual] Removed BERSERKER_MODE (no longer raging): " .. character)
                 end
             end
@@ -1333,10 +1448,8 @@ local function EvaluateContextualArchetypes(character)
         local hpPercent = GetHPPercentage(character)
         if hpPercent < lowHPThreshold then
             -- Apply defensive mode for low HP (unless raging)
-            if Osi.HasActiveStatus(character, "AI_ALLIES_DEFENSIVE_MODE") == 0 and 
-               Osi.HasActiveStatus(character, "AI_ALLIES_BERSERKER_MODE") == 0 then
-                Osi.ApplyStatus(character, "AI_ALLIES_DEFENSIVE_MODE", -1)
-                if debugMode then
+            if Osi.HasActiveStatus(character, "AI_ALLIES_BERSERKER_MODE") == 0 then
+                if SafeApplyStatus(character, "AI_ALLIES_DEFENSIVE_MODE", -1) and debugMode then
                     Log(LOG_LEVEL.INFO, string.format(
                         "[Contextual] Applied DEFENSIVE_MODE to %s (HP: %.1f%%)",
                         character, hpPercent
@@ -1345,14 +1458,11 @@ local function EvaluateContextualArchetypes(character)
             end
         else
             -- Remove defensive mode when HP is back up
-            if Osi.HasActiveStatus(character, "AI_ALLIES_DEFENSIVE_MODE") == 1 then
-                Osi.RemoveStatus(character, "AI_ALLIES_DEFENSIVE_MODE")
-                if debugMode then
-                    Log(LOG_LEVEL.INFO, string.format(
-                        "[Contextual] Removed DEFENSIVE_MODE from %s (HP: %.1f%%)",
-                        character, hpPercent
-                    ))
-                end
+            if SafeRemoveStatus(character, "AI_ALLIES_DEFENSIVE_MODE") and debugMode then
+                Log(LOG_LEVEL.INFO, string.format(
+                    "[Contextual] Removed DEFENSIVE_MODE from %s (HP: %.1f%%)",
+                    character, hpPercent
+                ))
             end
         end
         
@@ -1523,28 +1633,24 @@ local function addToSpellCache(spellName, cacheType, value)
         spellCacheCount = spellCacheCount + 1
     end
     
-    -- Check cache size and evict LRU entries if too large
-    if spellCacheCount > MAX_SPELL_CACHE_SIZE then
-        -- Build list of {spellName, accessTime} pairs for sorting
-        local entries = {}
+    -- Check cache size and evict oldest single entry if too large (O(n) scan, no sort)
+    while spellCacheCount > MAX_SPELL_CACHE_SIZE do
+        local oldestKey = nil
+        local oldestTime = nil
         for key, accessTime in pairs(spellCacheAccessTimes) do
-            table.insert(entries, {name = key, time = accessTime})
+            if not oldestTime or accessTime < oldestTime then
+                oldestKey = key
+                oldestTime = accessTime
+            end
         end
         
-        -- Sort by access time (oldest first)
-        table.sort(entries, function(a, b) return a.time < b.time end)
-        
-        -- Remove oldest 20% of entries
-        local toRemove = math.floor(MAX_SPELL_CACHE_SIZE * 0.2)
-        for i = 1, math.min(toRemove, #entries) do
-            local key = entries[i].name
-            spellTypeCache[key] = nil
-            spellCacheAccessTimes[key] = nil
-            spellCacheCount = spellCacheCount - 1
+        if not oldestKey then
+            break  -- Should not happen, but avoid infinite loop
         end
         
-        Log(LOG_LEVEL.DEBUG, string.format("Spell cache evicted %d LRU entries (was %d, now %d)", 
-            math.min(toRemove, #entries), spellCacheCount + math.min(toRemove, #entries), spellCacheCount))
+        spellTypeCache[oldestKey] = nil
+        spellCacheAccessTimes[oldestKey] = nil
+        spellCacheCount = spellCacheCount - 1
     end
 end
 
@@ -1555,7 +1661,7 @@ end
 -- @return boolean: true if the spell matches the type, false otherwise
 local function CheckSpellType(spellName, cacheKey, detectionFunc)
     -- Safety check for valid spell name
-    if not spellName or spellName == "" then
+    if not IsValidString(spellName) then
         return false
     end
     
@@ -1855,12 +1961,15 @@ local function IsValidEntity(entityUUID)
     return success and entity ~= nil
 end
 
--- Calculate 3D distance between two entities
--- Returns: distance in meters, or nil on error
-local function CalculateDistance(entity1UUID, entity2UUID)
+--- Calculate 3D distance between two entities (optimized to accept pre-fetched entity)
+--- @param entity1UUID string First entity UUID
+--- @param entity2UUID string Second entity UUID
+--- @param preloadedEntity2 table? Pre-fetched entity2 (optional; if nil, will fetch from UUID)
+--- @return number? distance in meters, or nil on error
+local function CalculateDistance(entity1UUID, entity2UUID, preloadedEntity2)
     local success, distance = pcall(function()
         local entity1 = Ext.Entity.Get(entity1UUID)
-        local entity2 = Ext.Entity.Get(entity2UUID)
+        local entity2 = preloadedEntity2 or Ext.Entity.Get(entity2UUID)
         
         if not entity1 or not entity1.Transform or not entity1.Transform.Transform then
             return nil
@@ -1994,19 +2103,22 @@ local function GetEnemyTargetsInCombat(character)
     return enemies
 end
 
--- Detect if target is a spellcaster
-local function IsSpellcaster(targetUUID)
+--- Detect if target is a spellcaster (optimized to accept pre-fetched entity)
+--- @param targetUUID string Target character UUID
+--- @param entity table? Pre-fetched entity (optional; if nil, will fetch from UUID)
+--- @return boolean true if target is a spellcaster, false otherwise
+local function IsSpellcaster(targetUUID, entity)
     local success, isCaster = pcall(function()
         -- Check for common caster passives
         if Osi.HasPassive(targetUUID, "Spellcasting") == 1 then
             return true
         end
         
-        -- Check entity for spell slots
-        local entity = Ext.Entity.Get(targetUUID)
-        if entity and entity.SpellBook and entity.SpellBook.Spells then
+        -- Use provided entity or fetch if not provided
+        local targetEntity = entity or Ext.Entity.Get(targetUUID)
+        if targetEntity and targetEntity.SpellBook and targetEntity.SpellBook.Spells then
             -- If has prepared spells, likely a caster
-            if #entity.SpellBook.Spells > 0 then
+            if #targetEntity.SpellBook.Spells > 0 then
                 return true
             end
         end
@@ -2017,24 +2129,36 @@ local function IsSpellcaster(targetUUID)
     return success and isCaster
 end
 
--- Calculate threat level for an enemy
-local function CalculateThreatLevel(targetUUID)
+--- Calculate threat level for an enemy (optimized to accept pre-computed data)
+--- @param targetUUID string Target character UUID
+--- @param entity table? Pre-fetched entity (optional; if nil, will fetch from UUID)
+--- @param isCaster boolean? Pre-computed spellcaster status (optional; if nil, will detect)
+--- @return number Threat score for this target (0 or higher)
+local function CalculateThreatLevel(targetUUID, entity, isCaster)
     local threat = 0
     
     local success = pcall(function()
-        -- Base threat from HP
-        local entity = Ext.Entity.Get(targetUUID)
-        if entity and entity.Health then
-            threat = threat + (entity.Health.MaxHp / 10)
+        -- Base threat from HP (use provided entity to avoid refetch)
+        local targetEntity = entity or Ext.Entity.Get(targetUUID)
+        if targetEntity and targetEntity.Health then
+            threat = threat + (targetEntity.Health.MaxHp / 10)
         end
         
-        -- Threat from status effects
-        if Osi.HasActiveStatus(targetUUID, "HASTE") == 1 then threat = threat + 20 end
-        if Osi.HasActiveStatus(targetUUID, "BLESS") == 1 then threat = threat + 10 end
-        if Osi.HasActiveStatus(targetUUID, "RAGE") == 1 then threat = threat + 15 end
+        -- Optimized: Batch status checks using module-level constant
+        -- Uses THREAT_STATUSES table defined at module scope to avoid repeated table creation
+        for status, statusThreat in pairs(THREAT_STATUSES) do
+            if Osi.HasActiveStatus(targetUUID, status) == 1 then
+                threat = threat + statusThreat
+            end
+        end
         
-        -- Threat from being a spellcaster
-        if IsSpellcaster(targetUUID) then
+        -- Threat from being a spellcaster (use pre-computed value if available)
+        local targetIsCaster = isCaster
+        if targetIsCaster == nil then
+            targetIsCaster = IsSpellcaster(targetUUID, targetEntity)
+        end
+        
+        if targetIsCaster then
             threat = threat + 30
         end
     end)
@@ -2042,7 +2166,11 @@ local function CalculateThreatLevel(targetUUID)
     return threat
 end
 
--- Get target information for priority calculation
+--- Get target information for priority calculation
+--- Consolidates all entity fetches and computations in one pass for optimal performance
+--- @param targetUUID string Target character UUID
+--- @param character string Character UUID performing the evaluation
+--- @return table Target information with fields: currentHP, maxHP, isWounded, distance, threat, isCaster
 local function GetTargetInfo(targetUUID, character)
     local now = Ext.Utils.MonotonicTime()
     
@@ -2052,9 +2180,10 @@ local function GetTargetInfo(targetUUID, character)
         return targetInfoCache[targetUUID]
     end
     
-    -- Calculate fresh target info
+    -- Calculate fresh target info - fetch entity ONCE and compute all derived values
     local info = {}
     local success = pcall(function()
+        -- OPTIMIZATION: Single entity fetch for all computations
         local entity = Ext.Entity.Get(targetUUID)
         
         if entity and entity.Health then
@@ -2067,14 +2196,15 @@ local function GetTargetInfo(targetUUID, character)
             info.isWounded = false
         end
         
-        -- Calculate distance
-        info.distance = CalculateDistance(character, targetUUID) or 20
+        -- OPTIMIZATION: Calculate distance using pre-fetched entity to avoid double Entity.Get
+        info.distance = CalculateDistance(character, targetUUID, entity) or 20
         
-        -- Calculate threat
-        info.threat = CalculateThreatLevel(targetUUID)
+        -- OPTIMIZATION: Detect caster once and pass to threat calculation
+        info.isCaster = IsSpellcaster(targetUUID, entity)
         
-        -- Detect caster
-        info.isCaster = IsSpellcaster(targetUUID)
+        -- OPTIMIZATION: Calculate threat with pre-fetched entity and caster status
+        -- This eliminates duplicate Entity.Get() and IsSpellcaster() calls
+        info.threat = CalculateThreatLevel(targetUUID, entity, info.isCaster)
     end)
     
     if not success then
@@ -2336,10 +2466,12 @@ end
 Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", function()
     local players = CheckAndGivePassiveToPlayers()
 
-    -- Reuse players list from CheckAndGivePassiveToPlayers
-    for _, player in pairs(players) do
-        local character = player[1]
-        Osi.BlockNewCrimeReactions(character, 1)
+    -- Block crime reactions for all party members
+    if players then
+        for _, player in pairs(players) do
+            local character = player[1]
+            Osi.BlockNewCrimeReactions(character, 1)
+        end
     end
 end)
 
@@ -2412,25 +2544,29 @@ local function cleanupStaleCache()
     end
     
     -- Only perform cleanup if cache has grown large enough to matter
-    if cacheEntriesCount < MAX_CACHE_SIZE * 0.7 then
+    if cacheEntriesCount < MAX_CACHE_SIZE * 0.5 then
         lastCacheCleanup = currentTime
         return
     end
     
     local staleCount = 0
-    local newCount = 0
+    local processed = 0
+    local MAX_CLEANUP_BATCH = 200  -- Hard cap per pass to avoid frame spikes
     
-    -- Clean stale entries only when cache is large
+    -- Clean stale entries in bounded batches to keep worst-case latency low
     for key, entry in pairs(statusCheckCache) do
+        if processed >= MAX_CLEANUP_BATCH then
+            break
+        end
+        processed = processed + 1
         if entry.time + CACHE_EXPIRY < currentTime then
             statusCheckCache[key] = nil
             staleCount = staleCount + 1
-        else
-            newCount = newCount + 1
         end
     end
     
-    cacheEntriesCount = newCount
+    -- Adjust count based on removals; any unprocessed stale entries will be handled in later passes
+    cacheEntriesCount = math.max(0, cacheEntriesCount - staleCount)
     
     -- If cache is still too large after cleanup, clear it entirely
     if cacheEntriesCount > MAX_CACHE_SIZE then
@@ -2440,8 +2576,8 @@ local function cleanupStaleCache()
     end
     
     lastCacheCleanup = currentTime
-    if staleCount > 0 then
-        Log(LOG_LEVEL.DEBUG, string.format("Cleaned up %d stale cache entries, %d remain", staleCount, cacheEntriesCount))
+    if staleCount > 0 or processed > 0 then
+        Log(LOG_LEVEL.DEBUG, string.format("Cache cleanup processed %d entries, removed %d, remaining ~%d", processed, staleCount, cacheEntriesCount))
     end
 end
 
@@ -2700,8 +2836,8 @@ local controllerToStatusTranslator = {
     AI_ALLIES_MONK_Controller = 'AI_ALLIES_MONK',
     AI_ALLIES_WARLOCK_Controller = 'AI_ALLIES_WARLOCK',
     AI_ALLIES_BARBARIAN_Controller = 'AI_ALLIES_MELEE_SMART',
-    AI_ALLIES_BARD_Controller = 'AI_ALLIES_MAGE_SMART',
-    AI_ALLIES_DRUID_Controller = 'AI_ALLIES_HEALER_RANGED',
+    AI_ALLIES_BARD_Controller = 'AI_ALLIES_BARD',
+    AI_ALLIES_DRUID_Controller = 'AI_ALLIES_DRUID',
     AI_ALLIES_FIGHTER_Controller = 'AI_ALLIES_MELEE_SMART',
     AI_ALLIES_RANGER_Controller = 'AI_ALLIES_RANGED_SMART',
     AI_ALLIES_SORCERER_Controller = 'AI_ALLIES_MAGE_SMART',
@@ -2877,15 +3013,8 @@ end)
 local function EvaluateHealerLogic(character)
     -- Wrap entire function in error handling to prevent crashes
     local success, err = pcall(function()
-        -- Early exit: Check if character has healer status (using cached check)
-        local isHealer = Osi.HasActiveStatus(character, "AI_ALLIES_HEALER_MELEE") == 1 or
-                         Osi.HasActiveStatus(character, "AI_ALLIES_HEALER_RANGED") == 1 or
-                         Osi.HasActiveStatus(character, "AI_ALLIES_HEALER_MELEE_NPC") == 1 or
-                         Osi.HasActiveStatus(character, "AI_ALLIES_HEALER_RANGED_NPC") == 1 or
-                         Osi.HasActiveStatus(character, "AI_ALLIES_CLERIC") == 1 or
-                         Osi.HasActiveStatus(character, "AI_ALLIES_CLERIC_NPC") == 1
-        
-        if not isHealer then
+        -- OPTIMIZED: Use cached healer status check (reduces 6 API calls to 1)
+        if not IsHealer(character) then
             return  -- Early exit for non-healers
         end
         
@@ -3089,7 +3218,7 @@ local function GetConsumableItems(character)
     local items = {}
     
     -- Safety check for valid character UUID
-    if not character or character == "" then
+    if not IsValidString(character) then
         return {}
     end
     
@@ -3463,7 +3592,9 @@ end
 Ext.Osiris.RegisterListener("TurnStarted", 1, "after", function(character)
     -- Early exit: Skip AI logic for characters that shouldn't have it
     if not ShouldApplyAILogic(character) then
-        Log(LOG_LEVEL.DEBUG, "Skipping AI logic for non-qualifying character: " .. character)
+        if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+            Log(LOG_LEVEL.DEBUG, "Skipping AI logic for non-qualifying character: " .. character)
+        end
         return
     end
     
@@ -3471,7 +3602,9 @@ Ext.Osiris.RegisterListener("TurnStarted", 1, "after", function(character)
     -- This prevents race conditions during resource refresh after combat ends
     local inCombat = Osi.IsInCombat(character)
     if inCombat ~= 1 then
-        Log(LOG_LEVEL.DEBUG, "Skipping AI logic - character not in combat: " .. character)
+        if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+            Log(LOG_LEVEL.DEBUG, "Skipping AI logic - character not in combat: " .. character)
+        end
         return
     end
     
@@ -3482,7 +3615,9 @@ Ext.Osiris.RegisterListener("TurnStarted", 1, "after", function(character)
     -- Track turn start time for AI allies (for timeout detection)
     if isAIAlly then
         turnStartTimes[character] = Ext.Utils.MonotonicTime()
-        Log(LOG_LEVEL.DEBUG, "Turn started for: " .. character)
+        if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+            Log(LOG_LEVEL.DEBUG, "Turn started for: " .. character)
+        end
         
         -- Debug archetype detection if enabled
         local debugArchetypes = GetCachedSettingValue("debugArchetypes", ModuleUUID)
@@ -4147,12 +4282,16 @@ local function InjectAITags()
                 -- Sync stats to prevent Script Extender warnings about manual sync requirement
                 Ext.Stats.Sync(spellConfig.name)
                 
-                -- Log summary at INFO level
-                Log(LOG_LEVEL.INFO, string.format("Modified spell %s (%d properties)", 
-                    spellConfig.name, #modifiedProperties))
+                -- Keep per-spell success logging at DEBUG to reduce startup spam
+                if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+                    Log(LOG_LEVEL.DEBUG, string.format("Modified spell %s (%d properties)", 
+                        spellConfig.name, #modifiedProperties))
+                end
                 vanillaSuccessCount = vanillaSuccessCount + 1
             else
-                Log(LOG_LEVEL.WARN, "Spell not found: " .. spellConfig.name)
+                if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+                    Log(LOG_LEVEL.DEBUG, "Spell not found: " .. spellConfig.name)
+                end
                 vanillaFailCount = vanillaFailCount + 1
             end
         end)
@@ -4194,9 +4333,11 @@ local function InjectAITags()
                 -- Sync stats
                 Ext.Stats.Sync(spellConfig.name)
                 
-                -- Log summary at INFO level
-                Log(LOG_LEVEL.INFO, string.format("[Eldertide] Modified spell %s (%d properties)", 
-                    spellConfig.name, #modifiedProperties))
+                -- Keep per-spell success logging at DEBUG to reduce startup spam
+                if CURRENT_LOG_LEVEL >= LOG_LEVEL.DEBUG then
+                    Log(LOG_LEVEL.DEBUG, string.format("[Eldertide] Modified spell %s (%d properties)", 
+                        spellConfig.name, #modifiedProperties))
+                end
                 eldertideSuccessCount = eldertideSuccessCount + 1
             else
                 -- Spell not found - mod may not be installed
@@ -4872,9 +5013,9 @@ setmetatable(transformedCompanions, {__mode = "k"})  -- Weak keys for automatic 
 -- Optimized: Use caching for dialog status checks
 local function HasRelevantStatus(character)
     local cacheKey = character .. "_relevant"
-    local cached = statusCheckCache[cacheKey]
-    if cached and cached.time + CACHE_EXPIRY > Ext.Utils.MonotonicTime() then
-        return cached.value
+    local cached = GetCachedValue(statusCheckCache, cacheKey, CACHE_EXPIRY)
+    if cached ~= nil then
+        return cached
     end
     
     local result = false

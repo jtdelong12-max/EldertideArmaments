@@ -2,6 +2,14 @@
 <contentList>
 	<content contentuid="b5f477dc-64cc-43f6-a026-7c49635aa113" version="1">Enable AI for All Party</content>
 	<content contentuid="f885e642-390b-4fa9-9cda-7118dcb91837" version="1">Enables AI control with default class-appropriate archetype for all party members and summons within range.</content>
+	<content contentuid="8f6c1a9e-2d3c-47b7-8f2e-d6c2d5bb5a01" version="1">AI Allies: Archetype Selector</content>
+	<content contentuid="b3f5d4e0-1c92-4b9e-9d6c-5c22f5c0f6a2" version="1">Choose an archetype (or Default) to enable AI control for nearby allies and summons.</content>
+	<content contentuid="c9d0e1f2-a3b4-5678-cd90-ef123aab5678" version="1">Tank Archetype</content>
+	<content contentuid="d0e1f2a3-b4c5-6789-de01-fa234bbc6789" version="1">Frontline defender focused on protecting allies and controlling enemy positioning.</content>
+	<content contentuid="e1f2a3b4-c5d6-7890-ef12-ab345ccd7890" version="1">Summoner Archetype</content>
+	<content contentuid="f2a3b4c5-d6e7-8901-fa23-bc456dde8901" version="1">Focuses on conjuring allies and controlling the battlefield through summons.</content>
+	<content contentuid="a3b4c5d6-e7f8-9012-ab34-cd567eef9012" version="1">Beast Archetype</content>
+	<content contentuid="b4c5d6e7-f8a9-0123-bc45-de678ffa0123" version="1">Wild and aggressive melee combatant using primal tactics.</content>
 	<content contentuid="6e783857-b500-4a54-8ca6-2520a505dd85" version="1">Cast again to cancel</content>
 	<content contentuid="0547cdd6-dc38-4ec9-865f-4fe2c94aacfc" version="1">Fighter Melee Archetype</content>
 	<content contentuid="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d" version="1">Tactical melee combatant. Closes distance to enemies, prioritizes finishing wounded targets, uses area attacks when multiple enemies are clustered.</content>
@@ -30,7 +38,9 @@
 	<content contentuid="74294f91-df80-4ef0-8fda-c6079d175e9c" version="1">Random and unfiltered, they don't have any preferences, will do what they want</content>
 	<content contentuid="c38f249b-88bf-4346-bf56-ab745b1f9705" version="1">Barbarian Archetype</content>
 	<content contentuid="5a6b7c8d-9e0f-1a2b-3c4d-5e6f7a8b9c0d" version="1">Bard Archetype</content>
+	<content contentuid="a9c4f1e2-3d6b-4f75-bc8a-7e2159e4f711" version="1">Support-forward caster that keeps distance, buffs allies, controls crowds, and uses ranged weapons when spells are scarce.</content>
 	<content contentuid="6b7c8d9e-0f1a-2b3c-4d5e-6f7a8b9c0d1e" version="1">Druid Archetype</content>
+	<content contentuid="0c7b2f4d-1a9e-48f8-9f43-5e8c6c2b7a5d" version="1">Adaptive healer who prioritizes restoration, leverages control spells, and shifts to durable wildshape forms when pressured.</content>
 	<content contentuid="7c8d9e0f-1a2b-3c4d-5e6f-7a8b9c0d1e2f" version="1">Fighter Archetype</content>
 	<content contentuid="2b5bf20b-f230-489b-b807-84cbf6c2c5c4" version="1">Monk Archetype</content>
 	<content contentuid="9a913c07-ab99-41fa-8a83-efc21a8f840a" version="1">Paladin Archetype</content>
@@ -39,6 +49,8 @@
 	<content contentuid="9e0f1a2b-3c4d-5e6f-7a8b-9c0d1e2f3a4b" version="1">Sorcerer Archetype</content>
 	<content contentuid="cd8bf6c5-09f0-4d0c-bd54-86de4db37d22" version="1">Warlock Archetype</content>
 	<content contentuid="0f1a2b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c" version="1">Wizard Archetype</content>
+	<content contentuid="d3e1c2b4-0c5f-4d7f-b6fd-0a2e35f1c2ab" version="1">Auto (Class-Based)</content>
+	<content contentuid="7f3d2a11-2b7e-4f0d-99ea-7b6b8fa7c1d4" version="1">Automatically assigns an archetype based on the target's class, then enables AI control.</content>
 	<content contentuid="b2dadcdb-868b-47e5-a325-acb7013d6910" version="1">Dodging</content>
 	<content contentuid="eeed0a34-5018-4b4c-8f3c-e90e1c120d9c" version="1">This character is currently focused on dodging</content>
 	<content contentuid="cf610e7d-1e3e-4024-8ef1-713e1f2f7683" version="1">Mindcontrol</content>

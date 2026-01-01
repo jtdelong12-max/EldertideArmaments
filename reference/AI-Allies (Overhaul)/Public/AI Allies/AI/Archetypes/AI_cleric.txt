@@ -1,0 +1,66 @@
+USING melee
+// AI Allies: Cleric/Paladin Archetype
+// Balanced hybrid combat and healing with tactical spell usage
+
+// Healing is PRIMARY but not exclusive priority
+MULTIPLIER_HEAL_SELF_POS								0.85
+MULTIPLIER_HEAL_ALLY_POS								0.95
+MAX_HEAL_MULTIPLIER										1.0
+MAX_HEAL_SELF_MULTIPLIER								1.0
+
+// Downed ally revival is CRITICAL
+MULTIPLIER_TARGET_ALLY_DOWNED							12.00
+MULTIPLIER_RESURRECT									18.00
+
+// Moderate damage dealing (secondary role)
+MULTIPLIER_DAMAGE_ENEMY_POS								0.70
+MULTIPLIER_KILL_ENEMY									0.65
+
+// Self-buffing and ally buffing (Bless, Shield of Faith, Spirit Guardians)
+MULTIPLIER_BOOST_ALLY_POS								1.25
+MULTIPLIER_BOOST_SELF_POS								1.20
+MULTIPLIER_BOOST_NEUTRAL_POS							1.10
+
+// Better hit/miss reasoning
+- MODIFIER_HIT_CHANCE_STUPIDITY 						0.10
+
+// Ally health-based targeting priority
+MULTIPLIER_TARGET_HEALTH_BIAS							0.50
+
+// Position near allies but not too close (maintain flexibility)
+MULTIPLIER_ENDPOS_ALLIES_NEARBY							0.25
+
+// Avoid healing penalties
+MULTIPLIER_DOT_ALLY_NEG									8.0
+MULTIPLIER_DAMAGE_ALLY_NEG								16.0
+MULTIPLIER_HOT_ALLY_NEG									8.0
+MULTIPLIER_CONTROL_ALLY_NEG								16.0
+MULTIPLIER_HEAL_SELF_NEG								2.0
+MULTIPLIER_HEAL_ALLY_NEG								2.0
+MULTIPLIER_HEAL_NEUTRAL_NEG								2.0
+MULTIPLIER_HEAL_ENEMY_NEG								2.0
+MULTIPLIER_DAMAGE_ALLY_POS								0.1
+
+// Target selection
+MULTIPLIER_TARGET_MY_ENEMY								1.35
+
+// Mobility (Disengage when needed to reach injured ally)
+BOOST_IGNORE_AOO_MIN_MOVEMENT							3.0
+MULTIPLIER_BOOST_IGNORE_AOO								-0.05
+
+// Weapon retrieval (moderate priority)
+WEAPON_PICKUP_MODIFIER									1.15
+
+// Concentration is critical for Spirit Guardians, Bless, Shield of Faith
+MODIFIER_CONCENTRATION_REMOVE_SELF 						20.0
+
+// Surface awareness
+MODIFIER_SEEK_MINIMAL_THRESHOLD							0.45
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE				0.75
+
+// Item usage (healing potions, scrolls)
+USE_ITEM_MODIFIER										0.15
+
+// Important for 'AI Allies: Orders' - respond to tactical commands
+MULTIPLIER_TARGET_PREFERRED								6.00
+MULTIPLIER_TARGET_UNPREFERRED							0.10

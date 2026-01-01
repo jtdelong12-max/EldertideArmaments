@@ -1,0 +1,188 @@
+new entry "Shout_FeatherFall"
+type "SpellData"
+using "Shout_FeatherFall"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Target_Sanctuary"
+type "SpellData"
+using "Target_Sanctuary"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Target_WardingBond"
+type "SpellData"
+using "Target_WardingBond"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Target_Longstrider"
+type "SpellData"
+using "Target_Longstrider"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Target_BlessingOfTheTrickster"
+type "SpellData"
+using "Target_BlessingOfTheTrickster"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+// Story/quest summons - should never be AI-cast to prevent breaking quest states
+new entry "Target_END_AllyAbility_RolanArtillery"
+type "SpellData"
+using "Target_END_AllyAbility_RolanArtillery"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_NightsongSummon"
+type "SpellData"
+using "Target_END_AllyAbility_NightsongSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_OwlbearCubSummon"
+type "SpellData"
+using "Target_END_AllyAbility_OwlbearCubSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_SteelWatcherSummon"
+type "SpellData"
+using "Target_END_AllyAbility_SteelWatcherSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_OrthonSummon"
+type "SpellData"
+using "Target_END_AllyAbility_OrthonSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_MizoraSummon"
+type "SpellData"
+using "Target_END_AllyAbility_MizoraSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_HagInvisibility"
+type "SpellData"
+using "Target_END_AllyAbility_HagInvisibility"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_PhasmSummon"
+type "SpellData"
+using "Target_END_AllyAbility_PhasmSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_HarperSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_HarperSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_WatchSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_WatchSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_GrenediersSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_GrenediersSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_KeeneSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_KeeneSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_VeteranSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_VeteranSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_GurSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_GurSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_VampireCreaturesSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_VampireCreaturesSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilties_ShadowAdepts"
+type "SpellData"
+using "Target_END_AllyAbilties_ShadowAdepts"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_ZhentarimSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_ZhentarimSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbilities_FlamingFistSummon"
+type "SpellData"
+using "Target_END_AllyAbilities_FlamingFistSummon"
+data "AIFlags" "CanNotUse"
+
+new entry "Target_END_AllyAbility_IsobelHeal"
+type "SpellData"
+using "Target_END_AllyAbility_IsobelHeal"
+data "AIFlags" "CanNotUse"
+
+// Prevent Calm Emotions from breaking Barbarian rage states
+new entry "Target_CalmEmotions"
+type "SpellData"
+using "Target_CalmEmotions"
+data "TargetConditions" "((not Item() or Tagged('CANBECALMED')) and not Dead() and Ally() and not HasStatus('RAGE') and not HasStatus('RAGE_FRENZY')) or ((not Item() or Tagged('CANBECALMED')) and Enemy() and not Dead())"
+
+new entry "Target_Silence"
+type "SpellData"
+using "Target_Silence"
+data "SpellProperties" "GROUND:Summon(edca6656-dc8c-410b-9f16-fcc02d5ed803, 100,Projectile_AiHelper_Silence,,,SILENCED_AURA);ApplyStatus(SELF,CONCENTRATION_BREAKER,100,100);"
+
+new entry "CONCENTRATION_BREAKER"
+type "StatusData"
+data "StatusType" "BOOST"
+using "AI_HELPERS"
+data "RemoveEvents" "OnCombatEnded"
+data "OnRemoveFunctors" "BreakConcentration()"
+
+new entry "Target_Guidance"
+type "SpellData"
+using "Target_Guidance"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Target_GaseousForm"
+type "SpellData"
+using "Target_GaseousForm"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Shout_Disengage"
+type "SpellData"
+using "Shout_Disengage"
+data "RequirementConditions" "not Immobilized() and not HasStatus('AlliesBannedActions')"
+
+new entry "Target_TAD_TransfuseHealth"
+type "SpellData"
+using "Target_TAD_TransfuseHealth"
+data "RequirementConditions" "not Tagged('TADPOLE_POWERS_BLOCKED') and HasHPMoreThan(1) and not HasStatus('AlliesBannedActions')"
+
+// MODS
+new entry "Shout_Dodge"
+type "SpellData"
+using "Shout_Dodge"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Shout_ActionToBonusAction"
+type "SpellData"
+data "SpellType" "Shout"
+using "Shout_ActionToBonusAction"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Shout_BonusActionToAction"
+type "SpellData"
+data "SpellType" "Shout"
+using "Shout_BonusActionToAction"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Shout_Thaumaturgy"
+type "SpellData"
+data "SpellType" "Shout"
+using "Shout_Thaumaturgy"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"
+
+new entry "Target_Sleep"
+type "SpellData"
+data "SpellType" "Target"
+using "Target_Sleep"
+data "RequirementConditions" "not HasStatus('AlliesBannedActions')"

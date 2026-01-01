@@ -1,0 +1,35 @@
+USING melee
+// AI Allies: Beast Archetype
+// For Wild Shape druids and animal companions
+
+// Beasts are aggressive melee fighters
+MULTIPLIER_DAMAGE_ENEMY_POS                     1.50
+MULTIPLIER_KILL_ENEMY                           1.20
+
+// Beasts don't use items or complex tactics
+USE_ITEM_MODIFIER                               0.0
+MULTIPLIER_BOOST_ALLY_POS                       0.0
+MULTIPLIER_HEAL_ALLY_POS                        0.0
+
+// Pack tactics - stay near allies
+MULTIPLIER_FALLBACK_ALLIES_NEARBY               0.30
+MULTIPLIER_ENDPOS_ALLIES_NEARBY                 0.20
+
+// Target threatening enemies
+MULTIPLIER_TARGET_MY_ENEMY                      1.40
+
+// Don't care about weapon pickup or advanced tactics
+WEAPON_PICKUP_MODIFIER                          0.0
+MULTIPLIER_USABLE_ITEM                          0.0
+
+// Less reasoning about dangerous surfaces
+MULTIPLIER_MOVEMENT_SURFACE                     0.50
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE      0.50
+
+// Don't reason about concentration breaking
+MODIFIER_CONCENTRATION_REMOVE_TARGET            0.0
+MULTIPLIER_CONTROL_ALLY_POS                     0.0
+
+// Important for 'AI Allies: Orders'
+MULTIPLIER_TARGET_PREFERRED                     6.00
+MULTIPLIER_TARGET_UNPREFERRED                   0.10

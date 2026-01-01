@@ -1,0 +1,52 @@
+USING ranged
+// AI Allies: Warlock Archetype
+// For Warlock-style characters focusing on Eldritch Blast and conservative spell usage
+
+// Prioritize ranged damage (cantrips)
+MULTIPLIER_DAMAGE_ENEMY_POS                     1.50
+MULTIPLIER_KILL_ENEMY                           1.15
+
+// Conservative with spell slots
+USE_SPELL_SLOT_MODIFIER                         0.70
+MULTIPLIER_SPELL_DAMAGE_ENEMY_POS               0.90
+
+// Maintain distance from melee threats
+MULTIPLIER_FALLBACK_ALLIES_NEARBY               0.20
+MULTIPLIER_DISTANCE_ENEMY                       1.40
+MULTIPLIER_ENDPOS_AWAY_FROM_MELEE_ENEMY         0.80
+
+// Target selection
+MULTIPLIER_TARGET_MY_ENEMY                      1.40
+MULTIPLIER_TARGET_THREATENING_ALLY              1.10
+
+// Minimal item usage
+USE_ITEM_MODIFIER                               0.50
+
+// Maintain concentration (Hex, etc.)
+MODIFIER_CONCENTRATION_REMOVE_SELF              20.0
+
+// Avoid dangerous surfaces
+MULTIPLIER_MOVEMENT_SURFACE                     0.80
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE      0.85
+
+// Low weapon priority (rely on cantrips)
+WEAPON_PICKUP_MODIFIER                          0.60
+
+// Avoid opportunity attacks
+BOOST_IGNORE_AOO_MIN_MOVEMENT                   3.5
+
+// Avoid friendly fire
+MULTIPLIER_DAMAGE_ALLY_NEG                      16.0
+MULTIPLIER_DAMAGE_ALLY_POS                      0.1
+
+// Low support/control focus
+MULTIPLIER_BOOST_ALLY_POS                       0.30
+MULTIPLIER_HEAL_ALLY_POS                        0.20
+MULTIPLIER_CONTROL_ALLY_POS                     0.60
+
+// Debuff enemies
+MULTIPLIER_CONTROL_ENEMY_POS                    1.20
+
+// Important for 'AI Allies: Orders'
+MULTIPLIER_TARGET_PREFERRED                     6.0
+MULTIPLIER_TARGET_UNPREFERRED                   0.1

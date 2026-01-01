@@ -1,0 +1,5 @@
+{
+    "RequiredVersion": 18,
+    "ModTable": "AIAllies",
+    "FeatureFlags": ["Lua"]
+}

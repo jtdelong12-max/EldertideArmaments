@@ -1,0 +1,231 @@
+{
+  "SchemaVersion": 1,
+  "ModUUID": "b485d242-f267-2d22-3108-631ba0549512",
+  "Optional": true,
+  "Tabs": [
+    {
+      "TabId": "aiAlliesTab",
+      "TabName": "AI Allies Global Settings",
+      "Sections": [
+        {
+          "SectionId": "generalSettings",
+          "SectionName": "General Settings",
+          "Settings": [
+            {
+              "Id": "enableDebugSpells",
+              "Name": "Enable Debug Spells",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Add debug spells to AI Allies: Extra Spells."
+            },
+            {
+              "Id": "enableCustomArchetypes",
+              "Name": "Enable Custom Archetypes",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Give custom archetype spells."
+            },
+            {
+              "Id": "enableAlliesMind",
+              "Name": "Enable Mindcontrol Art",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Give Mindcontrol spells."
+            },
+            {
+              "Id": "enableAlliesSwarm",
+              "Name": "Give Swarm Spells",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Give the Swarm Group spells. WARNING: Swarm AI is VERY limited."
+            },
+            {
+              "Id": "enableOrdersBonusAction",
+              "Name": "Enable Focus/Ignore Bonus Action Cost",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Makes Focus/Ignore spells cost a bonus action and slightly changes mechanics."
+            }
+          ]
+        },
+        {
+          "SectionId": "combatSettings",
+          "SectionName": "Combat Settings",
+          "Settings": [
+            {
+              "Id": "disableAlliesDashing",
+              "Name": "Disable Allies Dashing",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Disable dashing for all allies."
+            },
+            {
+              "Id": "disableAlliesThrowing",
+              "Name": "Disable Allies Throwing",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Disable throwing for all allies."
+            },
+            {
+              "Id": "enableDynamicSpellblock",
+              "Name": "Enable Dynamic Spellblock",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Block spell usage depending on the character's health percentage."
+            },
+            {
+              "Id": "enableContextualSwitching",
+              "Name": "Enable Dynamic Archetype Switching",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "AI changes archetype based on combat situation (e.g., emergency healer mode when ally is downed, defensive behavior at low HP)."
+            },
+            {
+              "Id": "targetPriorityMode",
+              "Name": "Target Priority Strategy",
+              "Type": "enum",
+              "Default": "BALANCED",
+              "Description": "How AI allies choose which enemies to attack.",
+              "Options": {
+                "Choices": ["BALANCED", "LOWEST_HP", "HIGHEST_HP", "NEAREST", "HIGHEST_THREAT", "CASTERS_FIRST", "FINISH_WOUNDED"]
+              }
+            },
+            {
+              "Id": "enableFocusFire",
+              "Name": "Enable Focus Fire",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "AI allies coordinate to attack the same target when possible."
+            },
+            {
+              "Id": "enableFormations",
+              "Name": "Enable Combat Formations",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Automatically position allies in tactical formations at combat start."
+            },
+            {
+              "Id": "formationType",
+              "Name": "Formation Type",
+              "Type": "enum",
+              "Default": "WEDGE",
+              "Description": "Which formation pattern to use for ally positioning.",
+              "Options": {
+                "Choices": ["WEDGE", "LINE", "CIRCLE", "SCATTER", "CUSTOM"]
+              }
+            },
+            {
+              "Id": "formationSpacing",
+              "Name": "Formation Spacing",
+              "Type": "int",
+              "Default": 3,
+              "Options": {
+                "Min": 2,
+                "Max": 6
+              },
+              "Description": "Distance between allies in formation (meters)."
+            },
+            {
+              "Id": "enableItemUsage",
+              "Name": "Enable AI Item Usage",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "Allow AI allies to use healing potions, scrolls, and consumables automatically."
+            },
+            {
+              "Id": "itemUsageThreshold",
+              "Name": "Healing Potion Threshold",
+              "Type": "int",
+              "Default": 50,
+              "Options": {
+                "Min": 20,
+                "Max": 80
+              },
+              "Description": "HP percentage below which AI will use healing potions (%)."
+            },
+            {
+              "Id": "enableScrollUsage",
+              "Name": "Enable Scroll Usage",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "Allow AI to use scrolls when out of spell slots or for key spells."
+            },
+            {
+              "Id": "enableBuffPotions",
+              "Name": "Enable Buff Potion Usage",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Allow AI to use buff potions (Haste, Strength, etc.) before combat."
+            },
+            {
+              "Id": "lowHPThreshold",
+              "Name": "Low HP Threshold",
+              "Type": "int",
+              "Default": 30,
+              "Options": {
+                "Min": 10,
+                "Max": 50
+              },
+              "Description": "HP percentage below which allies prioritize survival and healing (%)."
+            },
+            {
+              "Id": "enableBerserkerMode",
+              "Name": "Berserker Mode for Raging Characters",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "Barbarians use aggressive berserker behavior while raging."
+            },
+            {
+              "Id": "enableWildShapeAI",
+              "Name": "Beast AI for Wild Shape",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "Druids use beast-like combat patterns while in Wild Shape."
+            },
+            {
+              "Id": "spellSlotConservation",
+              "Name": "Spell Slot Conservation",
+              "Type": "enum",
+              "Default": "BALANCED",
+              "Description": "How aggressively casters use high-level spell slots.",
+              "Options": {
+                "Choices": ["AGGRESSIVE", "BALANCED", "CONSERVATIVE"]
+              }
+            },
+            {
+              "Id": "healingPriorityMode",
+              "Name": "Healing Priority",
+              "Type": "enum",
+              "Default": "LOWEST_HP",
+              "Description": "How healers choose who to heal.",
+              "Options": {
+                "Choices": ["LOWEST_HP", "MOST_DAMAGED", "TANK_PRIORITY"]
+              }
+            },
+            {
+              "Id": "enableFlankingBehavior",
+              "Name": "Melee Flanking",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "Melee allies attempt to flank enemies for advantage."
+            },
+            {
+              "Id": "enableHighGroundSeeking",
+              "Name": "Ranged High Ground",
+              "Type": "checkbox",
+              "Default": true,
+              "Description": "Ranged allies prefer elevated positions."
+            },
+            {
+              "Id": "debugArchetypes",
+              "Name": "Debug Archetype Changes",
+              "Type": "checkbox",
+              "Default": false,
+              "Description": "Log archetype changes to console for debugging."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+USING ranged
+// AI Allies: Smart Ranged Fighter Archetype  
+// Enhanced tactical ranged combat with positioning and target priority
+
+// Better hit/miss reasoning for accurate shooting
+- MODIFIER_HIT_CHANCE_STUPIDITY 						0.15
+
+// Prioritize killing low HP enemies (sniper strategy)
++ MULTIPLIER_KILL_ENEMY									0.25
+
+// Height advantage is critical for ranged attacks
+MULTIPLIER_ENEMY_HEIGHT_DIFFERENCE						0.30
+
+// Better concentration breaking on enemy casters
++ MODIFIER_CONCENTRATION_REMOVE_TARGET 					0.30
+
+// Tactical use of height and positioning
++ MULTIPLIER_FALL_DAMAGE_ENEMY							0.20
+
+// Maintain optimal distance from enemies
+MULTIPLIER_ENDPOS_ENEMIES_NEARBY						0.80
+MULTIPLIER_FALLBACK_ALLIES_NEARBY						0.20
+MULTIPLIER_FALLBACK_ENEMIES_NEARBY						1.30
+
+// Prioritize dangerous targets (casters, ranged)
+MULTIPLIER_DAMAGE_ENEMY_POS								1.8
+MULTIPLIER_TARGET_MY_ENEMY								1.40
+
+// High ground seeking behavior
+MULTIPLIER_BOOST_SIGHT_RANGE							0.15
+
+// Better awareness of dangerous surfaces
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE				0.85
+
+// Weapon retrieval priority (less critical than melee)
+WEAPON_PICKUP_MODIFIER									0.90
+
+// Concentration for Hunter's Mark, etc.
+MODIFIER_CONCENTRATION_REMOVE_SELF 						19.0
+
+// Important for 'AI Allies: Orders' - respond to tactical commands
+MULTIPLIER_TARGET_PREFERRED								6.00
+MULTIPLIER_TARGET_UNPREFERRED							0.10

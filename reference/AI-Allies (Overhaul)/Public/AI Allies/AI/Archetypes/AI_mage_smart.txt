@@ -1,0 +1,48 @@
+USING ranged
+// AI Allies: Smart Mage Archetype
+// Enhanced tactical spellcasting with spell slot management and AoE optimization
+
+// Better hit/miss reasoning for accurate spell targeting
+- MODIFIER_HIT_CHANCE_STUPIDITY 						0.15
+
+// Prioritize killing low HP enemies efficiently
++ MULTIPLIER_KILL_ENEMY									0.20
+
+// Better concentration breaking on enemy casters
++ MODIFIER_CONCENTRATION_REMOVE_TARGET 					0.30
+
+// Tactical use of spell positioning
++ MULTIPLIER_FALL_DAMAGE_ENEMY							0.25
+
+// Self-buffing strategy (Shield, Mage Armor, etc.)
+MULTIPLIER_BOOST_SELF_POS								1.25
+
+// Enemy debuffing and control (critical for mages)
+MULTIPLIER_BOOST_ENEMY_POS								1.20
+MULTIPLIER_CONTROL_ENEMY_POS							1.25
+MULTIPLIER_BLIND									0.25
+
+// AoE damage optimization (hit multiple enemies)
+MULTIPLIER_DAMAGE_ENEMY_POS								1.5
+MULTIPLIER_ENDPOS_ENEMIES_NEARBY						1.30
+
+// Maintain safe distance from melee threats
+MULTIPLIER_FALLBACK_ENEMIES_NEARBY						1.40
+MULTIPLIER_ENDPOS_ALLIES_NEARBY							0.15
+
+// Weapon pickup (mages don't prioritize this)
+WEAPON_PICKUP_MODIFIER									0.15
+WEAPON_PICKUP_PREFER_RANGED_ENABLED						0
+
+// Concentration is CRITICAL for mages
+MODIFIER_CONCENTRATION_REMOVE_SELF 						22.0
+
+// Better awareness of dangerous surfaces
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE				0.85
+
+// Height advantage for spell range
+MULTIPLIER_ENEMY_HEIGHT_DIFFERENCE						0.20
+
+// Important for 'AI Allies: Orders' - respond to tactical commands
+MULTIPLIER_TARGET_PREFERRED								6.00
+MULTIPLIER_TARGET_UNPREFERRED							0.10

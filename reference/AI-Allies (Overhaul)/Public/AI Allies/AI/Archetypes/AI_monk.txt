@@ -1,0 +1,51 @@
+USING melee
+// AI Allies: Monk Archetype
+// For Monk-style characters focusing on mobility, stunning strikes, and ki management
+
+// Strong melee damage
+MULTIPLIER_DAMAGE_ENEMY_POS                     1.45
+MULTIPLIER_KILL_ENEMY                           1.25
+
+// High mobility and positioning
+MULTIPLIER_DISTANCE_ENEMY                       0.60
+MULTIPLIER_ENDPOS_ALLIES_NEARBY                 0.15
+BOOST_IGNORE_AOO_MIN_MOVEMENT                   1.5
+
+// Stunning Strike and control
+MULTIPLIER_CONTROL_ENEMY_POS                    1.40
+MULTIPLIER_TARGET_THREATENING_ALLY              1.30
+
+// Target selection
+MULTIPLIER_TARGET_MY_ENEMY                      1.45
+
+// Minimal item/weapon usage (unarmed strikes)
+USE_ITEM_MODIFIER                               0.30
+WEAPON_PICKUP_MODIFIER                          0.40
+MULTIPLIER_USABLE_ITEM                          0.30
+
+// Less concerned with surfaces (high mobility)
+MULTIPLIER_MOVEMENT_SURFACE                     0.60
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE      0.60
+
+// Patient Defense when needed
+MULTIPLIER_FALLBACK_ALLIES_NEARBY               0.25
+
+// Moderate concentration usage for ki-powered abilities
+MODIFIER_CONCENTRATION_REMOVE_SELF              15.0
+
+// Avoid friendly fire
+MULTIPLIER_DAMAGE_ALLY_NEG                      14.0
+MULTIPLIER_DAMAGE_ALLY_POS                      0.1
+
+// Low support/healing focus
+MULTIPLIER_BOOST_ALLY_POS                       0.20
+MULTIPLIER_HEAL_ALLY_POS                        0.15
+MULTIPLIER_CONTROL_ALLY_POS                     0.30
+
+// Conservative spell usage (ki is precious)
+USE_SPELL_SLOT_MODIFIER                         0.80
+MULTIPLIER_SPELL_DAMAGE_ENEMY_POS               1.10
+
+// Important for 'AI Allies: Orders'
+MULTIPLIER_TARGET_PREFERRED                     6.0
+MULTIPLIER_TARGET_UNPREFERRED                   0.1

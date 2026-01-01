@@ -1,0 +1,38 @@
+USING melee
+// AI Allies: Smart Melee Fighter Archetype
+// Enhanced tactical melee combat with improved positioning and target selection
+
+// Better hit/miss reasoning for smarter combat decisions
+- MODIFIER_HIT_CHANCE_STUPIDITY 						0.15
+
+// Prioritize killing low HP enemies (execute strategy)
++ MULTIPLIER_KILL_ENEMY									0.20
+
+// Flanking awareness - position for advantage
+MULTIPLIER_ENDPOS_FLANKED								0.10
+
+// Better concentration breaking on enemy casters
++ MODIFIER_CONCENTRATION_REMOVE_TARGET 					0.30
+
+// Tactical use of fall damage and positioning
++ MULTIPLIER_FALL_DAMAGE_ENEMY							0.25
+
+// Prioritize high-value targets (damage dealers, casters)
+MULTIPLIER_DAMAGE_ENEMY_POS								2.0
+MULTIPLIER_TARGET_MY_ENEMY								1.50
+
+// Improved weapon retrieval priority
+WEAPON_PICKUP_MODIFIER									1.25
+
+// Better awareness of dangerous surfaces
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE				0.80
+
+// Tactical retreat when overwhelmed
+MULTIPLIER_FALLBACK_ENEMIES_NEARBY						1.20
+
+// Concentration is critical for tactical abilities
+MODIFIER_CONCENTRATION_REMOVE_SELF 						20.0
+
+// Important for 'AI Allies: Orders' - respond to tactical commands
+MULTIPLIER_TARGET_PREFERRED								6.00
+MULTIPLIER_TARGET_UNPREFERRED							0.10

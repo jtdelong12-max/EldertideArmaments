@@ -1,0 +1,32 @@
+USING ranged
+// AI Allies: Summoner Archetype
+// Maintains summons, stays at safe distance
+
+// Summoners cast summons then support
+MULTIPLIER_DAMAGE_ENEMY_POS                     0.80
+MULTIPLIER_ENDPOS_ENEMY_DISTANCE                0.95
+
+// Stay away from combat
+MULTIPLIER_FALLBACK_ENEMIES_NEARBY              0.80
+MULTIPLIER_ENDPOS_ENEMIES_NEARBY                -0.60
+
+// Support allies (including summons)
+MULTIPLIER_BOOST_ALLY_POS                       1.20
+MULTIPLIER_HEAL_ALLY_POS                        0.50
+
+// Concentration is critical for summons
+MODIFIER_CONCENTRATION_REMOVE_SELF              25.0
+
+// First action buffs/summons priority
+MULTIPLIER_FIRST_ACTION_BUFF                    2.50
+
+// Stay at range from enemies
+MULTIPLIER_FALLBACK_ALLIES_NEARBY               0.00
+FALLBACK_ENEMIES_NEARBY_MAX_DISTANCE            12.00
+
+// Height advantage for casters
+MULTIPLIER_ENEMY_HEIGHT_DIFFERENCE              0.05
+
+// Important for 'AI Allies: Orders'
+MULTIPLIER_TARGET_PREFERRED                     6.00
+MULTIPLIER_TARGET_UNPREFERRED                   0.10

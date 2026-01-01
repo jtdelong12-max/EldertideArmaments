@@ -60,8 +60,6 @@ _EXTERNAL_STATUSES = frozenset({
     # Crowd control / debuffs used by Eldertide spells
     "PRONE", "PARALYZED", "PRONE_THUNDEROUS_SMITE",
 })
-
-
 class ParsedData:
     """Container for all parsed data from directory."""
 

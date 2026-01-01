@@ -1,0 +1,50 @@
+USING melee
+// AI Allies: Paladin Archetype
+// For Paladin-style characters balancing melee, healing, and support
+
+// Strong melee fighter
+MULTIPLIER_DAMAGE_ENEMY_POS                     1.40
+MULTIPLIER_KILL_ENEMY                           1.20
+
+// Healing and support priorities
+MULTIPLIER_HEAL_ALLY_POS                        1.30
+MULTIPLIER_BOOST_ALLY_POS                       1.10
+
+// Smite and spell usage
+MULTIPLIER_SPELL_DAMAGE_ENEMY_POS               1.25
+USE_SPELL_SLOT_MODIFIER                         1.15
+
+// Protect allies - stay with the group
+MULTIPLIER_FALLBACK_ALLIES_NEARBY               0.40
+MULTIPLIER_ENDPOS_ALLIES_NEARBY                 0.30
+
+// Target threatening enemies
+MULTIPLIER_TARGET_MY_ENEMY                      1.35
+MULTIPLIER_TARGET_THREATENING_ALLY              1.25
+
+// Use items moderately
+USE_ITEM_MODIFIER                               0.80
+
+// Maintain concentration on buffs
+MODIFIER_CONCENTRATION_REMOVE_SELF              18.0
+
+// Avoid dangerous surfaces
+MULTIPLIER_MOVEMENT_SURFACE                     0.70
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE      0.75
+
+// Balanced weapon pickup
+WEAPON_PICKUP_MODIFIER                          1.0
+
+// Opportunity attack awareness
+BOOST_IGNORE_AOO_MIN_MOVEMENT                   2.5
+
+// Avoid friendly fire
+MULTIPLIER_DAMAGE_ALLY_NEG                      15.0
+MULTIPLIER_DAMAGE_ALLY_POS                      0.1
+
+// Support and control
+MULTIPLIER_CONTROL_ALLY_POS                     1.10
+
+// Important for 'AI Allies: Orders'
+MULTIPLIER_TARGET_PREFERRED                     6.0
+MULTIPLIER_TARGET_UNPREFERRED                   0.1

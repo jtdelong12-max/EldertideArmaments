@@ -1,0 +1,30 @@
+USING melee
+// AI Allies: Tank Archetype
+// Frontline defender, protects allies
+
+// Tanks want enemies targeting them, not allies
+MULTIPLIER_TARGET_MY_ENEMY                      1.60
+MULTIPLIER_DAMAGE_ENEMY_POS                     1.10
+
+// Position to intercept threats
+MULTIPLIER_ENDPOS_ENEMIES_NEARBY                0.50
+MULTIPLIER_FALLBACK_ALLIES_NEARBY               0.40
+
+// Less concerned with personal damage output
+MULTIPLIER_KILL_ENEMY                           0.90
+
+// Prioritize control effects (grapple, shove)
+MULTIPLIER_CONTROL_ENEMY_POS                    1.20
+
+// Protect concentration for buff spells
+MODIFIER_CONCENTRATION_REMOVE_SELF              20.0
+
+// Position near allies to protect them
+MULTIPLIER_ENDPOS_ALLIES_NEARBY                 0.30
+
+// Tanks retrieve their weapons
+WEAPON_PICKUP_MODIFIER                          1.0
+
+// Important for 'AI Allies: Orders'
+MULTIPLIER_TARGET_PREFERRED                     6.00
+MULTIPLIER_TARGET_UNPREFERRED                   0.10

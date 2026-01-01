@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+	<content contentuid="b5f477dc-64cc-43f6-a026-7c49635aa113" version="1">Enable AI for All Party</content>
+	<content contentuid="f885e642-390b-4fa9-9cda-7118dcb91837" version="1">Enables AI control with default class-appropriate archetype for all party members and summons within range.</content>
+	<content contentuid="6e783857-b500-4a54-8ca6-2520a505dd85" version="1">Cast again to cancel</content>
+	<content contentuid="0547cdd6-dc38-4ec9-865f-4fe2c94aacfc" version="1">Fighter Melee Archetype</content>
+	<content contentuid="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d" version="1">Tactical melee combatant. Closes distance to enemies, prioritizes finishing wounded targets, uses area attacks when multiple enemies are clustered.</content>
+	<content contentuid="37de1530-204c-4528-b7af-9f0928c1983e" version="1">Fighter Ranged Archetype</content>
+	<content contentuid="2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e" version="1">Tactical ranged combatant. Maintains distance from enemies, focuses on high-priority targets, uses tactical positioning for optimal shots.</content>
+	<content contentuid="43ede6f1-2934-4a61-b5b9-70b3751293c5" version="1">Will prefer to finish turns closer to enemies if melee or further away if ranged, has preference to deal damage or finish off enemies.</content>
+	<content contentuid="716cf9a3-9515-438b-82b0-40e7bcdcd5e4" version="1">Healer Melee Archetype</content>
+	<content contentuid="97d7a695-e744-49e6-a261-692e13a5b579" version="1">Healer Ranged Archetype</content>
+	<content contentuid="76b7646f-fc72-4532-ac56-c661200e4dc6" version="1">Will prefer to finish turns closer to enemies if melee or further away if ranged, has less preference to deal damage and more to heal allies, will also secondarily prefer buffing allies.</content>
+	<content contentuid="e212a4ea-5bcf-4bd3-8cf8-50fdfb62e85b" version="1">Mage Archetype</content>
+	<content contentuid="3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f" version="1">Tactical spellcaster. Uses area spells on grouped enemies, prioritizes high-value targets, maintains safe distance, conserves spell slots for dangerous encounters.</content>
+	<content contentuid="4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a" version="1">Stealth specialist. Prioritizes sneak attacks and flanking positions, targets vulnerable enemies, uses cunning actions for mobility.</content>
+	<content contentuid="e689cfee-e22c-45bb-8d24-0adb9817e8f4" version="1">Disruptor Ranged Archetype</content>
+	<content contentuid="6a05af5d-8d14-4485-8e52-84b8b663ee59" version="1">Will prefer to finish turns closer to enemies if melee or further away if ranged, has less preference to deal damage and more to applying statuses to enemies, will use 'Hold Person', 'Sleep', 'Command', more often.</content>
+	<content contentuid="3aa437c0-3bc3-4fd3-8462-b3aeae8a8513" version="1">Scratch AI</content>
+	<content contentuid="ac3e8f1f-eb01-4204-b687-e063cd9dc141" version="1">Goblin AI</content>
+	<content contentuid="abe2a8ab-2207-454e-b7f7-235f9287947e" version="1">Enable/Disable Summon AI</content>
+	<content contentuid="33af2002-9660-49a2-88d2-d0529ad51c91" version="1">Change AI state for active summons</content>
+	<content contentuid="45b4d985-a045-433c-90b1-69db8fadb58b" version="1">AI Controlled</content>
+	<content contentuid="f2e7d55b-74e2-4072-84f2-b34f151ccc2b" version="1">This character is either drunk or controlled by an AI</content>
+	<content contentuid="9ee3a756-3e12-4904-8b6e-9db11f7dfbb4" version="1">Disable All AI</content>
+	<content contentuid="57fd9717-8540-4fb2-8aff-5491fa27ddc7" version="1">Removes AI from all Companions and Summons</content>
+	<content contentuid="dd916559-26c3-45a4-94b2-1906ae745fcd" version="1">Discombobulated</content>
+	<content contentuid="37bcbb0e-7c91-4163-8a70-a911a7f64310" version="1">Feeling Wobbly</content>
+	<content contentuid="1f2e3d4c-5b6a-7980-8e7f-6d5c4b3a2910" version="1">General Archetype</content>
+	<content contentuid="74294f91-df80-4ef0-8fda-c6079d175e9c" version="1">Random and unfiltered, they don't have any preferences, will do what they want</content>
+	<content contentuid="c38f249b-88bf-4346-bf56-ab745b1f9705" version="1">Barbarian Archetype</content>
+	<content contentuid="5a6b7c8d-9e0f-1a2b-3c4d-5e6f7a8b9c0d" version="1">Bard Archetype</content>
+	<content contentuid="6b7c8d9e-0f1a-2b3c-4d5e-6f7a8b9c0d1e" version="1">Druid Archetype</content>
+	<content contentuid="7c8d9e0f-1a2b-3c4d-5e6f-7a8b9c0d1e2f" version="1">Fighter Archetype</content>
+	<content contentuid="2b5bf20b-f230-489b-b807-84cbf6c2c5c4" version="1">Monk Archetype</content>
+	<content contentuid="9a913c07-ab99-41fa-8a83-efc21a8f840a" version="1">Paladin Archetype</content>
+	<content contentuid="8d9e0f1a-2b3c-4d5e-6f7a-8b9c0d1e2f3a" version="1">Ranger Archetype</content>
+	<content contentuid="a69e2f6f-dc50-4e4d-b8a9-3c4f1e3f6d8e" version="1">Rogue Archetype</content>
+	<content contentuid="9e0f1a2b-3c4d-5e6f-7a8b-9c0d1e2f3a4b" version="1">Sorcerer Archetype</content>
+	<content contentuid="cd8bf6c5-09f0-4d0c-bd54-86de4db37d22" version="1">Warlock Archetype</content>
+	<content contentuid="0f1a2b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c" version="1">Wizard Archetype</content>
+	<content contentuid="b2dadcdb-868b-47e5-a325-acb7013d6910" version="1">Dodging</content>
+	<content contentuid="eeed0a34-5018-4b4c-8f3c-e90e1c120d9c" version="1">This character is currently focused on dodging</content>
+	<content contentuid="cf610e7d-1e3e-4024-8ef1-713e1f2f7683" version="1">Mindcontrol</content>
+	<content contentuid="156c6320-6b8f-4484-92d1-776c8400b28a" version="1">Attempt to create a mind-link with any friendly or neutral target and make them one of your most faithful allies</content>
+	<content contentuid="6f2ea62a-1bc6-4953-996b-a3d655826964" version="1">Mind-linked Ally</content>
+	<content contentuid="1f9c86bb-00a0-46d4-816b-72cbb274d595" version="1">Under the influence of the caster's mind-controlling magic, this character fights on their side</content>
+	<content contentuid="9753db27-bb15-4024-8f0d-cbdd961f011b" version="1">Mindcontrol: Follow</content>
+	<content contentuid="bda02807-7f01-4b12-95c6-835321950092" version="1">Start or stop transmitting the intent to be followed through the mind-link you have established with your mind-controlled allies</content>
+	<content contentuid="9242170c-7fea-4c9c-bd01-6f03ae3bd25d" version="1">Mindcontrol Art</content>
+	<content contentuid="4ed81304-54b3-4cd8-b006-5f9dec57c903" version="1">An assortment of spells you can use to establish and influence those under your mind-link</content>
+	<content contentuid="f8988d76-680f-4705-b260-0f21d7d2e05c" version="1">Mindcontrol: Warp</content>
+	<content contentuid="c6355c7e-b222-4a6b-85ef-c8a4eb9f607e" version="1">Leverage your mind-link connection to manipulate the space around your mind-linked allies, enabling their instant teleportation to your location</content>
+	<content contentuid="78d0d455-4bd8-43f2-9998-615053b75528" version="1">Mindcontrol: Release</content>
+	<content contentuid="169ef3ed-bd84-430d-9dbf-0b3e33998c2c" version="1">Sever the mind-link, releasing your target and erasing their memories of the link, allowing them to return to their normal lives</content>
+	<content contentuid="34def3d2-9924-4288-8512-227e9207f635" version="1">Mind-link too strong</content>
+	<content contentuid="43066476-db01-4728-8f70-603f024e047f" version="1">The mind-link is very strong and the target is unwilling to let go</content>
+	<content contentuid="fbeccb78-90cd-4041-902b-b0ceb9d8f638" version="1">Intent: Follow me</content>
+	<content contentuid="a65a26a6-2964-4ee3-a82a-597acae314dd" version="1">Currently transmitting to any mind-linked allies the intent to be followed</content>
+	<content contentuid="490b6411-1e07-4de0-9706-485b56b0636a" version="1">Mindcontrol: Possession</content>
+	<content contentuid="77046fef-dca1-4f01-8168-00daead88de8" version="1">Extend the influence of your mind-link from simple loyalty to complete possession</content>
+	<content contentuid="3652505e-6676-4874-84a6-89cba08b510e" version="1">Possessed</content>
+	<content contentuid="261ca581-9bfe-40cc-b7f1-781cf8a0fc84" version="1">This character is currently possessed. Can be cast again to stop possession</content>
+	<content contentuid="96adf6f6-9093-4dc5-891a-a267e317a49e" version="1">Ally NPC</content>
+	<content contentuid="9f03aee8-309f-49ba-b3fd-d7bd8ea1eff4" version="1">Turn a party member into an NPC which will allow for more spells and abilities to be used.</content>
+	<content contentuid="b4f7a3be-1492-4a08-b539-6e7034c9de7e" version="1">Allied NPC</content>
+	<content contentuid="ed9cb52b-4302-48db-87f2-c84807ba5384" version="1">Becomes an NPC during combat and a player character outside of it</content>
+	<content contentuid="331c2767-6ffa-4db0-bd8e-7743baf52b57" version="1">Trickster Archetype</content>
+	<content contentuid="9e5d4f5f-d4f1-4751-ad86-0dfd0a80de0f" version="1">Has no melee or ranged preferences. Likes to deal damage, likes to use the environment such as barrels, likes to use poison and items, Likes to disarm opponents and sometimes even steal their weapons</content>
+	<content contentuid="e6042a83-ce00-4d99-bd2d-8815a149cf89" version="1">AI Allies: NPC Archetypes</content>
+	<content contentuid="367cb6b0-cff3-41ca-91a8-30f8470f2fd4" version="1">Choose what archetype your Ally NPC will use. NPCs can use a larger variety of spells and actions. *Warning: Do not use Ally NPC on more than 3 characters at a time</content>
+	<content contentuid="a21a3bdc-1d4b-4135-b22d-55d66e0c820a" version="1">NPC Archetype: General</content>
+	<content contentuid="3e238e62-0e34-4c8f-9fc9-873a31ab066f" version="1">Similar to the General Archetype, the character's actions will depend on the game's base archetype which means it can be quite random with no specific preferences</content>
+	<content contentuid="159f20ba-4779-4526-b129-5b55f8286eb2" version="1">Warp Allies</content>
+	<content contentuid="c8b0900f-a44a-4db1-a687-c3fe0d11e907" version="1">Teleport anyone under any of the AI Allies statuses to you</content>
+	<content contentuid="8fd47d43-03d3-4250-9caf-57add8f792b2" version="1">AI Allies: Extra Spells</content>
+	<content contentuid="59b79a8f-f06f-4a5f-8a44-84db267df288" version="1">Random assortment of spells that may or may not be useful to you</content>
+	<content contentuid="307a2baf-8cff-48ae-a296-b61c41f23ae9" version="1">DEBUG: Join Faction</content>
+	<content contentuid="46357662-8c60-416a-8528-c833ca65568d" version="1">Pick a target and your faction will change to theirs</content>
+	<content contentuid="7147b6fb-81f9-409a-973e-e8b0dce5a70b" version="1">DEBUG: Leave Faction</content>
+	<content contentuid="47f9c266-9047-4043-8f94-629ed8cd8fe4" version="1">Will revert you to your initial faction</content>
+	<content contentuid="ac33d443-1460-4861-a32a-cbead431fd8b" version="1">My Archetype: 1</content>
+	<content contentuid="2eb15745-7742-48be-8458-715e4ff972c8" version="1">This is your very own archetype and only you know what it truly does.</content>
+	<content contentuid="5be34080-28ce-45fc-b9c0-904dec462b48" version="1">My Archetype: NPC</content>
+	<content contentuid="b10dba51-5cd3-4916-9e0a-6731cf79c398" version="1">This is your very own archetype and only you know what it truly does.</content>
+	<content contentuid="0dd432b9-cc92-464a-9881-751e8c53194a" version="1">This character is under your very own, superior archetype</content>
+	<content contentuid="c025a1dc-941c-4479-b8de-86154c401a96" version="1">DEBUG: Turn into NPC</content>
+	<content contentuid="5dfa3ced-8806-4412-b7fa-7021ff91de6c" version="1">Turns the target into an NPC. use cases would be if a character is somehow player controlled when they shouldn't be or you're experimenting</content>
+	<content contentuid="9f422f61-b23a-4b2d-8666-98250f6f2ae1" version="1">DEBUG: Turn into Player</content>
+	<content contentuid="80a35449-da32-4d8b-b80a-974a152c355e" version="1">Makes the target player-controlled. use cases would be if you accidentally turned a character into an NPC or you're experimenting</content>
+	<content contentuid="c38f249b-88bf-4346-bf56-ab745b1f9705" version="1">Berserker Archetype</content>
+	<content contentuid="269a0f04-89f6-4b6b-864e-7b91898eb51e" version="1">No ranged/melee preferences, really likes to deal damage and also really likes throwing or using improvised weapons **Do NOT keep healing potions on this character, it does not work well yet**</content>
+	<content contentuid="f5dc2dd1-db3e-4a81-a593-960a05058444" version="1">My Archetype: 2</content>
+	<content contentuid="5f9ddc17-b3cd-4132-ab68-486586dccfc5" version="1">My Archetype 2: NPC</content>
+	<content contentuid="514663ca-a18f-4c17-b0d3-b88d3390d176" version="1">My Archetype: 3</content>
+	<content contentuid="3ffe927c-15f5-4966-a825-76fe387416ac" version="1">My Archetype 3: NPC</content>
+	<content contentuid="1e3fccea-bb1d-46f8-afde-195ad10bd6d0" version="1">My Archetype: 4</content>
+	<content contentuid="c22a81c0-4063-4f9b-a77c-4a75b4e34ea7" version="1">My Archetype 4: NPC</content>
+	<content contentuid="1774cab1-868d-4f0e-836d-11320b0e615e" version="1">AI Allies: Custom Archetypes</content>
+	<content contentuid="1b02a6f7-5933-4446-9ac1-a3643ee0e9d2" version="1">Here you can find and apply any of your 4 custom archetypes.</content>
+	<content contentuid="b608b14e-6209-453e-b873-82303469800a" version="1">AI Allies: Orders</content>
+	<content contentuid="93290138-3d9f-4d35-a083-ff46524cd800" version="1">Pick an order for your allies</content>
+	<content contentuid="93a0a927-f331-4f7f-8682-2edd861cb7b1" version="1">Focus Target</content>
+	<content contentuid="50def145-dd06-4d7e-b85e-fc2eaca7163b" version="1">Use a bonus action to mark a target for your allies as a priority, your allies will then proceed to bully this target for 3 turns.</content>
+	<content contentuid="bd54c7b2-6ac3-44a8-a950-097ad9afe43e" version="1">Targeted</content>
+	<content contentuid="853884ea-f60e-4159-ba14-16d77509c270" version="1">This character is currently being bullied</content>
+	<content contentuid="e8797390-ad7a-4046-87f6-9f315b19377e" version="1">Ignore Target</content>
+	<content contentuid="5594de17-d4db-4932-84b8-385065534aac" version="1">Use a bonus action to mark a target for your allies as a low priority for 3 turns, your allies will try to do absolutely anything else but target this target unless there's nothing else to do.</content>
+	<content contentuid="e3261b08-0a66-40bf-a3da-d42871f85147" version="1">Ignored</content>
+	<content contentuid="4409b27a-e6e8-4b45-9ccf-00c70672724f" version="1">Who?</content>
+	<content contentuid="2b2552f7-cff3-4b29-9af8-d958e721b8ea" version="1">Do not use this on Temporary Companions!</content>
+	<content contentuid="3fe08525-0103-4a88-a179-93557db084c7" version="1">Check Archetype</content>
+	<content contentuid="1749e300-45cc-4995-8c1f-41e9338f51d2" version="1">Prints the target's current archetype to the console</content>
+	<content contentuid="5069138c-569b-45e1-8ade-2ecadd8632cc" version="1">Default Archetype</content>
+	<content contentuid="8388fda0-bfd9-40ae-9fdf-cffa3ccc9d40" version="1">Won't actually change the archetype and instead use whatever archetype the game has assigned to this character and only turn the AI control on.</content>
+	<content contentuid="8e4b2a0e-39b9-4026-9e98-d83e1e681019" version="1">AI Allies: Toggle NPC State</content>
+	<content contentuid="bceee95c-7823-45be-8f36-e967d8696431" version="1">If this passive is toggled on, the character will become an NPC during combat. non-NPC if toggled off. Requires an Archetype to do anything.</content>
+	<content contentuid="e7807eb6-e3dd-4f96-9e12-6947bd4c5e89" version="1">Block casting</content>
+	<content contentuid="97864655-ea16-4994-b358-039e848e6818" version="1">Will make the target unable to cast spells. Target can still use weapons, weapon abilities and cantrips.</content>
+	<content contentuid="6d0095e0-d803-42dc-9b9a-989b69e4fcb7" version="1">Casting Blocked</content>
+	<content contentuid="311615fc-95f0-49a6-a8e5-cc9f837e8bd7" version="1">Block throwing</content>
+	<content contentuid="af2c967d-7b52-4741-adac-9a9f39fd8a60" version="1">Will make the target unable to throw items.</content>
+	<content contentuid="f7bf6d36-540c-475b-90b6-64815c8a5a5c" version="1">Throwing Blocked</content>
+	<content contentuid="8967ecf3-ddde-48dd-8f6d-92a54d493c92" version="1">Block casting (Dynamic)</content>
+	<content contentuid="7d269d2f-ca7d-41df-839b-6978f7d08465" version="1">Casting Blocked (Dynamic)</content>
+	<content contentuid="6a16c852-ff42-43de-a65d-0c4686402f87" version="1">Dynamic version of the block casting spell. Unlocks higher level spellslots the lower the character's health with lvl 6 spellslots unlocking at 50% health</content>
+	<content contentuid="13831181-ea5b-4e0b-bb3c-24d737eacd58" version="1">Swarm Groups</content>
+	<content contentuid="40bebf89-69ed-44da-b3d6-c971edbc51ec" version="1">Includes spells that allow you to assign friendly characters to any of the 4 swarm groups, any character that are in the same swarm group will play their turn at the same time.</content>
+	<content contentuid="5685d269-a318-4df0-8e3c-9b8cee3e8911" version="1">Pick which targets you would like to be on the same group.</content>
+	<content contentuid="69233dcf-f23c-4ad4-90ec-52084fa30eb0" version="1">Swarm Group Alpha</content>
+	<content contentuid="4b69cabb-1f68-4a6c-8445-2a70ac24e6a9" version="1">Swarm Group Bravo</content>
+	<content contentuid="997d4195-c647-4189-b3da-dec9fb436984" version="1">Swarm Group Charlie</content>
+	<content contentuid="d9fc2457-04e7-48d1-967d-dc34d8f052d3" version="1">Swarm Group Delta</content>
+	<content contentuid="8af6def1-1024-47a3-b1ed-c162790a5e49" version="1">Clear Group</content>
+	<content contentuid="3279c93e-46ec-4cf9-99d6-824a532f2a75" version="1">Clears the target's Swarm Group</content>
+	<content contentuid="d2dc3a3d-353e-40e2-8b49-0b72ba0d89aa" version="1">Use a bonus action to mark a target for your allies as a priority, your allies will then proceed to bully this target for 3 turns. Your allies will also get a roll bonus to attack of 1d4-1 against this target.</content>
+	<content contentuid="0ffcf642-4b47-4fe9-a7f3-ace28a991e47" version="1">Use a bonus action to mark a target for your allies as a low priority for 3 turns, your allies will try to do absolutely anything else but target this target unless there's nothing else to do. Targets are afflicted with a -1d4+1 penalty to attack rolls against your allies.</content>
+
+</contentList>

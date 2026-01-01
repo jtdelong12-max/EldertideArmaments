@@ -1,0 +1,47 @@
+USING melee
+// AI Allies: Rogue Archetype
+// Stealth, sneak attacks, and cunning tactical play
+
+// Rogues are hybrid melee/ranged - position for sneak attack advantage
+MULTIPLIER_ENDPOS_FLANKED								0.00
+
+// Rogues don't care much about positioning scores - they adapt
+MULTIPLIER_ENDPOS_ENEMIES_NEARBY						0.00
+MULTIPLIER_FALLBACK_ALLIES_NEARBY						0.00
+MULTIPLIER_FALLBACK_ENEMIES_NEARBY						0.00
+
+// Better hit/miss reasoning for precise strikes
+- MODIFIER_HIT_CHANCE_STUPIDITY 						0.15
+
+// Prioritize isolated, low HP targets for sneak attack execution
+MULTIPLIER_KILL_ENEMY									1.30
+MULTIPLIER_DAMAGE_ENEMY_POS								1.60
+
+// Target selection: squishy enemies (casters, low AC)
+MULTIPLIER_TARGET_MY_ENEMY								1.45
+
+// Weapon boosts (poisoning weapons, coating in venom)
+MULTIPLIER_BOOST_WEAPON_DAMAGE							0.09
+
+// Tactical retreat and mobility (Cunning Action: Disengage, Dash)
+MULTIPLIER_BOOST_IGNORE_AOO								0.10
+
+// Stealth and advantage seeking
+MULTIPLIER_ENDPOS_NOT_IN_DANGEROUS_SURFACE				0.75
+
+// Weapon retrieval (rogues need their tools)
+WEAPON_PICKUP_MODIFIER									1.10
+
+// Concentration for spells if multiclassed (low priority)
+MODIFIER_CONCENTRATION_REMOVE_SELF 						18.0
+
+// Height advantage for ranged sneak attacks
+MULTIPLIER_ENEMY_HEIGHT_DIFFERENCE						0.15
+
+// Blindness and control (setup for advantage)
+MULTIPLIER_BLIND									0.15
+MULTIPLIER_CONTROL_ENEMY_POS							0.90
+
+// Important for 'AI Allies: Orders' - respond to tactical commands
+MULTIPLIER_TARGET_PREFERRED								6.00
+MULTIPLIER_TARGET_UNPREFERRED							0.10

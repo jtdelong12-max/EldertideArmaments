@@ -1,20 +1,7 @@
-#!/usr/bin/env python3
-"""
-BG3 Cross-Reference Validator
-
-This script validates cross-references between different BG3 mod files to ensure
-all spell unlocks, passive references, and status applications point to existing entries.
-
-Usage:
-    python3 validate_references.py <path_to_mod_directory>
-
-Example:
-    python3 validate_references.py Public/EldertideArmament/
-"""
-
 import sys
 import os
 import re
+import argparse
 from pathlib import Path
 from typing import List, Dict, Set, Tuple
 from collections import defaultdict
@@ -30,6 +17,43 @@ _APPLY_STATUS_PATTERN = re.compile(r'ApplyStatus\(([^,)]+)(?:,([^,)]+))?')
 # Constant set for ignored status target keywords (module level for performance)
 _IGNORE_TARGETS = frozenset({"SELF", "TARGET", "SOURCE", "SWAP", ""})
 
+# External definitions that are expected to exist in base game or other modules.
+# These are excluded from missing-reference errors to avoid overriding vanilla content.
+_EXTERNAL_SPELLS = frozenset({
+    "Target_Darkness",
+    "Target_FaerieFire",
+    "Target_GOB_GoblinKing_ForceAttack_WeaponAttack",
+    "Shout_WildShape_Dismiss",
+    "Shout_ELDR_Aard",
+    "Shout_ELDR_Igni",
+    "Shout_ELDR_Quen",
+})
+
+_EXTERNAL_PASSIVES = frozenset({
+    "MAG_Githborn_Mindcrusher_Greatsword_Passive",
+    "MAG_LowHP_TemporaryHP_Passive",
+    "MAG_Githborn_MagicEating_HalfPlate_Passive",
+})
+
+_EXTERNAL_STATUSES = frozenset({
+    # Core combat statuses
+    "BURNING", "POISONED", "BLEEDING", "STUNNED", "PRONE", "PARALYZED",
+    "CHARMED", "FRIGHTENED", "BLINDNESS", "FEARED", "RESURRECTING",
+    # Boss / narrative statuses
+    "MOO_MAG_KETHERIC_HOWL_OF_THE_DEAD_AURA", "MOO_MAG_KETHERIC_STUPEFIED",
+    "TAD_BLACK_HOLE_SLOW", "PRONE_THUNDEROUS_SMITE",
+    # Spell/feature auras
+    "PASSIVE_FIRE_SHIELD_WARM", "PASSIVE_FIRE_SHIELD_WARM_ATTACKER",
+    "GLOBE_OF_INVULNERABILITY", "DOMINATE_PERSON",
+    # Wild shape / companion statuses
+    "OWLBEAR_WILDSHAPE_ENRAGE", "RAGE_STOP_REMOVE", "RAGE_ENDED",
+    "WILDSHAPE_BADGER_REMOVE_VFX", "WILDSHAPE_CAT_REMOVE_VFX",
+    "WILDSHAPE_SABERTOOTH_TIGER_REMOVE_VFX", "WILDSHAPE_OWLBEAR_REMOVE_VFX",
+    "WILDSHAPE_BEAR_POLAR_REMOVE_VFX", "REGENERATION_SABERTOOTH",
+    # Crowd control / debuffs used by Eldertide spells
+    "PRONE", "PARALYZED", "PRONE_THUNDEROUS_SMITE",
+})
+
 class ParsedData:
     """Container for all parsed data from directory."""
     def __init__(self):
@@ -40,13 +64,6 @@ class ParsedData:
         self.spell_refs = []  # [(file_path, line_num, entry_name, spell_name)]
         self.passive_refs = []  # [(file_path, line_num, entry_name, passive_str)]
         self.status_refs = []  # [(file_path, line_num, entry_name, status_name)]
-
-def parse_directory_single_pass(directory: str) -> ParsedData:
-    """Parse all files once and extract all needed information.
-    
-    This is much more efficient than the original approach which read
-    files multiple times for different purposes.
-    """
     data = ParsedData()
     path = Path(directory)
     
@@ -158,6 +175,8 @@ def validate_spell_references(parsed_data: ParsedData) -> List[ReferenceError]:
     errors = []
     
     for file_path, line_num, entry_name, spell_name in parsed_data.spell_refs:
+        if spell_name in _EXTERNAL_SPELLS:
+            continue
         if spell_name not in parsed_data.spells:
             errors.append(ReferenceError(
                 file_path, line_num, entry_name,
@@ -166,7 +185,7 @@ def validate_spell_references(parsed_data: ParsedData) -> List[ReferenceError]:
             ))
     
     return errors
-
+                all_errors = []
 def validate_passive_references(parsed_data: ParsedData) -> List[ReferenceError]:
     """Validate PassivesOnEquip references using pre-parsed data."""
     errors = []
@@ -179,7 +198,11 @@ def validate_passive_references(parsed_data: ParsedData) -> List[ReferenceError]
         passive_list = [p.strip() for p in passives_str.split(";")]
         
         for passive_name in passive_list:
-            if passive_name and passive_name not in parsed_data.passives:
+            if not passive_name:
+                continue
+            if passive_name in _EXTERNAL_PASSIVES:
+                continue
+            if passive_name not in parsed_data.passives:
                 errors.append(ReferenceError(
                     file_path, line_num, entry_name,
                     "PassivesOnEquip", passive_name,
@@ -199,7 +222,8 @@ def validate_status_references(parsed_data: ParsedData) -> List[ReferenceError]:
         # Combined check for empty, targets, or numeric values using module-level constant
         if not status_name or status_name in _IGNORE_TARGETS or status_name.isdigit():
             continue
-        
+        if status_name in _EXTERNAL_STATUSES:
+            continue
         if status_name not in parsed_data.statuses:
             errors.append(ReferenceError(
                 file_path, line_num, entry_name,

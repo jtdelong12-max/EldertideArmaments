@@ -1237,3 +1237,12 @@ data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndi
 
 // Additional statuses: ELDR_DRACONIC_WINGS, ELDR_FLAME_WINGS, ELDR_TELEPATHIC_LINK, etc.
 // Total: ~30 status effects for equipment set mechanics
+
+// AI-Allies compatibility: Nere control placeholder used by AI-Allies spells
+new entry "UND_NERE_COERCION"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "UND_NERE_COERCION"
+data "Description" "AI-Allies compatibility placeholder for Nere coercion"
+data "Icon" "Status_Charmed"
+data "StatusPropertyFlags" "DisableCombatlog;DisableOverhead"

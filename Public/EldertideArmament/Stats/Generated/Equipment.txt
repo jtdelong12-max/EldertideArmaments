@@ -47,7 +47,7 @@ add initialweaponset "Melee"
 add equipmentgroup
 add equipment entry "Nere_Rapier"
 add equipmentgroup
-add equipment entry "ARM_Robe_Body"
+add equipment entry "ARM_ScaleMail_Body"
 
 - - - - - - - - - -
 // Dror Ragzlin \\

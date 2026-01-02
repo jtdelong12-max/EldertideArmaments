@@ -47,7 +47,7 @@ add initialweaponset "Melee"
 add equipmentgroup
 add equipment entry "Nere_Rapier"
 add equipmentgroup
-add equipment entry "ARM_Robe_Body"
+add equipment entry "ARM_ScaleMail_Body"
 
 - - - - - - - - - -
 // Dror Ragzlin \\
@@ -78,3 +78,11 @@ add equipmentgroup
 add equipment entry "Githyanki_Fighter_Shield"
 add equipmentgroup
 add equipment entry "Githyanki_Fighter_HalfPlate"
+
+- - - - - - - - - - - -
+// Bloodsworn Knight \\
+- - - - - - - - - - - -
+
+new equipment "Equipment_BloodswornKnight_ALL"
+add equipmentgroup
+add equipment entry "ARM_Plate_Body"

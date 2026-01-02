@@ -10,6 +10,8 @@ add equipment entry "Minthara_Scimitar_2"
 add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Armor"
 add equipmentgroup
+add equipment entry "ARM_Plate_Body"
+add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Gloves"
 add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Boots"
@@ -22,6 +24,8 @@ add equipment entry "Minthara_TheBulwark_Shield"
 add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Armor"
 add equipmentgroup
+add equipment entry "ARM_Plate_Body"
+add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Gloves"
 add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Boots"
@@ -33,6 +37,8 @@ add equipmentgroup
 add equipment entry "Minthara_TheBulwark_Shield"
 add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Armor"
+add equipmentgroup
+add equipment entry "ARM_Plate_Body"
 add equipmentgroup
 add equipment entry "Minthara_DeathKnight_Gloves"
 add equipmentgroup
@@ -56,6 +62,8 @@ add equipment entry "ARM_ScaleMail_Body"
 new equipment "Equipment_Dror_Ragzlin_ALL"
 add equipmentgroup
 add equipment entry "Dror_Ragzlin_Warhammer"
+add equipmentgroup
+add equipment entry "ARM_Leather_Body_2"
 
 - - - - - - - - - - - -
 // Githyanki Warlock \\
@@ -65,6 +73,8 @@ new equipment "Equipment_Githyanki_Warlock_ALL"
 add initialweaponset "Melee"
 add equipmentgroup
 add equipment entry "WPN_Rapier_2"
+add equipmentgroup
+add equipment entry "ARM_Leather_Body_2"
 
 - - - - - - - - - - - -
 // Githyanki Fighter \\
